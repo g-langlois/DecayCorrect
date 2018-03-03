@@ -9,7 +9,14 @@
 import Foundation
 
 struct Radioactivity {
-    init(time: Date?, activity: Double?, units: RadioactivityUnit) {
-        //TODO
+    
+    let time: Date
+    let countRate: Double
+    let units: RadioactivityUnit
+    
+    init(time: Date, countRate: Double, units: RadioactivityUnit) {
+        self.time = time
+        self.countRate = countRate
+        self.units = units
     }
 }

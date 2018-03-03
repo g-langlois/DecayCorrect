@@ -9,7 +9,10 @@
 import Foundation
 
 struct Isotope {
+    var halfLife: TimeInterval
+    
     init(atomName: String, atomSymbol: String, halfLife: TimeInterval, massNumber: Int) {
+        self.halfLife = halfLife
         //TODO
     }
     

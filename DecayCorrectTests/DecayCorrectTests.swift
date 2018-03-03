@@ -33,11 +33,22 @@ class DecayCorrectTests: XCTestCase {
         XCTAssertEqual(RadioactivityUnit.mbq.conversionFactor(to: .mci), 1/37, accuracy: accuracy)
     }
     
-    func testDecay() {
+    func testDecayPrediction() {
         
         let accuracy = 0.00000001
         let isotope1 = Isotope(atomName: "Fluoride", atomSymbol: "F", halfLife: TimeInterval(110*60), massNumber: 18)
-        //let activity1 = RadioactiveSubstance(isotope1)
+        let calendar = Calendar(identifier: .gregorian)
+        let date = calendar.date(from: DateComponents(calendar: calendar, year: 2018, month: 01, day: 01, hour: 0, minute: 0))
+        let initialRadioactivity = Radioactivity(time: date!, countRate: 1000, units: RadioactivityUnit.bq)
+        let activity1 = RadioactiveSubstance(isotope: isotope1, radioactivity: initialRadioactivity)
+        let predictedActivity = activity1.correct(to: calendar.date(from: DateComponents(calendar: calendar, year: 2018, month: 01, day: 01, hour: 0, minute: 110))!)
+        guard let countRate = predictedActivity?.countRate else {
+            XCTFail()
+            return
+        }
+        XCTAssertEqual(countRate, 500, accuracy: accuracy)
+        
+        
     }
     
     func testBackDecay() {
