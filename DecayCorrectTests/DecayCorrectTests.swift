@@ -51,12 +51,6 @@ class DecayCorrectTests: XCTestCase {
         
     }
     
-    func testBackDecay() {
-        
-        let accuracy = 0.00000001
-        
-    }
-    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
