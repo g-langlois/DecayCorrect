@@ -20,15 +20,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="parameter" id="xkw-fy-oWh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="parameter" id="xkw-fy-oWh" customClass="ParameterTableViewCell" customModule="DecayCorrect" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xkw-fy-oWh" id="hmV-mQ-93L">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Value" placeholder="Activity" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RDA-DJ-cRs">
-                                            <rect key="frame" x="272" y="12" width="61" height="21"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Value" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RDA-DJ-cRs">
+                                            <rect key="frame" x="287" y="12" width="46" height="21"/>
                                             <color key="textColor" red="0.46092774981438067" green="0.47249079286741918" blue="0.53553299492385786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -50,8 +50,12 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <viewLayoutGuide key="safeArea" id="p6a-OX-3oT"/>
+                                <connections>
+                                    <outlet property="parameterLabel" destination="vfv-sb-xkS" id="PMP-oa-fPg"/>
+                                    <outlet property="parameterValueTextField" destination="RDA-DJ-cRs" id="aZG-DQ-iSd"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="datePicker" rowHeight="150" id="iCQ-lG-Vpm">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="datePicker" rowHeight="150" id="iCQ-lG-Vpm" customClass="DatePickerTableViewCell" customModule="DecayCorrect" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iCQ-lG-Vpm" id="cq6-9N-vIy">
@@ -77,6 +81,9 @@
                                     <constraint firstAttribute="height" secondItem="veH-dN-z6D" secondAttribute="height" id="2fr-KN-9Oc"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="pHU-he-t7x"/>
+                                <connections>
+                                    <outlet property="datePicker" destination="cq6-9N-vIy" id="SSY-Pj-nYp"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
