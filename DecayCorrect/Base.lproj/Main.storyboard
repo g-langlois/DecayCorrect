@@ -31,7 +31,7 @@
                                             <rect key="frame" x="287" y="12" width="46" height="21"/>
                                             <color key="textColor" red="0.46092774981438067" green="0.47249079286741918" blue="0.53553299492385786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parameter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfv-sb-xkS">
                                             <rect key="frame" x="16" y="11" width="79" height="21"/>
@@ -70,6 +70,9 @@
                                             <date key="date" timeIntervalSinceReferenceDate="541063317.81706095">
                                                 <!--2018-02-23 07:21:57 +0000-->
                                             </date>
+                                            <connections>
+                                                <action selector="datePickerValueChanged:" destination="iCQ-lG-Vpm" eventType="valueChanged" id="IQH-Q8-fFC"/>
+                                            </connections>
                                         </datePicker>
                                     </subviews>
                                     <constraints>

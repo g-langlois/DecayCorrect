@@ -10,17 +10,25 @@ import Foundation
 
 struct RadioactiveSubstance {
     
-    let isotope: Isotope
-    let originalRadioactivity: Radioactivity
+    let isotope: Isotope?
+    let originalRadioactivity: Radioactivity?
     
     init(isotope: Isotope, radioactivity: Radioactivity) {
         self.isotope = isotope
         self.originalRadioactivity = radioactivity
-    
-        
     }
     
+    init() {
+        isotope = nil
+        originalRadioactivity = nil
+    }
+    
+    
+    
     func correct(to targetDate: Date) -> Radioactivity? {
+        guard let isotope = isotope, let originalRadioactivity = originalRadioactivity else {
+            return nil
+        }
         let correctedCountRate: Double
         let halfLife = isotope.halfLife
         let originalDate = originalRadioactivity.time
