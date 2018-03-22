@@ -10,11 +10,39 @@ import UIKit
 
 class DecayTableViewController: UITableViewController, DatePickerDelegate {
     
+    // MARK: - Properties
+    
     var resultAvailable = true
     var datePickerIndexPath:IndexPath?
     var datePickerDate: Date?
     
     let decayModel = DecayModel()
+
+    var activity0: Double?
+    var activity0Delegate = ParameterViewModel(parameterType: .activity0)
+    var activity0IndexPath = IndexPath(row: 0, section: 1)
+    
+    
+    var dateTime0: Date?
+    var dateTime0Delegate = ParameterViewModel(parameterType: .date0)
+    var dateTime0IndexPath = IndexPath(row: 1, section: 1)
+    
+    var activity1: Double?
+    var activity1Delegate = ParameterViewModel(parameterType: .activity1)
+    var activity1IndexPath = IndexPath(row: 2, section: 1)
+    
+    var dateTime1: Date? {
+        didSet {
+            calculate()
+        }
+    }
+    var dateTime1Delegate = ParameterViewModel(parameterType: .date1)
+    var dateTime1IndexPath = IndexPath(row: 0, section: 2)
+    
+    
+    
+    
+    // MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +59,7 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     // MARK: - Table view data source
     
@@ -88,41 +117,6 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
         }
     }
     
-    // DatePickerDelegate conformance.
-    func dateValueChanged(newValue: Date) {
-        guard let datePickerRow = datePickerIndexPath?.row else { return }
-        if datePickerRow == dateTime0IndexPath.row + 1 {
-            dateTime0 = newValue
-        } else if datePickerRow == dateTime1IndexPath.row + 1 {
-            dateTime1 = newValue
-        }
-        tableView.reloadData()
-    }
-    
-    
-    // UITextFieldDelegate 
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        //TODO
-    }
-    
-    func reloadData() {
-        
-    }
-    
-    
-    func formatDate(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .medium
-        dateFormatter.locale = Locale(identifier: "en_US")
-        
-        return dateFormatter.string(from: date)
-    }
-    
-    
-    
-    
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let datePickerIndexPath = datePickerIndexPath, indexPath == datePickerIndexPath{
@@ -130,7 +124,7 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
             datePickerCell.delegate = self
             return datePickerCell
         }
-        var cell = tableView.dequeueReusableCell(withIdentifier: "parameter", for: indexPath) as! ParameterTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "parameter", for: indexPath) as! ParameterTableViewCell
         switch indexPath {
         case IndexPath(row: 0, section: 0):
             cell.parameterLabel.text = "Isotope"
@@ -178,47 +172,6 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
         return cell
     }
     
-    private func correctIndexPathWithDatePicker(for indexPath: IndexPath) -> IndexPath {
-        var correctedIndexPath = indexPath
-        if let datePickerIndexPath = datePickerIndexPath {
-            if indexPath.section == datePickerIndexPath.section {
-                if indexPath.row > datePickerIndexPath.section {
-                    
-                    correctedIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
-                    
-                }
-            }
-        }
-        return correctedIndexPath
-    }
-    
-    
-    var activity0: Double?
-    var activity0Delegate = ParameterViewModel(parameterType: .activity0)
-    var activity0IndexPath = IndexPath(row: 0, section: 1)
-    
-    
-    var dateTime0: Date?
-    var dateTime0Delegate = ParameterViewModel(parameterType: .date0)
-    var dateTime0IndexPath = IndexPath(row: 1, section: 1)
-    
-    var activity1: Double?
-    var activity1Delegate = ParameterViewModel(parameterType: .activity1)
-    var activity1IndexPath = IndexPath(row: 2, section: 1)
-    
-    var dateTime1: Date? {
-        didSet {
-            calculate()
-        }
-    }
-    var dateTime1Delegate = ParameterViewModel(parameterType: .date1)
-    var dateTime1IndexPath = IndexPath(row: 0, section: 2)
-    
-    
-    
-    
-    
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath {
         case IndexPath(row: 0, section: 0):
@@ -240,6 +193,32 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
             break
         }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+
+    // MARK: - Date Picker
+    
+    // DatePickerDelegate conformance.
+    func dateValueChanged(newValue: Date) {
+        guard let datePickerRow = datePickerIndexPath?.row else { return }
+        if datePickerRow == dateTime0IndexPath.row + 1 {
+            dateTime0 = newValue
+        } else if datePickerRow == dateTime1IndexPath.row + 1 {
+            dateTime1 = newValue
+        }
+        tableView.reloadData()
+    }
+    
+    private func correctIndexPathWithDatePicker(for indexPath: IndexPath) -> IndexPath {
+        var correctedIndexPath = indexPath
+        if let datePickerIndexPath = datePickerIndexPath {
+            if indexPath.section == datePickerIndexPath.section {
+                if indexPath.row > datePickerIndexPath.section {
+                    correctedIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
+                }
+            }
+        }
+        return correctedIndexPath
     }
     
     private func toggleDatePicker(for indexPath: IndexPath) {
@@ -282,6 +261,25 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
     }
     
     
+    // UITextFieldDelegate 
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        //TODO
+    }
+    
+    
+    // MARK: - Data formating
+    func formatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .medium
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        return dateFormatter.string(from: date)
+    }
+    
+    
+    // MARK: - Logic
+    
     private func splitInputToResultSection() {
         //TODO
     }
@@ -298,41 +296,6 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
     }
     
     /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -341,20 +304,6 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
      // Pass the selected object to the new view controller.
      }
      */
-    
-//    func setActivity0(activityValue: Double) {
-//        self.activity0 = activityValue
-//    }
-//    func setActivity1(activityValue: Double) {
-//        self.activity1 = activityValue
-//    }
-//
-//    func setDate0(date: Date) {
-//        self.dateTime0 = date
-//    }
-//    func setDate1(date: Date) {
-//        self.dateTime1 = date
-//    }
     
 }
 
@@ -373,7 +322,6 @@ class ParameterViewModel: NSObject, UITextFieldDelegate, DatePickerDelegate {
     init(parameterType: ParameterType) {
         self.parameterType = parameterType
         self.delegate = nil
-        //self.paramDelegate = delegate
     }
     
     func dateValueChanged(newValue: Date) {
