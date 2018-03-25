@@ -195,6 +195,18 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var rowHeight = tableView.rowHeight
+        print(datePickerIndexPath)
+        print(indexPath)
+        if let dpIndexPath = datePickerIndexPath, indexPath == dpIndexPath{
+            let datePickerCell = tableView.dequeueReusableCell(withIdentifier: "datePicker") as! DatePickerTableViewCell
+            datePickerCell.delegate = self
+            rowHeight =  datePickerCell.datePicker.frame.height
+            print("test")
+        }
+        return rowHeight
+    }
 
     // MARK: - Date Picker
     
