@@ -197,13 +197,10 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var rowHeight = tableView.rowHeight
-        print(datePickerIndexPath)
-        print(indexPath)
         if let dpIndexPath = datePickerIndexPath, indexPath == dpIndexPath{
             let datePickerCell = tableView.dequeueReusableCell(withIdentifier: "datePicker") as! DatePickerTableViewCell
             datePickerCell.delegate = self
             rowHeight =  datePickerCell.datePicker.frame.height
-            print("test")
         }
         return rowHeight
     }
@@ -272,11 +269,7 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
         tableView.endUpdates()
     }
     
-    
-    // UITextFieldDelegate 
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        //TODO
-    }
+
     
     
     // MARK: - Data formating
@@ -329,8 +322,8 @@ enum ParameterType {
 
 class ParameterViewModel: NSObject, UITextFieldDelegate, DatePickerDelegate {
     var delegate: DecayTableViewController?
-    
     var parameterType: ParameterType
+    
     init(parameterType: ParameterType) {
         self.parameterType = parameterType
         self.delegate = nil
@@ -352,7 +345,6 @@ class ParameterViewModel: NSObject, UITextFieldDelegate, DatePickerDelegate {
             return
             
         }
-        print("Activity value changed \(activityValue)")
         switch parameterType {
         case .activity0:
             delegate?.activity0 = activityValue
