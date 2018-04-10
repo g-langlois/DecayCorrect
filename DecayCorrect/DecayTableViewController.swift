@@ -8,51 +8,54 @@
 
 import UIKit
 
+/*
+ TableViewController responsible for input the following:
+    -select the isotope and the units
+    -reference activity,
+    -reference date/time
+    -targets (date/time or activity)
+ Upon entering three inputs, the last remaining field is populated with the result.
+ Clear button clears everything except isotope and units
+ 
+ */
 class DecayTableViewController: UITableViewController, DatePickerDelegate {
     
     // MARK: - Properties
+    let decayModel = DecayModel()
     
     var resultAvailable = true
     var datePickerIndexPath:IndexPath?
     var datePickerDate: Date?
     
-    let decayModel = DecayModel()
-
     var activity0: Double?
-    var activity0Delegate = ParameterViewModel(parameterType: .activity0)
-    var activity0IndexPath = IndexPath(row: 0, section: 1)
-    
-    
     var dateTime0: Date?
-    var dateTime0Delegate = ParameterViewModel(parameterType: .date0)
-    var dateTime0IndexPath = IndexPath(row: 1, section: 1)
-    
     var activity1: Double?
-    var activity1Delegate = ParameterViewModel(parameterType: .activity1)
-    var activity1IndexPath = IndexPath(row: 2, section: 1)
-    
     var dateTime1: Date? {
         didSet {
             calculate()
         }
     }
+    
+    
+    var activity0Delegate = ParameterViewModel(parameterType: .activity0)
+    var dateTime0Delegate = ParameterViewModel(parameterType: .date0)
+    var activity1Delegate = ParameterViewModel(parameterType: .activity1)
     var dateTime1Delegate = ParameterViewModel(parameterType: .date1)
+    
+    var activity0IndexPath = IndexPath(row: 0, section: 1)
+    var dateTime0IndexPath = IndexPath(row: 1, section: 1)
+    var activity1IndexPath = IndexPath(row: 2, section: 1)
     var dateTime1IndexPath = IndexPath(row: 0, section: 2)
-    
-    
     
     
     // MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         activity0Delegate.delegate = self
         activity1Delegate.delegate = self
         dateTime1Delegate.delegate = self
         dateTime0Delegate.delegate = self
-        
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -268,8 +271,6 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
         
         tableView.endUpdates()
     }
-    
-
     
     
     // MARK: - Data formating
