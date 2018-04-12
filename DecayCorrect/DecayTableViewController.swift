@@ -18,23 +18,22 @@ import UIKit
  Clear button clears everything except isotope and units
  
  */
-class DecayTableViewController: UITableViewController, DatePickerDelegate {
+class DecayTableViewController: UITableViewController {
     
     // MARK: - Properties
     let decayModel = DecayModel()
     
     var resultAvailable = true
+    var targetParameter: ParameterType?
+    
     var datePickerIndexPath:IndexPath?
+    var activeDatePicker: ParameterType?
     var datePickerDate: Date?
     
     var activity0: Double?
     var dateTime0: Date?
     var activity1: Double?
-    var dateTime1: Date? {
-        didSet {
-            calculate()
-        }
-    }
+    var dateTime1: Date?
     
     
     var activity0Delegate = ParameterViewModel(parameterType: .activity0)
@@ -124,7 +123,17 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
         
         if let datePickerIndexPath = datePickerIndexPath, indexPath == datePickerIndexPath{
             let datePickerCell = tableView.dequeueReusableCell(withIdentifier: "datePicker", for: indexPath) as! DatePickerTableViewCell
-            datePickerCell.delegate = self
+            if let activeDatePicker = activeDatePicker {
+                switch activeDatePicker {
+                case .date0:
+                    datePickerCell.delegate = dateTime0Delegate
+                case .date1:
+                    datePickerCell.delegate = dateTime1Delegate
+                default:
+                    datePickerCell.delegate = nil
+                }
+            }
+            
             return datePickerCell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "parameter", for: indexPath) as! ParameterTableViewCell
@@ -167,7 +176,9 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Activity"
             cell.parameterValueTextField.delegate = activity1Delegate
+            if activity1 != nil {
             cell.parameterValueTextField.text = String(describing: activity1)
+            }
             
         default:
             break
@@ -177,23 +188,17 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath {
-        case IndexPath(row: 0, section: 0):
-            hideDatePicker()
-        case IndexPath(row: 1, section: 0):
-            hideDatePicker()
-        case correctIndexPathWithDatePicker(for: activity0IndexPath):
-            hideDatePicker()
         case correctIndexPathWithDatePicker(for: dateTime0IndexPath):
+            datePickerDate = dateTime0
+            activeDatePicker = .date0
             toggleDatePicker(for: indexPath)
-            
-            
-        case correctIndexPathWithDatePicker(for: activity1IndexPath):
-            hideDatePicker()
         case correctIndexPathWithDatePicker(for: dateTime1IndexPath):
-            toggleDatePicker(for: indexPath)
             datePickerDate = dateTime1
+            activeDatePicker = .date1
+            toggleDatePicker(for: indexPath)
+            
         default:
-            break
+            hideDatePicker()
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -202,25 +207,13 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
         var rowHeight = tableView.rowHeight
         if let dpIndexPath = datePickerIndexPath, indexPath == dpIndexPath{
             let datePickerCell = tableView.dequeueReusableCell(withIdentifier: "datePicker") as! DatePickerTableViewCell
-            datePickerCell.delegate = self
             rowHeight =  datePickerCell.datePicker.frame.height
         }
         return rowHeight
     }
 
     // MARK: - Date Picker
-    
-    // DatePickerDelegate conformance.
-    func dateValueChanged(newValue: Date) {
-        guard let datePickerRow = datePickerIndexPath?.row else { return }
-        if datePickerRow == dateTime0IndexPath.row + 1 {
-            dateTime0 = newValue
-        } else if datePickerRow == dateTime1IndexPath.row + 1 {
-            dateTime1 = newValue
-        }
-        tableView.reloadData()
-    }
-    
+
     private func correctIndexPathWithDatePicker(for indexPath: IndexPath) -> IndexPath {
         var correctedIndexPath = indexPath
         if let datePickerIndexPath = datePickerIndexPath {
@@ -290,14 +283,49 @@ class DecayTableViewController: UITableViewController, DatePickerDelegate {
         //TODO
     }
     
-    func calculate() {
-        
-        // TODO handle optionals
-        let isotope1 = Isotope(atomName: "Fluoride", atomSymbol: "F", halfLife: TimeInterval(110*60), massNumber: 18)
     
-        let initialRadioactivity = Radioactivity(time: dateTime0!, countRate: activity0!, units: RadioactivityUnit.bq)
-        let radioactiveSubstance = RadioactiveSubstance(isotope: isotope1, radioactivity: initialRadioactivity)
-        activity1 = radioactiveSubstance.correct(to: dateTime1!)?.countRate
+    func setTarget() {
+            var parameterType: ParameterType?
+                var count = 0
+                if activity0 == nil {
+                    count += 1
+                    parameterType = .activity0
+                }
+                if activity1 == nil {
+                    count += 1
+                    parameterType = .activity1
+                }
+                if dateTime0 == nil {
+                    count += 1
+                    parameterType = .date0
+                }
+                if dateTime1 == nil {
+                    count += 1
+                    parameterType = .date1
+                }
+        if count == 1 {
+            targetParameter = parameterType
+
+        }
+        
+    
+    }
+    func parameterUpdate() {
+        
+        setTarget()
+        guard let targetParameter = targetParameter else {
+            tableView.reloadData()
+            return
+            
+        }
+        let isotope1 = Isotope(atomName: "Fluoride", atomSymbol: "F", halfLife: TimeInterval(110*60), massNumber: 18)
+        
+        
+        if targetParameter == .activity1, let activity0 = activity0, let dateTime0 = dateTime0, let dateTime1 = dateTime1 {
+            let initialRadioactivity = Radioactivity(time: dateTime0, countRate: activity0, units: RadioactivityUnit.bq)
+            let radioactiveSubstance = RadioactiveSubstance(isotope: isotope1, radioactivity: initialRadioactivity)
+            activity1 = radioactiveSubstance.correct(to: dateTime1)?.countRate
+        }
         tableView.reloadData()
     }
     
@@ -338,6 +366,9 @@ class ParameterViewModel: NSObject, UITextFieldDelegate, DatePickerDelegate {
             delegate?.dateTime1 = newValue
         default: return
         }
+        if delegate != nil {
+            delegate!.parameterUpdate()
+        }
     }
     
 
@@ -352,6 +383,9 @@ class ParameterViewModel: NSObject, UITextFieldDelegate, DatePickerDelegate {
         case .activity1:
             delegate?.activity1 = activityValue
         default: return
+        }
+        if delegate != nil {
+            delegate!.parameterUpdate()
         }
     }
 }
