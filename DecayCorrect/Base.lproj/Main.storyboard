@@ -19,6 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="parameter" id="xkw-fy-oWh" customClass="ParameterTableViewCell" customModule="DecayCorrect" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -49,6 +50,7 @@
                                         <constraint firstItem="RDA-DJ-cRs" firstAttribute="centerY" secondItem="hmV-mQ-93L" secondAttribute="centerY" id="fde-EJ-YZ7"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
                                 <viewLayoutGuide key="safeArea" id="p6a-OX-3oT"/>
                                 <connections>
                                     <outlet property="parameterLabel" destination="vfv-sb-xkS" id="PMP-oa-fPg"/>
@@ -64,6 +66,7 @@
                                     <subviews>
                                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="veH-dN-z6D">
                                             <rect key="frame" x="0.0" y="-33.5" width="375" height="216"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="375" id="e6e-Oe-xTO"/>
                                             </constraints>

@@ -187,6 +187,9 @@ class DecayTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Hides soft keyboard
+        UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
+        
         switch indexPath {
         case correctIndexPathWithDatePicker(for: dateTime0IndexPath):
             datePickerDate = dateTime0
@@ -227,6 +230,9 @@ class DecayTableViewController: UITableViewController {
     }
     
     private func toggleDatePicker(for indexPath: IndexPath) {
+        //Hides soft keyboard
+        UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
+        
         tableView.beginUpdates()
         if (datePickerIndexPath != nil && datePickerIndexPath == indexPath) {
             return
@@ -338,6 +344,7 @@ class DecayTableViewController: UITableViewController {
      // Pass the selected object to the new view controller.
      }
      */
+
     
 }
 
@@ -356,6 +363,12 @@ class ParameterViewModel: NSObject, UITextFieldDelegate, DatePickerDelegate {
     init(parameterType: ParameterType) {
         self.parameterType = parameterType
         self.delegate = nil
+    }
+    
+    // Hides soft keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        delegate!.view.endEditing(true)
+        return false
     }
     
     func dateValueChanged(newValue: Date) {

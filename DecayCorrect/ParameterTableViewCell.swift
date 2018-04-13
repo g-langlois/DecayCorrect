@@ -13,10 +13,8 @@ class ParameterTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
-
-    var uiTextFieldDelegate: UITextFieldDelegate?
 
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,11 +25,6 @@ class ParameterTableViewCell: UITableViewCell {
     @IBOutlet weak var parameterLabel: UILabel!
     
     @IBOutlet weak var parameterValueTextField: UITextField!
-//    @IBAction func textFieldEndEditing(_ sender: UITextField) {
-//        if let delegate = self.uiTextFieldDelegate {
-//            delegate.textFieldDidEndEditing!(parameterValueTextField)
-//            
-//            
-//        }
-//    }
+
+
 }
