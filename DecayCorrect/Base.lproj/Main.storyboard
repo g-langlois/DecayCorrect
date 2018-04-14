@@ -93,11 +93,17 @@
                         <connections>
                             <outlet property="dataSource" destination="20K-gL-5Kh" id="J7q-gT-cwS"/>
                             <outlet property="delegate" destination="20K-gL-5Kh" id="ZaT-sD-jDh"/>
+                            <outletCollection property="gestureRecognizers" destination="S8P-ai-pxv" appends="YES" id="n1m-iL-6g1"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="oRZ-6i-m2Y"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tQ-2R-VDj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="S8P-ai-pxv">
+                    <connections>
+                        <action selector="hideKeyboard:" destination="20K-gL-5Kh" id="972-v0-kkj"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1776.8" y="-139.880059970015"/>
         </scene>

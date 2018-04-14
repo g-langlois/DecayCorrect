@@ -55,6 +55,8 @@ class DecayTableViewController: UITableViewController {
         activity1Delegate.delegate = self
         dateTime1Delegate.delegate = self
         dateTime0Delegate.delegate = self
+        
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -187,9 +189,6 @@ class DecayTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Hides soft keyboard
-        UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
-        
         switch indexPath {
         case correctIndexPathWithDatePicker(for: dateTime0IndexPath):
             datePickerDate = dateTime0
@@ -229,9 +228,10 @@ class DecayTableViewController: UITableViewController {
         return correctedIndexPath
     }
     
+    @IBAction func hideKeyboard(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
     private func toggleDatePicker(for indexPath: IndexPath) {
-        //Hides soft keyboard
-        UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
         
         tableView.beginUpdates()
         if (datePickerIndexPath != nil && datePickerIndexPath == indexPath) {
@@ -267,7 +267,7 @@ class DecayTableViewController: UITableViewController {
             datePickerIndexPath = nil
         }
         datePickerDate = nil
-        
+        activeDatePicker = nil
         tableView.endUpdates()
     }
     
@@ -399,7 +399,12 @@ class ParameterViewModel: NSObject, UITextFieldDelegate, DatePickerDelegate {
         }
         if delegate != nil {
             delegate!.parameterUpdate()
+            
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string))
     }
 }
 
