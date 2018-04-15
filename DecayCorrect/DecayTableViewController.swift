@@ -43,8 +43,8 @@ class DecayTableViewController: UITableViewController {
     
     var activity0IndexPath = IndexPath(row: 0, section: 1)
     var dateTime0IndexPath = IndexPath(row: 1, section: 1)
-    var activity1IndexPath = IndexPath(row: 2, section: 1)
-    var dateTime1IndexPath = IndexPath(row: 0, section: 2)
+    var activity1IndexPath = IndexPath(row: 0, section: 2)
+    var dateTime1IndexPath = IndexPath(row: 2, section: 1)
     
     
     // MARK: - View life cycle
