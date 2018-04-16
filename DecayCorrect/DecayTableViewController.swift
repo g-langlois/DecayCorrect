@@ -142,17 +142,20 @@ class DecayTableViewController: UITableViewController {
         switch indexPath {
         case IndexPath(row: 0, section: 0):
             cell.parameterLabel.text = "Isotope"
-            cell.parameterValueTextField.placeholder = "Isotope"
+            cell.parameterValueTextField.isHidden = true
+            cell.unitsLabel.text = "F18"
             
         case IndexPath(row: 1, section: 0):
             cell.parameterLabel.text = "Units"
-            cell.parameterValueTextField.placeholder = "Units"
+            cell.parameterValueTextField.isHidden = true
+            cell.unitsLabel.text = "GBq"
             
         case dateTime0IndexPath:
             cell.parameterLabel.text = "Date (t0)"
             cell.accessoryType = .none
             cell.parameterValueTextField.isEnabled = false
             cell.parameterValueTextField.placeholder = "Date"
+            cell.unitsLabel.text = ""
             if let dateTime = dateTime0 {
                 cell.parameterValueTextField.text = formatDate(dateTime)
             }
@@ -162,6 +165,8 @@ class DecayTableViewController: UITableViewController {
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Activity"
             cell.parameterValueTextField.delegate = activity0Delegate
+            cell.unitsLabel.textColor = UIColor.lightGray
+            cell.unitsLabel.text = ""
             
             
         case dateTime1IndexPath:
@@ -169,6 +174,7 @@ class DecayTableViewController: UITableViewController {
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Date"
             cell.parameterValueTextField.isEnabled = false
+            cell.unitsLabel.text = ""
             if let dateTime = dateTime1 {
                 cell.parameterValueTextField.text = formatDate(dateTime)
             }
@@ -178,8 +184,16 @@ class DecayTableViewController: UITableViewController {
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Activity"
             cell.parameterValueTextField.delegate = activity1Delegate
+            cell.unitsLabel.textColor = UIColor.lightGray
+            cell.unitsLabel.text = ""
+            
+            let formatter = NumberFormatter()
+            formatter.locale = Locale(identifier: "en_US_POSIX")
+            formatter.maximumFractionDigits = 2
+            formatter.minimumFractionDigits = 0
+            
             if activity1 != nil {
-            cell.parameterValueTextField.text = String(describing: activity1)
+                cell.parameterValueTextField.text = formatter.string(for: activity1)
             }
             
         default:
@@ -276,7 +290,7 @@ class DecayTableViewController: UITableViewController {
     func formatDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .medium
+        dateFormatter.timeStyle = .short
         dateFormatter.locale = Locale(identifier: "en_US")
         
         return dateFormatter.string(from: date)

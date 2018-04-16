@@ -26,5 +26,7 @@ class ParameterTableViewCell: UITableViewCell {
     
     @IBOutlet weak var parameterValueTextField: UITextField!
 
+    @IBOutlet weak var unitsLabel: UILabel!
+    
 
 }

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,25 +29,35 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Value" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RDA-DJ-cRs">
-                                            <rect key="frame" x="287" y="12" width="46" height="21"/>
-                                            <color key="textColor" red="0.46092774981438067" green="0.47249079286741918" blue="0.53553299492385786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                        </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parameter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfv-sb-xkS">
                                             <rect key="frame" x="16" y="11" width="79" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Units" textAlignment="right" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwF-r9-tBS" userLabel="Units Label">
+                                            <rect key="frame" x="291" y="11.5" width="40" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Value" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RDA-DJ-cRs">
+                                            <rect key="frame" x="237" y="10" width="46" height="23.5"/>
+                                            <color key="textColor" red="0.46092774981438067" green="0.47249079286741918" blue="0.53553299492385786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vfv-sb-xkS" secondAttribute="trailingMargin" id="1Wn-w8-pKb"/>
+                                        <constraint firstItem="XwF-r9-tBS" firstAttribute="leading" secondItem="RDA-DJ-cRs" secondAttribute="trailing" constant="8" id="AMw-bP-LGi"/>
                                         <constraint firstItem="vfv-sb-xkS" firstAttribute="leading" secondItem="hmV-mQ-93L" secondAttribute="leadingMargin" id="F3s-Zx-Tlf"/>
+                                        <constraint firstItem="RDA-DJ-cRs" firstAttribute="baseline" secondItem="XwF-r9-tBS" secondAttribute="baseline" constant="-1.5" id="Hxo-G7-dDe"/>
                                         <constraint firstItem="vfv-sb-xkS" firstAttribute="centerY" secondItem="hmV-mQ-93L" secondAttribute="centerY" id="JPh-Uf-6FK"/>
                                         <constraint firstItem="RDA-DJ-cRs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hmV-mQ-93L" secondAttribute="leadingMargin" id="NwF-gA-JEj"/>
-                                        <constraint firstItem="RDA-DJ-cRs" firstAttribute="trailing" secondItem="hmV-mQ-93L" secondAttribute="trailingMargin" id="eTn-CU-myu"/>
+                                        <constraint firstAttribute="trailing" secondItem="XwF-r9-tBS" secondAttribute="trailing" constant="10" id="Yax-aU-qT0"/>
+                                        <constraint firstItem="XwF-r9-tBS" firstAttribute="centerY" secondItem="hmV-mQ-93L" secondAttribute="centerY" id="cSA-T3-O0P"/>
+                                        <constraint firstItem="RDA-DJ-cRs" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="XwF-r9-tBS" secondAttribute="leadingMargin" id="eTn-CU-myu"/>
                                         <constraint firstItem="RDA-DJ-cRs" firstAttribute="centerY" secondItem="hmV-mQ-93L" secondAttribute="centerY" id="fde-EJ-YZ7"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -55,6 +66,7 @@
                                 <connections>
                                     <outlet property="parameterLabel" destination="vfv-sb-xkS" id="PMP-oa-fPg"/>
                                     <outlet property="parameterValueTextField" destination="RDA-DJ-cRs" id="aZG-DQ-iSd"/>
+                                    <outlet property="unitsLabel" destination="XwF-r9-tBS" id="rEr-IE-JFz"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="datePicker" rowHeight="150" id="iCQ-lG-Vpm" customClass="DatePickerTableViewCell" customModule="DecayCorrect" customModuleProvider="target">
