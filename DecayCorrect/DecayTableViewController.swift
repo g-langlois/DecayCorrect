@@ -79,7 +79,7 @@ class DecayTableViewController: UITableViewController {
         var numberOfRows = 0
         switch section {
         case 0:
-            numberOfRows = 2
+            numberOfRows = 1
         case 1:
             if resultAvailable == true && datePickerIndexPath == nil {
                 numberOfRows = 3
@@ -111,7 +111,7 @@ class DecayTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Parameters"
+            return " "
         case 1:
             return "Inputs (any three)"
         case 2:
@@ -144,11 +144,7 @@ class DecayTableViewController: UITableViewController {
             cell.parameterLabel.text = "Isotope"
             cell.parameterValueTextField.isHidden = true
             cell.unitsLabel.text = "F18"
-            
-        case IndexPath(row: 1, section: 0):
-            cell.parameterLabel.text = "Units"
-            cell.parameterValueTextField.isHidden = true
-            cell.unitsLabel.text = "GBq"
+
             
         case dateTime0IndexPath:
             cell.parameterLabel.text = "Date (t0)"
