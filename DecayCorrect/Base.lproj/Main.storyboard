@@ -100,6 +100,27 @@
                                     <outlet property="datePicker" destination="cq6-9N-vIy" id="SSY-Pj-nYp"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="unitsPicker" rowHeight="150" id="1kf-48-xfS" userLabel="unitsPicker" customClass="UnitsPickerTableViewCell" customModule="DecayCorrect" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="222" width="375" height="150"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1kf-48-xfS" id="5IC-XV-x5S" userLabel="Units Picker">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDF-pn-8qq">
+                                            <rect key="frame" x="28" y="-34" width="320" height="216"/>
+                                        </pickerView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bDF-pn-8qq" firstAttribute="centerX" secondItem="5IC-XV-x5S" secondAttribute="centerX" id="0Bk-yD-LQz"/>
+                                        <constraint firstItem="bDF-pn-8qq" firstAttribute="centerY" secondItem="5IC-XV-x5S" secondAttribute="centerY" id="HUU-JD-vHJ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <viewLayoutGuide key="safeArea" id="9tp-5a-JJq"/>
+                                <connections>
+                                    <outlet property="unitsPicker" destination="bDF-pn-8qq" id="YUd-im-F8v"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>

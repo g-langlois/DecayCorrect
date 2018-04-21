@@ -10,10 +10,10 @@ import UIKit
 
 /*
  TableViewController responsible for input the following:
-    -select the isotope and the units
-    -reference activity,
+    -select the isotope
+    -reference activity and units,
     -reference date/time
-    -targets (date/time or activity)
+    -targets (date/time or activity and its units)
  Upon entering three inputs, the last remaining field is populated with the result.
  Clear button clears everything except isotope and units
  
@@ -25,20 +25,26 @@ class DecayTableViewController: UITableViewController {
     
     var resultAvailable = true
     var targetParameter: ParameterType?
+    var pickerType: PickerType?
     
-    var datePickerIndexPath:IndexPath?
-    var activeDatePicker: ParameterType?
+    var pickerIndexPath:IndexPath?
+    var activePicker: ParameterType?
     var datePickerDate: Date?
+    var unitsPickerUnit: RadioactivityUnit?
     
     var activity0: Double?
     var dateTime0: Date?
+    var activity0Units: RadioactivityUnit?
     var activity1: Double?
     var dateTime1: Date?
+    var activity1Units: RadioactivityUnit?
     
     
     var activity0Delegate = ParameterViewModel(parameterType: .activity0)
+    var activity0UnitsDelegate = UnitsViewModel(parameterType: .activity0)
     var dateTime0Delegate = ParameterViewModel(parameterType: .date0)
     var activity1Delegate = ParameterViewModel(parameterType: .activity1)
+    var activity1UnitsDelegate = UnitsViewModel(parameterType: .activity1)
     var dateTime1Delegate = ParameterViewModel(parameterType: .date1)
     
     var activity0IndexPath = IndexPath(row: 0, section: 1)
@@ -52,7 +58,9 @@ class DecayTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activity0Delegate.delegate = self
+        activity0UnitsDelegate.delegate = self
         activity1Delegate.delegate = self
+        activity1UnitsDelegate.delegate = self
         dateTime1Delegate.delegate = self
         dateTime0Delegate.delegate = self
         
@@ -81,21 +89,21 @@ class DecayTableViewController: UITableViewController {
         case 0:
             numberOfRows = 1
         case 1:
-            if resultAvailable == true && datePickerIndexPath == nil {
+            if resultAvailable == true && pickerIndexPath == nil {
                 numberOfRows = 3
-            } else if !resultAvailable && datePickerIndexPath == nil {
+            } else if !resultAvailable && pickerIndexPath == nil {
                 numberOfRows = 4
-            } else if resultAvailable && datePickerIndexPath != nil && datePickerIndexPath!.section == 1 {
+            } else if resultAvailable && pickerIndexPath != nil && pickerIndexPath!.section == 1 {
                 numberOfRows = 4
             }
-            else if resultAvailable && datePickerIndexPath != nil && datePickerIndexPath!.section != 1 {
+            else if resultAvailable && pickerIndexPath != nil && pickerIndexPath!.section != 1 {
                 numberOfRows = 3
             }
             else {
                 numberOfRows = 5
             }
         case 2:
-            if datePickerIndexPath != nil && datePickerIndexPath!.section == 2 {
+            if pickerIndexPath != nil && pickerIndexPath!.section == 2 {
                 numberOfRows = 2
             }
             else {
@@ -111,7 +119,7 @@ class DecayTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return " "
+            return ""
         case 1:
             return "Inputs (any three)"
         case 2:
@@ -123,20 +131,44 @@ class DecayTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let datePickerIndexPath = datePickerIndexPath, indexPath == datePickerIndexPath{
-            let datePickerCell = tableView.dequeueReusableCell(withIdentifier: "datePicker", for: indexPath) as! DatePickerTableViewCell
-            if let activeDatePicker = activeDatePicker {
-                switch activeDatePicker {
-                case .date0:
-                    datePickerCell.delegate = dateTime0Delegate
-                case .date1:
-                    datePickerCell.delegate = dateTime1Delegate
-                default:
-                    datePickerCell.delegate = nil
+        if let pickerIndexPath = pickerIndexPath, let pickerType = pickerType, indexPath == pickerIndexPath{
+            switch pickerType {
+            case .date:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "datePicker", for: indexPath) as! DatePickerTableViewCell
+                if let activeDatePicker = activePicker {
+                    switch activeDatePicker {
+                    case .date0:
+                        cell.delegate = dateTime0Delegate
+                    case .date1:
+                        cell.delegate = dateTime1Delegate
+                    default:
+                        cell.delegate = nil
+                    }
+                
                 }
-            }
+                return cell
+            case .unit:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "unitsPicker", for: indexPath) as! UnitsPickerTableViewCell
+                if let activeDatePicker = activePicker {
+                    switch activeDatePicker {
+                    case .activity0:
+                        cell.unitsPicker.delegate = activity0UnitsDelegate
+                        cell.unitsPicker.dataSource = activity0UnitsDelegate
+                    case .activity1:
+                        cell.unitsPicker.delegate = activity1UnitsDelegate
+                        cell.unitsPicker.dataSource = activity1UnitsDelegate
+                    default:
+                        cell.delegate = nil
+                    }
+                    
+                }
+
+        
+            return cell
+        }
             
-            return datePickerCell
+            
+            
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "parameter", for: indexPath) as! ParameterTableViewCell
         switch indexPath {
@@ -200,37 +232,51 @@ class DecayTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath {
-        case correctIndexPathWithDatePicker(for: dateTime0IndexPath):
+        case correctedIndexPath(from: dateTime0IndexPath):
             datePickerDate = dateTime0
-            activeDatePicker = .date0
-            toggleDatePicker(for: indexPath)
-        case correctIndexPathWithDatePicker(for: dateTime1IndexPath):
+            activePicker = .date0
+            togglePicker(ofType: .date, after: indexPath)
+       
+        case correctedIndexPath(from: dateTime1IndexPath):
             datePickerDate = dateTime1
-            activeDatePicker = .date1
-            toggleDatePicker(for: indexPath)
+            activePicker = .date1
+            togglePicker(ofType: .date, after: indexPath)
+            
+        case correctedIndexPath(from: activity0IndexPath):
+            unitsPickerUnit = activity0Units
+            activePicker = .activity0
+            togglePicker(ofType: .unit, after: indexPath)
+        
+        case correctedIndexPath(from: activity1IndexPath):
+                unitsPickerUnit = activity1Units
+                activePicker = .activity1
+                togglePicker(ofType: .unit, after: indexPath)
+            
             
         default:
-            hideDatePicker()
+            hidePickers()
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var rowHeight = tableView.rowHeight
-        if let dpIndexPath = datePickerIndexPath, indexPath == dpIndexPath{
+        if let dpIndexPath = pickerIndexPath, indexPath == dpIndexPath{
             let datePickerCell = tableView.dequeueReusableCell(withIdentifier: "datePicker") as! DatePickerTableViewCell
             rowHeight =  datePickerCell.datePicker.frame.height
         }
         return rowHeight
     }
 
-    // MARK: - Date Picker
+    
+    
+    // MARK: - Pickers
 
-    private func correctIndexPathWithDatePicker(for indexPath: IndexPath) -> IndexPath {
+    private func correctedIndexPath(from indexPath: IndexPath) -> IndexPath {
         var correctedIndexPath = indexPath
-        if let datePickerIndexPath = datePickerIndexPath {
-            if indexPath.section == datePickerIndexPath.section {
-                if indexPath.row > datePickerIndexPath.section {
+        if let pickerIndexPath = pickerIndexPath {
+            if indexPath.section == pickerIndexPath.section {
+                if indexPath.row > pickerIndexPath.section {
                     correctedIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
                 }
             }
@@ -241,23 +287,23 @@ class DecayTableViewController: UITableViewController {
     @IBAction func hideKeyboard(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
-    private func toggleDatePicker(for indexPath: IndexPath) {
+    private func togglePicker(ofType pickerType: PickerType, after indexPath: IndexPath) {
         
         tableView.beginUpdates()
-        if (datePickerIndexPath != nil && datePickerIndexPath == indexPath) {
+        if (pickerIndexPath != nil && pickerIndexPath == indexPath) {
             return
-        } else if (datePickerIndexPath != nil && datePickerIndexPath == IndexPath(row: indexPath.row + 1, section: indexPath.section)) {
-            tableView.deleteRows(at: [datePickerIndexPath!], with: .fade)
-            datePickerIndexPath = nil
+        } else if (pickerIndexPath != nil) {
+            tableView.deleteRows(at: [pickerIndexPath!], with: .fade)
+            pickerIndexPath = nil
             datePickerDate = nil
-        } else if (datePickerIndexPath != nil) {
-            tableView.deleteRows(at: [datePickerIndexPath!], with: .fade)
-            datePickerIndexPath = nil
-            datePickerDate = nil
+            unitsPickerUnit = nil
+            self.pickerType = nil
+        
         } else  {
             
-            datePickerIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
-            tableView.insertRows(at: [datePickerIndexPath!], with: .fade)
+            pickerIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
+            tableView.insertRows(at: [pickerIndexPath!], with: .fade)
+            self.pickerType = pickerType
         }
         // To get third section appear:
         //resultAvailable = true
@@ -270,14 +316,16 @@ class DecayTableViewController: UITableViewController {
         tableView.endUpdates()
     }
     
-    private func hideDatePicker() {
+    private func hidePickers() {
         tableView.beginUpdates()
-        if (datePickerIndexPath != nil) {
-            tableView.deleteRows(at: [datePickerIndexPath!], with: .fade)
-            datePickerIndexPath = nil
+        if (pickerIndexPath != nil) {
+            tableView.deleteRows(at: [pickerIndexPath!], with: .fade)
+            pickerIndexPath = nil
         }
         datePickerDate = nil
-        activeDatePicker = nil
+        unitsPickerUnit = nil
+        
+        activePicker = nil
         tableView.endUpdates()
     }
     
@@ -363,6 +411,60 @@ enum ParameterType {
     case activity1
     case date0
     case date1
+}
+
+enum PickerType {
+    case date
+    case unit
+}
+
+class UnitsViewModel: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
+    var delegate: DecayTableViewController?
+    var parameterType: ParameterType
+    var pickerData = [RadioactivityUnit]()
+    
+    init(parameterType: ParameterType) {
+        self.parameterType = parameterType
+        self.delegate = nil
+        pickerData.append(.bq)
+        pickerData.append(.mbq)
+        pickerData.append(.gbq)
+        pickerData.append(.uci)
+        pickerData.append(.mci)
+        pickerData.append(.ci)
+        
+        
+    }
+    
+    
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch parameterType {
+        case .activity0:
+            delegate?.activity0Units = pickerData[row]
+        case .activity1:
+            delegate?.activity1Units = pickerData[row]
+        default: return
+        }
+        if delegate != nil {
+            delegate!.parameterUpdate()
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row].rawValue
+    }
+    
+    
+    
 }
 
 
