@@ -10,10 +10,10 @@ import UIKit
 
 /*
  TableViewController responsible for input the following:
-    -select the isotope
-    -reference activity and units,
-    -reference date/time
-    -targets (date/time or activity and its units)
+ -select the isotope
+ -reference activity and units,
+ -reference date/time
+ -targets (date/time or activity and its units)
  Upon entering three inputs, the last remaining field is populated with the result.
  Clear button clears everything except isotope and units
  
@@ -21,7 +21,6 @@ import UIKit
 class DecayTableViewController: UITableViewController {
     
     // MARK: - Properties
-    let decayModel = DecayModel()
     
     var resultAvailable = true
     var targetParameter: ParameterType?
@@ -64,7 +63,7 @@ class DecayTableViewController: UITableViewController {
         dateTime1Delegate.delegate = self
         dateTime0Delegate.delegate = self
         
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -144,7 +143,7 @@ class DecayTableViewController: UITableViewController {
                     default:
                         cell.delegate = nil
                     }
-                
+                    
                 }
                 return cell
             case .unit:
@@ -162,10 +161,10 @@ class DecayTableViewController: UITableViewController {
                     }
                     
                 }
-
-        
-            return cell
-        }
+                
+                
+                return cell
+            }
             
             
             
@@ -176,7 +175,7 @@ class DecayTableViewController: UITableViewController {
             cell.parameterLabel.text = "Isotope"
             cell.parameterValueTextField.isHidden = true
             cell.unitsLabel.text = "F18"
-
+            
             
         case dateTime0IndexPath:
             cell.parameterLabel.text = "Date (t0)"
@@ -194,7 +193,12 @@ class DecayTableViewController: UITableViewController {
             cell.parameterValueTextField.placeholder = "Activity"
             cell.parameterValueTextField.delegate = activity0Delegate
             cell.unitsLabel.textColor = UIColor.lightGray
-            cell.unitsLabel.text = ""
+            if let unitsLabel = activity0Units {
+                cell.unitsLabel.text = unitsLabel.rawValue
+            }
+            else {
+                cell.unitsLabel.text = ""
+            }
             
             
         case dateTime1IndexPath:
@@ -222,6 +226,12 @@ class DecayTableViewController: UITableViewController {
             
             if activity1 != nil {
                 cell.parameterValueTextField.text = formatter.string(for: activity1)
+                if let unitsLabel = activity1Units {
+                    cell.unitsLabel.text = unitsLabel.rawValue
+                }
+                else {
+                    cell.unitsLabel.text = ""
+                }
             }
             
         default:
@@ -386,9 +396,11 @@ class DecayTableViewController: UITableViewController {
         
         
         if targetParameter == .activity1, let activity0 = activity0, let dateTime0 = dateTime0, let dateTime1 = dateTime1 {
-            let initialRadioactivity = Radioactivity(time: dateTime0, countRate: activity0, units: RadioactivityUnit.bq)
+            let initialRadioactivity = Radioactivity(time: dateTime0, countRate: activity0, units: activity0Units)
             let radioactiveSubstance = RadioactiveSubstance(isotope: isotope1, radioactivity: initialRadioactivity)
-            activity1 = radioactiveSubstance.correct(to: dateTime1)?.countRate
+            let activity = radioactiveSubstance.correct(to: dateTime1, with: activity1Units)
+            activity1 = activity?.countRate
+            activity1Units = activity?.units
         }
         tableView.reloadData()
     }

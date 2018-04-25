@@ -11,22 +11,17 @@ import Foundation
 struct RadioactiveSubstance {
     
     let isotope: Isotope?
-    let originalRadioactivity: Radioactivity?
+    let originalRadioactivity: Radioactivity
     
     init(isotope: Isotope, radioactivity: Radioactivity) {
         self.isotope = isotope
         self.originalRadioactivity = radioactivity
     }
     
-    init() {
-        isotope = nil
-        originalRadioactivity = nil
-    }
     
     
-    
-    func correct(to targetDate: Date) -> Radioactivity? {
-        guard let isotope = isotope, let originalRadioactivity = originalRadioactivity else {
+    func correct(to targetDate: Date, with targetUnits: RadioactivityUnit?) -> Radioactivity? {
+        guard let isotope = isotope, let originalUnits = self.originalRadioactivity.units else {
             return nil
         }
         let correctedCountRate: Double
@@ -39,12 +34,14 @@ struct RadioactiveSubstance {
         else {
             duration = -DateInterval(start: targetDate, end: originalDate).duration
         }
+        var units = targetUnits
+        if units == nil {
+            units = self.originalRadioactivity.units
+        }
         
-        //TODO
-        /* t1/2 = ln2*t/ln(A0/At)
-         At = A0/e^ln2*t/(t1/2)
-        */
-        correctedCountRate = originalRadioactivity.countRate /  (exp(log(2)*duration/halfLife))
-        return Radioactivity(time: targetDate, countRate: correctedCountRate, units: .bq)
+        let conversionFactor = originalUnits.conversionFactor(to: units!)
+
+        correctedCountRate = conversionFactor * originalRadioactivity.countRate /  (exp(log(2)*duration/halfLife))
+        return Radioactivity(time: targetDate, countRate: correctedCountRate, units: units)
     }
 }

@@ -12,9 +12,9 @@ struct Radioactivity {
     
     let time: Date
     let countRate: Double
-    let units: RadioactivityUnit
+    let units: RadioactivityUnit?
     
-    init(time: Date, countRate: Double, units: RadioactivityUnit) {
+    init(time: Date, countRate: Double, units: RadioactivityUnit?) {
         self.time = time
         self.countRate = countRate
         self.units = units
