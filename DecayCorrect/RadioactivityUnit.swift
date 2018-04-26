@@ -11,7 +11,7 @@ import Foundation
 enum RadioactivityUnit: String {
     case mbq = "MBq"
     case gbq = "GBq"
-    case bq = "bq"
+    case bq = "Bq"
     case uci = "µCi"
     case mci = "mCi"
     case ci = "Ci"
