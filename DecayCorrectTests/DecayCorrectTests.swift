@@ -41,7 +41,7 @@ class DecayCorrectTests: XCTestCase {
         let date = calendar.date(from: DateComponents(calendar: calendar, year: 2018, month: 01, day: 01, hour: 0, minute: 0))
         let initialRadioactivity = Radioactivity(time: date!, countRate: 1000, units: RadioactivityUnit.bq)
         let activity1 = RadioactiveSubstance(isotope: isotope1, radioactivity: initialRadioactivity)
-        let predictedActivity = activity1.correct(to: calendar.date(from: DateComponents(calendar: calendar, year: 2018, month: 01, day: 01, hour: 0, minute: 110))!)
+        let predictedActivity = activity1.correct(to: calendar.date(from: DateComponents(calendar: calendar, year: 2018, month: 01, day: 01, hour: 0, minute: 110))!, with: RadioactivityUnit.bq)
         guard let countRate = predictedActivity?.countRate else {
             XCTFail()
             return
