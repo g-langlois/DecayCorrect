@@ -13,7 +13,9 @@ class ParameterTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        parameterLabel.textColor =  UIColor.black
+        parameterValueTextField.textColor =  UIColor.black
+        unitsLabel.textColor = UIColor.black
     }
 
     

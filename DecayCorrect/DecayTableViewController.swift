@@ -192,7 +192,6 @@ class DecayTableViewController: UITableViewController {
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Activity"
             cell.parameterValueTextField.delegate = activity0Delegate
-            cell.unitsLabel.textColor = UIColor.lightGray
             if let unitsLabel = activity0Units {
                 cell.unitsLabel.text = unitsLabel.rawValue
             }
@@ -216,7 +215,6 @@ class DecayTableViewController: UITableViewController {
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Activity"
             cell.parameterValueTextField.delegate = activity1Delegate
-            cell.unitsLabel.textColor = UIColor.lightGray
             cell.unitsLabel.text = ""
             
             let formatter = NumberFormatter()
