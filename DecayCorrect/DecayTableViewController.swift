@@ -31,6 +31,7 @@ class DecayTableViewController: UITableViewController {
     var datePickerDate: Date?
     var unitsPickerUnit: RadioactivityUnit?
     
+    var isotope: Isotope?
     var activity0: Double?
     var dateTime0: Date?
     var activity0Units: RadioactivityUnit?
@@ -174,7 +175,7 @@ class DecayTableViewController: UITableViewController {
         case IndexPath(row: 0, section: 0):
             cell.parameterLabel.text = "Isotope"
             cell.parameterValueTextField.isHidden = true
-            cell.unitsLabel.text = "F18"
+            cell.unitsLabel.text = isotope?.shortName ?? ""
             
             
         case dateTime0IndexPath:

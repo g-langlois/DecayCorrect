@@ -10,10 +10,21 @@ import Foundation
 
 struct Isotope {
     var halfLife: TimeInterval
+    var atomName: String
+    var atomSymbol: String
+    var massNumber: Int
     
     init(atomName: String, atomSymbol: String, halfLife: TimeInterval, massNumber: Int) {
         self.halfLife = halfLife
-        //TODO
+        self.atomName = atomName
+        self.atomSymbol = atomSymbol
+        self.massNumber = massNumber
+    }
+    
+    var shortName: String {
+        get {
+            return String("\(atomSymbol)\(massNumber)")
+        }
     }
     
 }
