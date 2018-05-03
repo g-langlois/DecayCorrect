@@ -230,6 +230,7 @@ class DecayTableViewController: UITableViewController {
                 }
                 else {
                     cell.unitsLabel.text = ""
+                    
                 }
             }
             
@@ -241,6 +242,8 @@ class DecayTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath {
+        case IndexPath(row: 0, section: 0):
+            performSegue(withIdentifier: "selectIsotope", sender: self)
         case correctedIndexPath(from: dateTime0IndexPath):
             datePickerDate = dateTime0
             activePicker = .date0

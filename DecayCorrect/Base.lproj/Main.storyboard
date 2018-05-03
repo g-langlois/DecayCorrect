@@ -130,6 +130,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="oRZ-6i-m2Y"/>
+                    <connections>
+                        <segue destination="u1O-2P-FsP" kind="show" identifier="selectIsotope" id="tA8-xH-2wd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tQ-2R-VDj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer cancelsTouchesInView="NO" id="S8P-ai-pxv">
@@ -139,6 +142,52 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1776.8" y="-139.880059970015"/>
+        </scene>
+        <!--Isotope Selection Table View Controller-->
+        <scene sceneID="Wij-xa-bIv">
+            <objects>
+                <tableViewController id="u1O-2P-FsP" customClass="IsotopeSelectionTableViewController" customModule="DecayCorrect" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="LVq-lT-lol">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="isotopeCell" editingAccessoryType="detailButton" id="YlA-pR-CYl" customClass="IsotopeSelectionTableViewCell" customModule="DecayCorrect" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YlA-pR-CYl" id="x3i-df-SfM">
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Isotope" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSJ-PZ-Ly4">
+                                            <rect key="frame" x="270" y="11" width="57" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="centerY" secondItem="x3i-df-SfM" secondAttribute="centerY" id="5sj-A8-xy2"/>
+                                        <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="top" secondItem="x3i-df-SfM" secondAttribute="topMargin" id="oka-Pg-sET"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="DSJ-PZ-Ly4" secondAttribute="trailing" constant="48" id="2U4-oQ-NOg"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="isotopeName" destination="DSJ-PZ-Ly4" id="1rb-JG-uiu"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="u1O-2P-FsP" id="s5T-NF-v14"/>
+                            <outlet property="delegate" destination="u1O-2P-FsP" id="xVG-y3-j9n"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AyT-Mh-f9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2772" y="-144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="XxB-j2-UhY">
