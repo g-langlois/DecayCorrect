@@ -31,6 +31,9 @@
 		466F778E203956CA00DF7702 /* RadioactivityUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466F778D203956CA00DF7702 /* RadioactivityUnit.swift */; };
 		466F778F203956CA00DF7702 /* RadioactivityUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466F778D203956CA00DF7702 /* RadioactivityUnit.swift */; };
 		466F7790203956CA00DF7702 /* RadioactivityUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466F778D203956CA00DF7702 /* RadioactivityUnit.swift */; };
+		4681935D209C2931007EFEBA /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681935C209C2931007EFEBA /* State.swift */; };
+		4681935E209C2931007EFEBA /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681935C209C2931007EFEBA /* State.swift */; };
+		4681935F209C2931007EFEBA /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681935C209C2931007EFEBA /* State.swift */; };
 		46967D59209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46967D58209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift */; };
 		46967D5A209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46967D58209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift */; };
 		46967D5B209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46967D58209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift */; };
@@ -72,6 +75,7 @@
 		466F77852039568400DF7702 /* RadioactiveSubstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioactiveSubstance.swift; sourceTree = "<group>"; };
 		466F77892039569600DF7702 /* Isotope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Isotope.swift; sourceTree = "<group>"; };
 		466F778D203956CA00DF7702 /* RadioactivityUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioactivityUnit.swift; sourceTree = "<group>"; };
+		4681935C209C2931007EFEBA /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		46967D58209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsotopeSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		46967D5C209ADEC40094968D /* IsotopeSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsotopeSelectionTableViewController.swift; sourceTree = "<group>"; };
 		46BE6B452039340400B07831 /* DecayCorrect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecayCorrect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +157,7 @@
 				46BE6B542039340400B07831 /* LaunchScreen.storyboard */,
 				46BE6B572039340400B07831 /* Info.plist */,
 				46BE6B4F2039340400B07831 /* DecayCorrect.xcdatamodeld */,
+				4681935C209C2931007EFEBA /* State.swift */,
 			);
 			path = DecayCorrect;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 				4661A68A204BE10200F6D86F /* ParameterTableViewCell.swift in Sources */,
 				466F77822039566400DF7702 /* Radioactivity.swift in Sources */,
 				46967D5D209ADEC40094968D /* IsotopeSelectionTableViewController.swift in Sources */,
+				4681935D209C2931007EFEBA /* State.swift in Sources */,
 				46BE6B512039340400B07831 /* DecayCorrect.xcdatamodeld in Sources */,
 				466F77862039568400DF7702 /* RadioactiveSubstance.swift in Sources */,
 				4661A686204BE0ED00F6D86F /* DatePickerTableViewCell.swift in Sources */,
@@ -339,6 +345,7 @@
 				466F778B2039569600DF7702 /* Isotope.swift in Sources */,
 				4661A687204BE0ED00F6D86F /* DatePickerTableViewCell.swift in Sources */,
 				46BE6B612039340400B07831 /* DecayCorrectTests.swift in Sources */,
+				4681935E209C2931007EFEBA /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +364,7 @@
 				466F778C2039569600DF7702 /* Isotope.swift in Sources */,
 				4661A688204BE0ED00F6D86F /* DatePickerTableViewCell.swift in Sources */,
 				46BE6B6C2039340400B07831 /* DecayCorrectUITests.swift in Sources */,
+				4681935F209C2931007EFEBA /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

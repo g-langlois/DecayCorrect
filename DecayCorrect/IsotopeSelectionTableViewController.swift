@@ -10,14 +10,20 @@ import UIKit
 
 class IsotopeSelectionTableViewController: UITableViewController {
 
+    var state: State?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
-        isotopes.append(Isotope(atomName: "Fluoride", atomSymbol: "F", halfLife: TimeInterval(110*60), massNumber: 18))
-        isotopes.append(Isotope(atomName: "Gallium", atomSymbol: "Ga", halfLife: TimeInterval(68*60), massNumber: 68))
-        selectedIsotopeIndex = 0
-
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let state = self.state {
+            selectedIsotopeIndex = state.selectedIsotopeIndex
+            isotopes = state.isotopes
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +60,18 @@ class IsotopeSelectionTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIsotopeIndex = indexPath.row
+        tableView.reloadData()
+        updateState()
+    }
+    
+    func updateState() {
+        if let state = self.state {
+            state.selectedIsotopeIndex = selectedIsotopeIndex
+            state.isotopes = isotopes
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

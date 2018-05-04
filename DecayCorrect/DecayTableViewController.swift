@@ -52,6 +52,7 @@ class DecayTableViewController: UITableViewController {
     var activity1IndexPath = IndexPath(row: 0, section: 2)
     var dateTime1IndexPath = IndexPath(row: 2, section: 1)
     
+    let state = State()
     
     // MARK: - View life cycle
     
@@ -65,6 +66,15 @@ class DecayTableViewController: UITableViewController {
         dateTime0Delegate.delegate = self
         
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let selectedIsotopeIndex = state.selectedIsotopeIndex  {
+            self.isotope = state.isotopes[selectedIsotopeIndex]
+            tableView.reloadData()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -394,8 +404,9 @@ class DecayTableViewController: UITableViewController {
             return
             
         }
-        let isotope1 = Isotope(atomName: "Fluoride", atomSymbol: "F", halfLife: TimeInterval(110*60), massNumber: 18)
-        
+        guard let isotope1 = isotope else {
+            return
+        }
         
         if targetParameter == .activity1, let activity0 = activity0, let dateTime0 = dateTime0, let dateTime1 = dateTime1 {
             let initialRadioactivity = Radioactivity(time: dateTime0, countRate: activity0, units: activity0Units)
@@ -407,15 +418,16 @@ class DecayTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+        if let destination = segue.destination as? IsotopeSelectionTableViewController {
+                destination.state = state
+        }
+    }
+    
 
     
 }
