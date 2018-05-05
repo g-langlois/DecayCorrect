@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Decay Table View Controller-->
+        <!--Decay correction-->
         <scene sceneID="p5x-oD-aFn">
             <objects>
                 <tableViewController id="20K-gL-5Kh" customClass="DecayTableViewController" customModule="DecayCorrect" customModuleProvider="target" sceneMemberID="viewController">
@@ -129,7 +129,7 @@
                             <outletCollection property="gestureRecognizers" destination="S8P-ai-pxv" appends="YES" id="n1m-iL-6g1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="oRZ-6i-m2Y"/>
+                    <navigationItem key="navigationItem" title="Decay correction" id="oRZ-6i-m2Y"/>
                     <connections>
                         <segue destination="u1O-2P-FsP" kind="show" identifier="selectIsotope" id="tA8-xH-2wd"/>
                     </connections>
