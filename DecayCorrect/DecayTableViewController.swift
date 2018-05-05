@@ -185,14 +185,14 @@ class DecayTableViewController: UITableViewController {
         case IndexPath(row: 0, section: 0):
             cell.parameterLabel.text = "Isotope"
             cell.parameterValueTextField.isHidden = true
-            cell.unitsLabel.text = isotope?.shortName ?? ""
+            cell.unitsLabel.text = isotope?.shortName ?? "Select isotope"
             
             
         case dateTime0IndexPath:
             cell.parameterLabel.text = "Date (t0)"
             cell.accessoryType = .none
             cell.parameterValueTextField.isEnabled = false
-            cell.parameterValueTextField.placeholder = "Date"
+            cell.parameterValueTextField.placeholder = "Select date"
             cell.unitsLabel.text = ""
             if let dateTime = dateTime0 {
                 cell.parameterValueTextField.text = formatDate(dateTime)
@@ -201,7 +201,7 @@ class DecayTableViewController: UITableViewController {
         case activity0IndexPath:
             cell.parameterLabel.text = "Activity (A0)"
             cell.accessoryType = .none
-            cell.parameterValueTextField.placeholder = "Activity"
+            cell.parameterValueTextField.placeholder = "Enter activity"
             cell.parameterValueTextField.delegate = activity0Delegate
             if let unitsLabel = activity0Units {
                 cell.unitsLabel.text = unitsLabel.rawValue
@@ -214,7 +214,7 @@ class DecayTableViewController: UITableViewController {
         case dateTime1IndexPath:
             cell.parameterLabel.text = "Date (t1)"
             cell.accessoryType = .none
-            cell.parameterValueTextField.placeholder = "Date"
+            cell.parameterValueTextField.placeholder = "Select date"
             cell.parameterValueTextField.isEnabled = false
             cell.unitsLabel.text = ""
             if let dateTime = dateTime1 {
@@ -224,13 +224,13 @@ class DecayTableViewController: UITableViewController {
         case activity1IndexPath:
             cell.parameterLabel.text = "Activity (A1)"
             cell.accessoryType = .none
-            cell.parameterValueTextField.placeholder = "Activity"
+            cell.parameterValueTextField.placeholder = "Enter activity"
             cell.parameterValueTextField.delegate = activity1Delegate
             cell.unitsLabel.text = ""
             
             let formatter = NumberFormatter()
             formatter.locale = Locale(identifier: "en_US_POSIX")
-            formatter.maximumFractionDigits = 2
+            formatter.maximumFractionDigits = 3
             formatter.minimumFractionDigits = 0
             
             if activity1 != nil {
