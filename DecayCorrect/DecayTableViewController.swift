@@ -23,7 +23,7 @@ class DecayTableViewController: UITableViewController {
     // MARK: - Properties
     
     var resultAvailable = true
-    var targetParameter: ParameterType?
+
     var pickerType: PickerType?
     
     var pickerIndexPath:IndexPath?
@@ -32,6 +32,7 @@ class DecayTableViewController: UITableViewController {
     var unitsPickerUnit: RadioactivityUnit?
     
     var isotope: Isotope?
+    
     var activity0: Double?
     var dateTime0: Date?
     var activity0Units: RadioactivityUnit?
@@ -42,10 +43,10 @@ class DecayTableViewController: UITableViewController {
     
     var activity0Delegate = ParameterViewModel(parameterType: .activity0)
     var activity0UnitsDelegate = UnitsViewModel(parameterType: .activity0)
-    var dateTime0Delegate = ParameterViewModel(parameterType: .date0)
+    var dateTime0Delegate = DatePickerViewModel(parameterType: .date0)
     var activity1Delegate = ParameterViewModel(parameterType: .activity1)
     var activity1UnitsDelegate = UnitsViewModel(parameterType: .activity1)
-    var dateTime1Delegate = ParameterViewModel(parameterType: .date1)
+    var dateTime1Delegate = DatePickerViewModel(parameterType: .date1)
     
     var activity0IndexPath = IndexPath(row: 0, section: 1)
     var dateTime0IndexPath = IndexPath(row: 1, section: 1)
@@ -388,36 +389,41 @@ class DecayTableViewController: UITableViewController {
     }
     
     
-    func setTarget() {
+    var targetParameter: ParameterType? {
+        get {
+            
             var parameterType: ParameterType?
-                var count = 0
-                if activity0 == nil {
-                    count += 1
-                    parameterType = .activity0
-                }
-                if activity1 == nil {
-                    count += 1
-                    parameterType = .activity1
-                }
-                if dateTime0 == nil {
-                    count += 1
-                    parameterType = .date0
-                }
-                if dateTime1 == nil {
-                    count += 1
-                    parameterType = .date1
-                }
-        if count == 1 {
-            targetParameter = parameterType
-
+            var count = 0
+            // Verifies that exactly 1 parameter is missing
+            if activity0 == nil {
+                count += 1
+                parameterType = .activity0
+            }
+            if activity1 == nil {
+                count += 1
+                parameterType = .activity1
+            }
+            if dateTime0 == nil {
+                count += 1
+                parameterType = .date0
+            }
+            if dateTime1 == nil {
+                count += 1
+                parameterType = .date1
+            }
+            if count == 1 {
+                return parameterType
+            } else {
+                return nil
+            }
         }
         
     
     }
-    func parameterUpdate() {
+    func updateResult() {
         
-        setTarget()
-        guard let targetParameter = targetParameter else {
+
+        guard let targetParameter = self.targetParameter else {
             tableView.reloadData()
             return
             
@@ -499,7 +505,7 @@ class UnitsViewModel: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         default: return
         }
         if delegate != nil {
-            delegate!.parameterUpdate()
+            delegate!.updateResult()
         }
     }
     
@@ -512,7 +518,30 @@ class UnitsViewModel: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
 }
 
 
-class ParameterViewModel: NSObject, UITextFieldDelegate, DatePickerDelegate {
+class DatePickerViewModel: NSObject, DatePickerDelegate {
+    var delegate: DecayTableViewController?
+    var parameterType: ParameterType
+    init(parameterType: ParameterType) {
+        self.parameterType = parameterType
+        self.delegate = nil
+    }
+    
+    func dateValueChanged(newValue: Date) {
+        switch parameterType {
+        case .date0:
+            delegate?.dateTime0 = newValue
+        case .date1:
+            delegate?.dateTime1 = newValue
+        default: return
+        }
+        if delegate != nil {
+            delegate!.updateResult()
+        }
+    }
+    
+}
+
+class ParameterViewModel: NSObject, UITextFieldDelegate {
     var delegate: DecayTableViewController?
     var parameterType: ParameterType
     
@@ -525,19 +554,6 @@ class ParameterViewModel: NSObject, UITextFieldDelegate, DatePickerDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate!.view.endEditing(true)
         return false
-    }
-    
-    func dateValueChanged(newValue: Date) {
-        switch parameterType {
-        case .date0:
-            delegate?.dateTime0 = newValue
-        case .date1:
-            delegate?.dateTime1 = newValue
-        default: return
-        }
-        if delegate != nil {
-            delegate!.parameterUpdate()
-        }
     }
     
 
@@ -554,7 +570,7 @@ class ParameterViewModel: NSObject, UITextFieldDelegate, DatePickerDelegate {
         default: return
         }
         if delegate != nil {
-            delegate!.parameterUpdate()
+            delegate!.updateResult()
             
         }
     }
