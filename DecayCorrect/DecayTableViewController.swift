@@ -149,8 +149,26 @@ class DecayTableViewController: UITableViewController {
                     switch activeDatePicker {
                     case .date0:
                         cell.delegate = dateTime0Delegate
+                        if let date = dateTime0 {
+                            
+                            cell.datePicker.date = date
+                        }
+                        else {
+                            cell.datePicker.date = Date()
+                            dateTime0 = Date()
+                            tableView.reloadData()
+                        }
                     case .date1:
                         cell.delegate = dateTime1Delegate
+                        if let date = dateTime1 {
+                            
+                            cell.datePicker.date = date
+                        }
+                        else {
+                            cell.datePicker.date = Date()
+                            dateTime1 = Date()
+                            tableView.reloadData()
+                        }
                     default:
                         cell.delegate = nil
                     }
