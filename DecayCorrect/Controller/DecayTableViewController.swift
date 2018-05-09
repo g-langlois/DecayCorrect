@@ -18,8 +18,8 @@ import UIKit
  Clear button clears everything except isotope and units
  
  */
-class DecayTableViewController: UITableViewController {
-    
+class DecayTableViewController: UITableViewController, DecayCalculatorDelegate {
+
     // MARK: - Properties
     
     var resultAvailable = true
@@ -30,16 +30,6 @@ class DecayTableViewController: UITableViewController {
     var activePicker: ParameterType?
     var datePickerDate: Date?
     var unitsPickerUnit: RadioactivityUnit?
-    
-    var isotope: Isotope?
-    
-//    var activity0: Double?
-//    var dateTime0: Date?
-//    var activity0Units: RadioactivityUnit?
-//    var activity1: Double?
-//    var dateTime1: Date?
-//    var activity1Units: RadioactivityUnit?
-    
     
     var activity0ViewModel = ParameterViewModel(parameterType: .activity0)
     var activity0UnitsViewModel = UnitsViewModel(parameterType: .activity0)
@@ -67,14 +57,14 @@ class DecayTableViewController: UITableViewController {
         activity1UnitsViewModel.delegate = calculator
         datePicker1ViewModel.delegate = calculator
         datePicker0ViewModel.delegate = calculator
-        calculator.tableViewController = self
+        calculator.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let selectedIsotopeIndex = calculator.selectedIsotopeIndex  {
-            self.isotope = calculator.isotopes[selectedIsotopeIndex]
+            calculator.isotope = calculator.isotopes[selectedIsotopeIndex]
             tableView.reloadData()
         }
     }
@@ -205,7 +195,7 @@ class DecayTableViewController: UITableViewController {
         case IndexPath(row: 0, section: 0):
             cell.parameterLabel.text = "Isotope"
             cell.parameterValueTextField.isHidden = true
-            cell.unitsLabel.text = isotope?.shortName ?? "Select isotope"
+            cell.unitsLabel.text = calculator.isotope?.shortName ?? "Select isotope"
             
             
         case dateTime0IndexPath:
@@ -387,6 +377,12 @@ class DecayTableViewController: UITableViewController {
             destination.state = calculator
         }
     }
+    
+    
+    func decayCalculatorDataChanged() {
+        tableView.reloadData()
+    }
+    
 }
 
 

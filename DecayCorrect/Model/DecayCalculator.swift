@@ -21,14 +21,15 @@ class DecayCalculator {
     var dateTime1: Date?
     var activity1Units: RadioactivityUnit?
     var targetParameter: ParameterType?
-    
-    var tableViewController: UITableViewController?
+
+    var delegate: DecayCalculatorDelegate?
     
     var selectedIsotopeIndex: Int? {
         willSet {
             defaults.set(newValue, forKey: "isotopeIndex")
         }
     }
+    
     init() {
         
         isotopes.append(Isotope(atomName: "Fluoride", atomSymbol: "F", halfLife: TimeInterval(110*60), massNumber: 18))
@@ -40,7 +41,10 @@ class DecayCalculator {
     func updateResult() {
         findTargetParameter()
         guard let targetParameter = self.targetParameter else {
-            tableViewController!.tableView.reloadData()
+            if let delegate = self.delegate {
+                delegate.decayCalculatorDataChanged()
+                
+            }
             return
             
         }
@@ -55,7 +59,10 @@ class DecayCalculator {
             activity1 = activity?.countRate
             activity1Units = activity?.units
         }
-        tableViewController!.tableView.reloadData()
+        if let delegate = self.delegate {
+            delegate.decayCalculatorDataChanged()
+            
+        }
     }
     
     func findTargetParameter(){
@@ -83,4 +90,8 @@ class DecayCalculator {
             self.targetParameter = parameterType
         }
     }
+}
+
+protocol DecayCalculatorDelegate {
+    func decayCalculatorDataChanged()
 }
