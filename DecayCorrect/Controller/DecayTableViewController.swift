@@ -23,7 +23,7 @@ class DecayTableViewController: UITableViewController {
     // MARK: - Properties
     
     var resultAvailable = true
-
+    
     var pickerType: PickerType?
     
     var pickerIndexPath:IndexPath?
@@ -33,47 +33,48 @@ class DecayTableViewController: UITableViewController {
     
     var isotope: Isotope?
     
-    var activity0: Double?
-    var dateTime0: Date?
-    var activity0Units: RadioactivityUnit?
-    var activity1: Double?
-    var dateTime1: Date?
-    var activity1Units: RadioactivityUnit?
+//    var activity0: Double?
+//    var dateTime0: Date?
+//    var activity0Units: RadioactivityUnit?
+//    var activity1: Double?
+//    var dateTime1: Date?
+//    var activity1Units: RadioactivityUnit?
     
     
-    var activity0Delegate = ParameterViewModel(parameterType: .activity0)
-    var activity0UnitsDelegate = UnitsViewModel(parameterType: .activity0)
-    var dateTime0Delegate = DatePickerViewModel(parameterType: .date0)
-    var activity1Delegate = ParameterViewModel(parameterType: .activity1)
-    var activity1UnitsDelegate = UnitsViewModel(parameterType: .activity1)
-    var dateTime1Delegate = DatePickerViewModel(parameterType: .date1)
+    var activity0ViewModel = ParameterViewModel(parameterType: .activity0)
+    var activity0UnitsViewModel = UnitsViewModel(parameterType: .activity0)
+    var datePicker0ViewModel = DatePickerViewModel(parameterType: .date0)
+    var dateTime0ViewModel = ParameterViewModel(parameterType: .date0)
+    var activity1ViewModel = ParameterViewModel(parameterType: .activity1)
+    var activity1UnitsViewModel = UnitsViewModel(parameterType: .activity1)
+    var datePicker1ViewModel = DatePickerViewModel(parameterType: .date1)
+    var dateTime1ViewModel = ParameterViewModel(parameterType: .date0)
     
     var activity0IndexPath = IndexPath(row: 0, section: 1)
     var dateTime0IndexPath = IndexPath(row: 1, section: 1)
     var activity1IndexPath = IndexPath(row: 0, section: 2)
     var dateTime1IndexPath = IndexPath(row: 2, section: 1)
     
-    let state = State()
+    let calculator = DecayCalculator()
     
     // MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activity0Delegate.delegate = self
-        activity0UnitsDelegate.delegate = self
-        activity1Delegate.delegate = self
-        activity1UnitsDelegate.delegate = self
-        dateTime1Delegate.delegate = self
-        dateTime0Delegate.delegate = self
-        
-        
+        activity0ViewModel.delegate = calculator
+        activity0UnitsViewModel.delegate = calculator
+        activity1ViewModel.delegate = calculator
+        activity1UnitsViewModel.delegate = calculator
+        datePicker1ViewModel.delegate = calculator
+        datePicker0ViewModel.delegate = calculator
+        calculator.tableViewController = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let selectedIsotopeIndex = state.selectedIsotopeIndex  {
-            self.isotope = state.isotopes[selectedIsotopeIndex]
+        if let selectedIsotopeIndex = calculator.selectedIsotopeIndex  {
+            self.isotope = calculator.isotopes[selectedIsotopeIndex]
             tableView.reloadData()
         }
     }
@@ -149,25 +150,25 @@ class DecayTableViewController: UITableViewController {
                 if let activeDatePicker = activePicker {
                     switch activeDatePicker {
                     case .date0:
-                        cell.delegate = dateTime0Delegate
-                        if let date = dateTime0 {
+                        cell.delegate = datePicker0ViewModel
+                        if let date = calculator.dateTime0 {
                             
                             cell.datePicker.date = date
                         }
                         else {
                             cell.datePicker.date = Date()
-                            dateTime0 = Date()
+                            calculator.dateTime0 = Date()
                             tableView.reloadData()
                         }
                     case .date1:
-                        cell.delegate = dateTime1Delegate
-                        if let date = dateTime1 {
+                        cell.delegate = datePicker1ViewModel
+                        if let date = calculator.dateTime1 {
                             
                             cell.datePicker.date = date
                         }
                         else {
                             cell.datePicker.date = Date()
-                            dateTime1 = Date()
+                            calculator.dateTime1 = Date()
                             tableView.reloadData()
                         }
                     default:
@@ -181,11 +182,11 @@ class DecayTableViewController: UITableViewController {
                 if let activeDatePicker = activePicker {
                     switch activeDatePicker {
                     case .activity0:
-                        cell.unitsPicker.delegate = activity0UnitsDelegate
-                        cell.unitsPicker.dataSource = activity0UnitsDelegate
+                        cell.unitsPicker.delegate = activity0UnitsViewModel
+                        cell.unitsPicker.dataSource = activity0UnitsViewModel
                     case .activity1:
-                        cell.unitsPicker.delegate = activity1UnitsDelegate
-                        cell.unitsPicker.dataSource = activity1UnitsDelegate
+                        cell.unitsPicker.delegate = activity1UnitsViewModel
+                        cell.unitsPicker.dataSource = activity1UnitsViewModel
                     default:
                         cell.delegate = nil
                     }
@@ -213,16 +214,16 @@ class DecayTableViewController: UITableViewController {
             cell.parameterValueTextField.isEnabled = false
             cell.parameterValueTextField.placeholder = "Select date"
             cell.unitsLabel.text = ""
-            if let dateTime = dateTime0 {
-                cell.parameterValueTextField.text = formatDate(dateTime)
+            if let dateTime = calculator.dateTime0 {
+                cell.parameterValueTextField.text = dateTime0ViewModel.formatDate(dateTime)
             }
             
         case activity0IndexPath:
             cell.parameterLabel.text = "Activity (A0)"
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Enter activity"
-            cell.parameterValueTextField.delegate = activity0Delegate
-            if let unitsLabel = activity0Units {
+            cell.parameterValueTextField.delegate = activity0ViewModel
+            if let unitsLabel = calculator.activity0Units {
                 cell.unitsLabel.text = unitsLabel.rawValue
             }
             else {
@@ -236,15 +237,15 @@ class DecayTableViewController: UITableViewController {
             cell.parameterValueTextField.placeholder = "Select date"
             cell.parameterValueTextField.isEnabled = false
             cell.unitsLabel.text = ""
-            if let dateTime = dateTime1 {
-                cell.parameterValueTextField.text = formatDate(dateTime)
+            if let dateTime = calculator.dateTime1 {
+                cell.parameterValueTextField.text = dateTime1ViewModel.formatDate(dateTime)
             }
             
         case activity1IndexPath:
             cell.parameterLabel.text = "Activity (A1)"
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Enter activity"
-            cell.parameterValueTextField.delegate = activity1Delegate
+            cell.parameterValueTextField.delegate = activity1ViewModel
             cell.unitsLabel.text = ""
             
             let formatter = NumberFormatter()
@@ -252,9 +253,9 @@ class DecayTableViewController: UITableViewController {
             formatter.maximumFractionDigits = 3
             formatter.minimumFractionDigits = 0
             
-            if activity1 != nil {
-                cell.parameterValueTextField.text = formatter.string(for: activity1)
-                if let unitsLabel = activity1Units {
+            if calculator.activity1 != nil {
+                cell.parameterValueTextField.text = formatter.string(for: calculator.activity1)
+                if let unitsLabel = calculator.activity1Units {
                     cell.unitsLabel.text = unitsLabel.rawValue
                 }
                 else {
@@ -274,24 +275,24 @@ class DecayTableViewController: UITableViewController {
         case IndexPath(row: 0, section: 0):
             performSegue(withIdentifier: "selectIsotope", sender: self)
         case correctedIndexPath(from: dateTime0IndexPath):
-            datePickerDate = dateTime0
+            datePickerDate = calculator.dateTime0
             activePicker = .date0
             togglePicker(ofType: .date, after: indexPath)
-       
+            
         case correctedIndexPath(from: dateTime1IndexPath):
-            datePickerDate = dateTime1
+            datePickerDate = calculator.dateTime1
             activePicker = .date1
             togglePicker(ofType: .date, after: indexPath)
             
         case correctedIndexPath(from: activity0IndexPath):
-            unitsPickerUnit = activity0Units
+            unitsPickerUnit = calculator.activity0Units
             activePicker = .activity0
             togglePicker(ofType: .unit, after: indexPath)
-        
+            
         case correctedIndexPath(from: activity1IndexPath):
-                unitsPickerUnit = activity1Units
-                activePicker = .activity1
-                togglePicker(ofType: .unit, after: indexPath)
+            unitsPickerUnit = calculator.activity1Units
+            activePicker = .activity1
+            togglePicker(ofType: .unit, after: indexPath)
             
             
         default:
@@ -308,11 +309,9 @@ class DecayTableViewController: UITableViewController {
         }
         return rowHeight
     }
-
-    
     
     // MARK: - Pickers
-
+    
     private func correctedIndexPath(from indexPath: IndexPath) -> IndexPath {
         var correctedIndexPath = indexPath
         if let pickerIndexPath = pickerIndexPath {
@@ -339,7 +338,7 @@ class DecayTableViewController: UITableViewController {
             datePickerDate = nil
             unitsPickerUnit = nil
             self.pickerType = nil
-        
+            
         } else  {
             
             pickerIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
@@ -370,213 +369,24 @@ class DecayTableViewController: UITableViewController {
         tableView.endUpdates()
     }
     
-    
-    // MARK: - Data formating
-    func formatDate(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
-        dateFormatter.locale = Locale(identifier: "en_US")
-        
-        return dateFormatter.string(from: date)
-    }
+
     
     
     // MARK: - Logic
-    
     private func splitInputToResultSection() {
         //TODO
     }
     
     
-    var targetParameter: ParameterType? {
-        get {
-            
-            var parameterType: ParameterType?
-            var count = 0
-            // Verifies that exactly 1 parameter is missing
-            if activity0 == nil {
-                count += 1
-                parameterType = .activity0
-            }
-            if activity1 == nil {
-                count += 1
-                parameterType = .activity1
-            }
-            if dateTime0 == nil {
-                count += 1
-                parameterType = .date0
-            }
-            if dateTime1 == nil {
-                count += 1
-                parameterType = .date1
-            }
-            if count == 1 {
-                return parameterType
-            } else {
-                return nil
-            }
-        }
-        
     
-    }
-    func updateResult() {
-        
-
-        guard let targetParameter = self.targetParameter else {
-            tableView.reloadData()
-            return
-            
-        }
-        guard let isotope1 = isotope else {
-            return
-        }
-        
-        if targetParameter == .activity1, let activity0 = activity0, let dateTime0 = dateTime0, let dateTime1 = dateTime1 {
-            let initialRadioactivity = Radioactivity(time: dateTime0, countRate: activity0, units: activity0Units)
-            let radioactiveSubstance = RadioactiveSubstance(isotope: isotope1, radioactivity: initialRadioactivity)
-            let activity = radioactiveSubstance.correct(to: dateTime1, with: activity1Units)
-            activity1 = activity?.countRate
-            activity1Units = activity?.units
-        }
-        tableView.reloadData()
-    }
+    // MARK: - Navigation
     
-    
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? IsotopeSelectionTableViewController {
-                destination.state = state
+            destination.state = calculator
         }
     }
-    
-
-    
 }
 
-enum ParameterType {
-    case activity0
-    case activity1
-    case date0
-    case date1
-}
-
-enum PickerType {
-    case date
-    case unit
-}
-
-class UnitsViewModel: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
-    var delegate: DecayTableViewController?
-    var parameterType: ParameterType
-    var pickerData = [RadioactivityUnit]()
-    
-    init(parameterType: ParameterType) {
-        self.parameterType = parameterType
-        self.delegate = nil
-        pickerData.append(.bq)
-        pickerData.append(.mbq)
-        pickerData.append(.gbq)
-        pickerData.append(.uci)
-        pickerData.append(.mci)
-        pickerData.append(.ci)
-        
-        
-    }
-    
-    
-
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        switch parameterType {
-        case .activity0:
-            delegate?.activity0Units = pickerData[row]
-        case .activity1:
-            delegate?.activity1Units = pickerData[row]
-        default: return
-        }
-        if delegate != nil {
-            delegate!.updateResult()
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row].rawValue
-    }
-    
-    
-    
-}
-
-
-class DatePickerViewModel: NSObject, DatePickerDelegate {
-    var delegate: DecayTableViewController?
-    var parameterType: ParameterType
-    init(parameterType: ParameterType) {
-        self.parameterType = parameterType
-        self.delegate = nil
-    }
-    
-    func dateValueChanged(newValue: Date) {
-        switch parameterType {
-        case .date0:
-            delegate?.dateTime0 = newValue
-        case .date1:
-            delegate?.dateTime1 = newValue
-        default: return
-        }
-        if delegate != nil {
-            delegate!.updateResult()
-        }
-    }
-    
-}
-
-class ParameterViewModel: NSObject, UITextFieldDelegate {
-    var delegate: DecayTableViewController?
-    var parameterType: ParameterType
-    
-    init(parameterType: ParameterType) {
-        self.parameterType = parameterType
-        self.delegate = nil
-    }
-    
-    // Hides soft keyboard
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        delegate!.view.endEditing(true)
-        return false
-    }
-    
-
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        guard let activityValue = Double(textField.text!) else {
-            return
-            
-        }
-        switch parameterType {
-        case .activity0:
-            delegate?.activity0 = activityValue
-        case .activity1:
-            delegate?.activity1 = activityValue
-        default: return
-        }
-        if delegate != nil {
-            delegate!.updateResult()
-            
-        }
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string))
-    }
-}
 

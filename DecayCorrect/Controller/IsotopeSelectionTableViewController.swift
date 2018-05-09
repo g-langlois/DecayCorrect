@@ -10,7 +10,7 @@ import UIKit
 
 class IsotopeSelectionTableViewController: UITableViewController {
 
-    var state: State?
+    var state: DecayCalculator?
     
     override func viewDidLoad() {
         super.viewDidLoad()

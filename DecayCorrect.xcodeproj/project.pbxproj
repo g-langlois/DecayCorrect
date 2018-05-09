@@ -31,15 +31,27 @@
 		466F778E203956CA00DF7702 /* RadioactivityUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466F778D203956CA00DF7702 /* RadioactivityUnit.swift */; };
 		466F778F203956CA00DF7702 /* RadioactivityUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466F778D203956CA00DF7702 /* RadioactivityUnit.swift */; };
 		466F7790203956CA00DF7702 /* RadioactivityUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466F778D203956CA00DF7702 /* RadioactivityUnit.swift */; };
-		4681935D209C2931007EFEBA /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681935C209C2931007EFEBA /* State.swift */; };
-		4681935E209C2931007EFEBA /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681935C209C2931007EFEBA /* State.swift */; };
-		4681935F209C2931007EFEBA /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681935C209C2931007EFEBA /* State.swift */; };
+		4681935D209C2931007EFEBA /* DecayCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681935C209C2931007EFEBA /* DecayCalculator.swift */; };
+		4681935E209C2931007EFEBA /* DecayCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681935C209C2931007EFEBA /* DecayCalculator.swift */; };
+		4681935F209C2931007EFEBA /* DecayCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681935C209C2931007EFEBA /* DecayCalculator.swift */; };
 		46967D59209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46967D58209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift */; };
 		46967D5A209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46967D58209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift */; };
 		46967D5B209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46967D58209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift */; };
 		46967D5D209ADEC40094968D /* IsotopeSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46967D5C209ADEC40094968D /* IsotopeSelectionTableViewController.swift */; };
 		46967D5E209ADEC40094968D /* IsotopeSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46967D5C209ADEC40094968D /* IsotopeSelectionTableViewController.swift */; };
 		46967D5F209ADEC40094968D /* IsotopeSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46967D5C209ADEC40094968D /* IsotopeSelectionTableViewController.swift */; };
+		46998FE0209EDC1A00CE2304 /* DecayTableViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46998FDF209EDC1A00CE2304 /* DecayTableViewItem.swift */; };
+		46998FE1209EDC1A00CE2304 /* DecayTableViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46998FDF209EDC1A00CE2304 /* DecayTableViewItem.swift */; };
+		46998FE2209EDC1A00CE2304 /* DecayTableViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46998FDF209EDC1A00CE2304 /* DecayTableViewItem.swift */; };
+		46998FE4209EDC5300CE2304 /* UnitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46998FE3209EDC5300CE2304 /* UnitsViewModel.swift */; };
+		46998FE5209EDC5300CE2304 /* UnitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46998FE3209EDC5300CE2304 /* UnitsViewModel.swift */; };
+		46998FE6209EDC5300CE2304 /* UnitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46998FE3209EDC5300CE2304 /* UnitsViewModel.swift */; };
+		46998FE8209EDC9400CE2304 /* DatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46998FE7209EDC9400CE2304 /* DatePickerViewModel.swift */; };
+		46998FE9209EDC9400CE2304 /* DatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46998FE7209EDC9400CE2304 /* DatePickerViewModel.swift */; };
+		46998FEA209EDC9400CE2304 /* DatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46998FE7209EDC9400CE2304 /* DatePickerViewModel.swift */; };
+		46998FEC209EDCC900CE2304 /* ParamaterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46998FEB209EDCC900CE2304 /* ParamaterViewModel.swift */; };
+		46998FED209EDCC900CE2304 /* ParamaterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46998FEB209EDCC900CE2304 /* ParamaterViewModel.swift */; };
+		46998FEE209EDCC900CE2304 /* ParamaterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46998FEB209EDCC900CE2304 /* ParamaterViewModel.swift */; };
 		46BE6B492039340400B07831 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE6B482039340400B07831 /* AppDelegate.swift */; };
 		46BE6B4E2039340400B07831 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BE6B4C2039340400B07831 /* Main.storyboard */; };
 		46BE6B512039340400B07831 /* DecayCorrect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46BE6B4F2039340400B07831 /* DecayCorrect.xcdatamodeld */; };
@@ -75,9 +87,13 @@
 		466F77852039568400DF7702 /* RadioactiveSubstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioactiveSubstance.swift; sourceTree = "<group>"; };
 		466F77892039569600DF7702 /* Isotope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Isotope.swift; sourceTree = "<group>"; };
 		466F778D203956CA00DF7702 /* RadioactivityUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioactivityUnit.swift; sourceTree = "<group>"; };
-		4681935C209C2931007EFEBA /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		4681935C209C2931007EFEBA /* DecayCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecayCalculator.swift; sourceTree = "<group>"; };
 		46967D58209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsotopeSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		46967D5C209ADEC40094968D /* IsotopeSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsotopeSelectionTableViewController.swift; sourceTree = "<group>"; };
+		46998FDF209EDC1A00CE2304 /* DecayTableViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecayTableViewItem.swift; sourceTree = "<group>"; };
+		46998FE3209EDC5300CE2304 /* UnitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsViewModel.swift; sourceTree = "<group>"; };
+		46998FE7209EDC9400CE2304 /* DatePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewModel.swift; sourceTree = "<group>"; };
+		46998FEB209EDCC900CE2304 /* ParamaterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParamaterViewModel.swift; sourceTree = "<group>"; };
 		46BE6B452039340400B07831 /* DecayCorrect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecayCorrect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46BE6B482039340400B07831 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46BE6B4D2039340400B07831 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,6 +134,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46457F2820A2C0080091E3A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				466F77812039566400DF7702 /* Radioactivity.swift */,
+				4681935C209C2931007EFEBA /* DecayCalculator.swift */,
+				466F77852039568400DF7702 /* RadioactiveSubstance.swift */,
+				466F77892039569600DF7702 /* Isotope.swift */,
+				466F778D203956CA00DF7702 /* RadioactivityUnit.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46457F2920A2C0170091E3A5 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				46998FEB209EDCC900CE2304 /* ParamaterViewModel.swift */,
+				46998FE7209EDC9400CE2304 /* DatePickerViewModel.swift */,
+				46998FE3209EDC5300CE2304 /* UnitsViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		46457F2A20A2C02B0091E3A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				46998FDF209EDC1A00CE2304 /* DecayTableViewItem.swift */,
+				4661A685204BE0ED00F6D86F /* DatePickerTableViewCell.swift */,
+				46203345208AD14D0043E2CF /* UnitsPickerTableViewCell.swift */,
+				4661A689204BE10200F6D86F /* ParameterTableViewCell.swift */,
+				46967D58209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		46457F2B20A2C0340091E3A5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				466F777D2039562D00DF7702 /* DecayTableViewController.swift */,
+				46967D5C209ADEC40094968D /* IsotopeSelectionTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		46BE6B3C2039340400B07831 = {
 			isa = PBXGroup;
 			children = (
@@ -141,23 +200,16 @@
 		46BE6B472039340400B07831 /* DecayCorrect */ = {
 			isa = PBXGroup;
 			children = (
+				46457F2B20A2C0340091E3A5 /* Controller */,
+				46457F2A20A2C02B0091E3A5 /* View */,
+				46457F2920A2C0170091E3A5 /* View Model */,
+				46457F2820A2C0080091E3A5 /* Model */,
 				46BE6B482039340400B07831 /* AppDelegate.swift */,
-				466F777D2039562D00DF7702 /* DecayTableViewController.swift */,
-				4661A685204BE0ED00F6D86F /* DatePickerTableViewCell.swift */,
-				46203345208AD14D0043E2CF /* UnitsPickerTableViewCell.swift */,
-				4661A689204BE10200F6D86F /* ParameterTableViewCell.swift */,
 				46BE6B4C2039340400B07831 /* Main.storyboard */,
-				46967D5C209ADEC40094968D /* IsotopeSelectionTableViewController.swift */,
-				46967D58209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift */,
-				466F77812039566400DF7702 /* Radioactivity.swift */,
-				466F77852039568400DF7702 /* RadioactiveSubstance.swift */,
-				466F77892039569600DF7702 /* Isotope.swift */,
-				466F778D203956CA00DF7702 /* RadioactivityUnit.swift */,
 				46BE6B522039340400B07831 /* Assets.xcassets */,
 				46BE6B542039340400B07831 /* LaunchScreen.storyboard */,
 				46BE6B572039340400B07831 /* Info.plist */,
 				46BE6B4F2039340400B07831 /* DecayCorrect.xcdatamodeld */,
-				4681935C209C2931007EFEBA /* State.swift */,
 			);
 			path = DecayCorrect;
 			sourceTree = "<group>";
@@ -316,6 +368,7 @@
 			files = (
 				46BE6B492039340400B07831 /* AppDelegate.swift in Sources */,
 				46967D59209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift in Sources */,
+				46998FEC209EDCC900CE2304 /* ParamaterViewModel.swift in Sources */,
 				466F778A2039569600DF7702 /* Isotope.swift in Sources */,
 				46203346208AD14D0043E2CF /* UnitsPickerTableViewCell.swift in Sources */,
 				466F778E203956CA00DF7702 /* RadioactivityUnit.swift in Sources */,
@@ -323,7 +376,10 @@
 				4661A68A204BE10200F6D86F /* ParameterTableViewCell.swift in Sources */,
 				466F77822039566400DF7702 /* Radioactivity.swift in Sources */,
 				46967D5D209ADEC40094968D /* IsotopeSelectionTableViewController.swift in Sources */,
-				4681935D209C2931007EFEBA /* State.swift in Sources */,
+				46998FE0209EDC1A00CE2304 /* DecayTableViewItem.swift in Sources */,
+				46998FE4209EDC5300CE2304 /* UnitsViewModel.swift in Sources */,
+				4681935D209C2931007EFEBA /* DecayCalculator.swift in Sources */,
+				46998FE8209EDC9400CE2304 /* DatePickerViewModel.swift in Sources */,
 				46BE6B512039340400B07831 /* DecayCorrect.xcdatamodeld in Sources */,
 				466F77862039568400DF7702 /* RadioactiveSubstance.swift in Sources */,
 				4661A686204BE0ED00F6D86F /* DatePickerTableViewCell.swift in Sources */,
@@ -339,13 +395,17 @@
 				46967D5A209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift in Sources */,
 				466F777F2039562D00DF7702 /* DecayTableViewController.swift in Sources */,
 				4661A68B204BE10200F6D86F /* ParameterTableViewCell.swift in Sources */,
+				46998FE1209EDC1A00CE2304 /* DecayTableViewItem.swift in Sources */,
 				46203347208AD14D0043E2CF /* UnitsPickerTableViewCell.swift in Sources */,
 				466F77872039568400DF7702 /* RadioactiveSubstance.swift in Sources */,
 				46967D5E209ADEC40094968D /* IsotopeSelectionTableViewController.swift in Sources */,
 				466F778B2039569600DF7702 /* Isotope.swift in Sources */,
 				4661A687204BE0ED00F6D86F /* DatePickerTableViewCell.swift in Sources */,
 				46BE6B612039340400B07831 /* DecayCorrectTests.swift in Sources */,
-				4681935E209C2931007EFEBA /* State.swift in Sources */,
+				46998FED209EDCC900CE2304 /* ParamaterViewModel.swift in Sources */,
+				46998FE9209EDC9400CE2304 /* DatePickerViewModel.swift in Sources */,
+				46998FE5209EDC5300CE2304 /* UnitsViewModel.swift in Sources */,
+				4681935E209C2931007EFEBA /* DecayCalculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,13 +418,17 @@
 				46967D5B209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift in Sources */,
 				466F77802039562D00DF7702 /* DecayTableViewController.swift in Sources */,
 				4661A68C204BE10200F6D86F /* ParameterTableViewCell.swift in Sources */,
+				46998FE2209EDC1A00CE2304 /* DecayTableViewItem.swift in Sources */,
 				46203348208AD14D0043E2CF /* UnitsPickerTableViewCell.swift in Sources */,
 				466F77882039568400DF7702 /* RadioactiveSubstance.swift in Sources */,
 				46967D5F209ADEC40094968D /* IsotopeSelectionTableViewController.swift in Sources */,
 				466F778C2039569600DF7702 /* Isotope.swift in Sources */,
 				4661A688204BE0ED00F6D86F /* DatePickerTableViewCell.swift in Sources */,
 				46BE6B6C2039340400B07831 /* DecayCorrectUITests.swift in Sources */,
-				4681935F209C2931007EFEBA /* State.swift in Sources */,
+				46998FEE209EDCC900CE2304 /* ParamaterViewModel.swift in Sources */,
+				46998FEA209EDC9400CE2304 /* DatePickerViewModel.swift in Sources */,
+				46998FE6209EDC5300CE2304 /* UnitsViewModel.swift in Sources */,
+				4681935F209C2931007EFEBA /* DecayCalculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
