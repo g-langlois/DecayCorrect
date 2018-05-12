@@ -18,8 +18,8 @@ import UIKit
  Clear button clears everything except isotope and units
  
  */
-class DecayTableViewController: UITableViewController, DecayCalculatorDelegate {
-
+class DecayTableViewController: UITableViewController, DecayCalculatorViewModelDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     // MARK: - Properties
     
     var resultAvailable = true
@@ -31,40 +31,26 @@ class DecayTableViewController: UITableViewController, DecayCalculatorDelegate {
     var datePickerDate: Date?
     var unitsPickerUnit: RadioactivityUnit?
     
-    var activity0ViewModel = ParameterViewModel(parameterType: .activity0)
-    var activity0UnitsViewModel = UnitsViewModel(parameterType: .activity0)
-    var datePicker0ViewModel = DatePickerViewModel(parameterType: .date0)
-    var dateTime0ViewModel = ParameterViewModel(parameterType: .date0)
-    var activity1ViewModel = ParameterViewModel(parameterType: .activity1)
-    var activity1UnitsViewModel = UnitsViewModel(parameterType: .activity1)
-    var datePicker1ViewModel = DatePickerViewModel(parameterType: .date1)
-    var dateTime1ViewModel = ParameterViewModel(parameterType: .date0)
-    
     var activity0IndexPath = IndexPath(row: 0, section: 1)
     var dateTime0IndexPath = IndexPath(row: 1, section: 1)
     var activity1IndexPath = IndexPath(row: 0, section: 2)
     var dateTime1IndexPath = IndexPath(row: 2, section: 1)
     
-    let calculator = DecayCalculator()
+    let calculatorViewModel = DecayCalculatorViewModel()
     
     // MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activity0ViewModel.delegate = calculator
-        activity0UnitsViewModel.delegate = calculator
-        activity1ViewModel.delegate = calculator
-        activity1UnitsViewModel.delegate = calculator
-        datePicker1ViewModel.delegate = calculator
-        datePicker0ViewModel.delegate = calculator
-        calculator.delegate = self
+        calculatorViewModel.delegate = self
+        initUnitPickerData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let selectedIsotopeIndex = calculator.selectedIsotopeIndex  {
-            calculator.isotope = calculator.isotopes[selectedIsotopeIndex]
+        if let selectedIsotopeIndex = calculatorViewModel.selectedIsotopeIndex  {
+            calculatorViewModel.calculator.isotope = calculatorViewModel.calculator.isotopes[selectedIsotopeIndex]
             tableView.reloadData()
         }
     }
@@ -140,25 +126,27 @@ class DecayTableViewController: UITableViewController, DecayCalculatorDelegate {
                 if let activeDatePicker = activePicker {
                     switch activeDatePicker {
                     case .date0:
-                        cell.delegate = datePicker0ViewModel
-                        if let date = calculator.dateTime0 {
+                        cell.delegate = self
+                        cell.datePicker.tag = ParameterType.date0.rawValue
+                        if let date = calculatorViewModel.calculator.dateTime0 {
                             
                             cell.datePicker.date = date
                         }
                         else {
                             cell.datePicker.date = Date()
-                            calculator.dateTime0 = Date()
+                            calculatorViewModel.calculator.dateTime0 = Date()
                             tableView.reloadData()
                         }
                     case .date1:
-                        cell.delegate = datePicker1ViewModel
-                        if let date = calculator.dateTime1 {
+                        cell.delegate = self
+                        cell.datePicker.tag = ParameterType.date1.rawValue
+                        if let date = calculatorViewModel.calculator.dateTime1 {
                             
                             cell.datePicker.date = date
                         }
                         else {
                             cell.datePicker.date = Date()
-                            calculator.dateTime1 = Date()
+                            calculatorViewModel.calculator.dateTime1 = Date()
                             tableView.reloadData()
                         }
                     default:
@@ -172,11 +160,13 @@ class DecayTableViewController: UITableViewController, DecayCalculatorDelegate {
                 if let activeDatePicker = activePicker {
                     switch activeDatePicker {
                     case .activity0:
-                        cell.unitsPicker.delegate = activity0UnitsViewModel
-                        cell.unitsPicker.dataSource = activity0UnitsViewModel
+                        cell.unitsPicker.tag = ParameterType.activity0.rawValue
+                        cell.unitsPicker.delegate = self
+                        cell.unitsPicker.dataSource = self
                     case .activity1:
-                        cell.unitsPicker.delegate = activity1UnitsViewModel
-                        cell.unitsPicker.dataSource = activity1UnitsViewModel
+                        cell.unitsPicker.tag = ParameterType.activity1.rawValue
+                        cell.unitsPicker.delegate = self
+                        cell.unitsPicker.dataSource = self
                     default:
                         cell.delegate = nil
                     }
@@ -195,7 +185,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorDelegate {
         case IndexPath(row: 0, section: 0):
             cell.parameterLabel.text = "Isotope"
             cell.parameterValueTextField.isHidden = true
-            cell.unitsLabel.text = calculator.isotope?.shortName ?? "Select isotope"
+            cell.unitsLabel.text = calculatorViewModel.calculator.isotope?.shortName ?? "Select isotope"
             
             
         case dateTime0IndexPath:
@@ -204,16 +194,19 @@ class DecayTableViewController: UITableViewController, DecayCalculatorDelegate {
             cell.parameterValueTextField.isEnabled = false
             cell.parameterValueTextField.placeholder = "Select date"
             cell.unitsLabel.text = ""
-            if let dateTime = calculator.dateTime0 {
-                cell.parameterValueTextField.text = dateTime0ViewModel.formatDate(dateTime)
+            cell.parameterValueTextField.tag = ParameterType.date0.rawValue
+            if let dateTime = calculatorViewModel.calculator.dateTime0 {
+                cell.parameterValueTextField.text = calculatorViewModel.formatDate(dateTime)
             }
             
         case activity0IndexPath:
             cell.parameterLabel.text = "Activity (A0)"
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Enter activity"
-            cell.parameterValueTextField.delegate = activity0ViewModel
-            if let unitsLabel = calculator.activity0Units {
+            //            cell.parameterValueTextField.delegate = activity0ViewModel
+            cell.parameterValueTextField.delegate = self
+            cell.parameterValueTextField.tag = ParameterType.activity0.rawValue
+            if let unitsLabel = calculatorViewModel.calculator.activity0Units {
                 cell.unitsLabel.text = unitsLabel.rawValue
             }
             else {
@@ -226,16 +219,19 @@ class DecayTableViewController: UITableViewController, DecayCalculatorDelegate {
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Select date"
             cell.parameterValueTextField.isEnabled = false
+            cell.parameterValueTextField.tag = ParameterType.date1.rawValue
             cell.unitsLabel.text = ""
-            if let dateTime = calculator.dateTime1 {
-                cell.parameterValueTextField.text = dateTime1ViewModel.formatDate(dateTime)
+            if let dateTime = calculatorViewModel.calculator.dateTime1 {
+                cell.parameterValueTextField.text = calculatorViewModel.formatDate(dateTime)
             }
             
         case activity1IndexPath:
+            cell.parameterValueTextField.delegate = self
             cell.parameterLabel.text = "Activity (A1)"
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Enter activity"
-            cell.parameterValueTextField.delegate = activity1ViewModel
+            //            cell.parameterValueTextField.delegate = activity1ViewModel
+            cell.parameterValueTextField.tag = ParameterType.activity1.rawValue
             cell.unitsLabel.text = ""
             
             let formatter = NumberFormatter()
@@ -243,9 +239,9 @@ class DecayTableViewController: UITableViewController, DecayCalculatorDelegate {
             formatter.maximumFractionDigits = 3
             formatter.minimumFractionDigits = 0
             
-            if calculator.activity1 != nil {
-                cell.parameterValueTextField.text = formatter.string(for: calculator.activity1)
-                if let unitsLabel = calculator.activity1Units {
+            if calculatorViewModel.calculator.activity1 != nil {
+                cell.parameterValueTextField.text = formatter.string(for: calculatorViewModel.calculator.activity1)
+                if let unitsLabel = calculatorViewModel.calculator.activity1Units {
                     cell.unitsLabel.text = unitsLabel.rawValue
                 }
                 else {
@@ -265,22 +261,22 @@ class DecayTableViewController: UITableViewController, DecayCalculatorDelegate {
         case IndexPath(row: 0, section: 0):
             performSegue(withIdentifier: "selectIsotope", sender: self)
         case correctedIndexPath(from: dateTime0IndexPath):
-            datePickerDate = calculator.dateTime0
+            datePickerDate = calculatorViewModel.calculator.dateTime0
             activePicker = .date0
             togglePicker(ofType: .date, after: indexPath)
             
         case correctedIndexPath(from: dateTime1IndexPath):
-            datePickerDate = calculator.dateTime1
+            datePickerDate = calculatorViewModel.calculator.dateTime1
             activePicker = .date1
             togglePicker(ofType: .date, after: indexPath)
             
         case correctedIndexPath(from: activity0IndexPath):
-            unitsPickerUnit = calculator.activity0Units
+            unitsPickerUnit = calculatorViewModel.calculator.activity0Units
             activePicker = .activity0
             togglePicker(ofType: .unit, after: indexPath)
             
         case correctedIndexPath(from: activity1IndexPath):
-            unitsPickerUnit = calculator.activity1Units
+            unitsPickerUnit = calculatorViewModel.calculator.activity1Units
             activePicker = .activity1
             togglePicker(ofType: .unit, after: indexPath)
             
@@ -359,7 +355,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorDelegate {
         tableView.endUpdates()
     }
     
-
+    
     
     
     // MARK: - Logic
@@ -374,14 +370,100 @@ class DecayTableViewController: UITableViewController, DecayCalculatorDelegate {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? IsotopeSelectionTableViewController {
-            destination.state = calculator
+            destination.state = calculatorViewModel
         }
     }
     
     
-    func decayCalculatorDataChanged() {
+    func decayCalculatorViewModelChanged() {
         tableView.reloadData()
     }
+    
+    
+    // MARK: - Text field delegate
+    
+    // Hides soft keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return false
+    }
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        guard let activityValue = Double(textField.text!) else {
+            return
+            
+        }
+        switch textField.tag {
+        case ParameterType.activity0.rawValue:
+            calculatorViewModel.calculator.activity0 = activityValue
+        case ParameterType.activity1.rawValue:
+            calculatorViewModel.calculator.activity1 = activityValue
+        default: return
+        }
+        calculatorViewModel.calculator.updateResult()
+        
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string))
+    }
+    
+    // MARK: - Date picker delegates
+    
+    func dateValueChanged(newValue: Date, forPickerWithTag tag: Int) {
+        switch tag {
+        case ParameterType.date0.rawValue:
+            calculatorViewModel.calculator.dateTime0 = newValue
+        case ParameterType.date1.rawValue:
+            calculatorViewModel.calculator.dateTime1 = newValue
+        default: return
+        }
+        
+        calculatorViewModel.calculator.updateResult()
+        
+    }
+    
+    
+    // MARK: Unit picker delegates
+    
+    var pickerData = [RadioactivityUnit]()
+    
+    func initUnitPickerData() {
+        pickerData.append(.bq)
+        pickerData.append(.mbq)
+        pickerData.append(.gbq)
+        pickerData.append(.uci)
+        pickerData.append(.mci)
+        pickerData.append(.ci)
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch pickerView.tag {
+        case ParameterType.activity0.rawValue:
+            calculatorViewModel.calculator.activity0Units = pickerData[row]
+        case ParameterType.activity1.rawValue:
+            calculatorViewModel.calculator.activity1Units = pickerData[row]
+        default: return
+        }
+        calculatorViewModel.calculator.updateResult()
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row].rawValue
+    }
+    
+    
+    
     
 }
 

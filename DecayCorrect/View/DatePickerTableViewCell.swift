@@ -11,7 +11,7 @@ import UIKit
 class DatePickerTableViewCell: UITableViewCell {
 
 
-    var delegate: DatePickerDelegate?
+    var delegate: DecayTableViewController?
 
     
     override func awakeFromNib() {
@@ -28,7 +28,7 @@ class DatePickerTableViewCell: UITableViewCell {
     }
   
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
-        delegate?.dateValueChanged(newValue: sender.date)
+        delegate?.dateValueChanged(newValue: sender.date, forPickerWithTag: sender.tag)
      
     }
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -37,6 +37,6 @@ class DatePickerTableViewCell: UITableViewCell {
 }
 
 protocol DatePickerDelegate {
-    func dateValueChanged(newValue: Date)
+    func dateValueChanged(newValue: Date, forPickerWithTag: Int)
     
 }

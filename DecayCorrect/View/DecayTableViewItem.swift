@@ -8,11 +8,11 @@
 
 import Foundation
 
-enum ParameterType {
-    case activity0
-    case activity1
-    case date0
-    case date1
+enum ParameterType: Int {
+    case activity0 = 1000
+    case activity1 = 1001
+    case date0 = 10000
+    case date1 = 10001
 }
 
 enum PickerType {
@@ -21,7 +21,7 @@ enum PickerType {
 }
 
 protocol DecayTableViewItem {
-    var delegate: DecayCalculator? {get set}
+    var delegate: DecayCalculatorViewModel? {get set}
     var parameterType: ParameterType  {get set}
     
     

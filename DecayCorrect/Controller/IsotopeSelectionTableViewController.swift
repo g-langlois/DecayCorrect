@@ -10,7 +10,7 @@ import UIKit
 
 class IsotopeSelectionTableViewController: UITableViewController {
 
-    var state: DecayCalculator?
+    var state: DecayCalculatorViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class IsotopeSelectionTableViewController: UITableViewController {
         
         if let state = self.state {
             selectedIsotopeIndex = state.selectedIsotopeIndex
-            isotopes = state.isotopes
+            isotopes = state.calculator.isotopes
         }
     }
 
@@ -69,7 +69,7 @@ class IsotopeSelectionTableViewController: UITableViewController {
     func updateState() {
         if let state = self.state {
             state.selectedIsotopeIndex = selectedIsotopeIndex
-            state.isotopes = isotopes
+            state.calculator.isotopes = isotopes
         }
     }
 
