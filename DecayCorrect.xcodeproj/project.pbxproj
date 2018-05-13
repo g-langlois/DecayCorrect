@@ -141,6 +141,7 @@
 		46457F2920A2C0170091E3A5 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				46998FDF209EDC1A00CE2304 /* DecayTableViewItem.swift */,
 				464DB0FB20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift */,
 			);
 			path = "View Model";
@@ -149,7 +150,6 @@
 		46457F2A20A2C02B0091E3A5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				46998FDF209EDC1A00CE2304 /* DecayTableViewItem.swift */,
 				4661A685204BE0ED00F6D86F /* DatePickerTableViewCell.swift */,
 				46203345208AD14D0043E2CF /* UnitsPickerTableViewCell.swift */,
 				4661A689204BE10200F6D86F /* ParameterTableViewCell.swift */,

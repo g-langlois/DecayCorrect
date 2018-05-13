@@ -20,18 +20,15 @@ class DecayCalculator {
     var activity1: Double?
     var dateTime1: Date?
     var activity1Units: RadioactivityUnit?
-    var targetParameter: ParameterType?
+    var targetParameter: DecayCalculatorInput?
 
     var delegate: DecayCalculatorDelegate?
     
    
     
     init() {
-        
         isotopes.append(Isotope(atomName: "Fluoride", atomSymbol: "F", halfLife: TimeInterval(110*60), massNumber: 18))
         isotopes.append(Isotope(atomName: "Gallium", atomSymbol: "Ga", halfLife: TimeInterval(68*60), massNumber: 68))
-        
-
     }
     
     func updateResult() {
@@ -63,7 +60,7 @@ class DecayCalculator {
     
     func findTargetParameter(){
         
-        var parameterType: ParameterType?
+        var parameterType: DecayCalculatorInput?
         var count = 0
         // Verifies that exactly 1 parameter is missing
         if activity0 == nil {
@@ -88,6 +85,19 @@ class DecayCalculator {
     }
 }
 
+enum DecayCalculatorInput: Int {
+    case activity0 = 1000
+    case activity1 = 1001
+    case date0 = 10000
+    case date1 = 10001
+    case isotope = 0
+    
+    
+    var tag: Int {
+       return self.rawValue
+    }
+    
+}
 
 protocol DecayCalculatorDelegate {
     func decayCalculatorDataChanged()
