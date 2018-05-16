@@ -12,11 +12,6 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
     
     let calculator = DecayCalculator()
     
-//    let activity0tag = 1000
-//    let activity1tag = 1001
-//    let date0tag = 10000
-//    let date1tag = 10001
-    
     let isotopeViewModel: DecayTableViewItem
     let activity0ViewModel: DecayTableViewItem
     let activity1ViewModel: DecayTableViewItem
@@ -61,6 +56,24 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
             
         }
         return tag
+    }
+    
+    func formatedDateForSource(source: DecayCalculatorInput) -> String {
+        var date: Date?
+        switch source {
+        case .date0:
+            date = calculator.dateTime0
+        case .date1:
+            date = calculator.dateTime1
+        default:
+            date = nil
+            
+        }
+        if date != nil {
+            return formatDate(date!)
+        } else {
+        return ""
+        }
     }
     
     func dateForSource(source: DecayCalculatorInput) -> Date? {

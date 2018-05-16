@@ -168,15 +168,12 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             cell.parameterValueTextField.placeholder = "Select date"
             cell.unitsLabel.text = ""
             cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(source: .date0)
-            if let dateTime = calculatorViewModel.calculator.dateTime0 {
-                cell.parameterValueTextField.text = calculatorViewModel.formatDate(dateTime)
-            }
+            cell.parameterValueTextField.text = calculatorViewModel.formatedDateForSource(source: .date0)
             
         case activity0IndexPath:
             cell.parameterLabel.text = "Activity (A0)"
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Enter activity"
-            //            cell.parameterValueTextField.delegate = activity0ViewModel
             cell.parameterValueTextField.delegate = self
             cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(source: .activity0)
             if let unitsLabel = calculatorViewModel.calculator.activity0Units {
@@ -194,9 +191,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             cell.parameterValueTextField.isEnabled = false
             cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(source: .date1)
             cell.unitsLabel.text = ""
-            if let dateTime = calculatorViewModel.calculator.dateTime1 {
-                cell.parameterValueTextField.text = calculatorViewModel.formatDate(dateTime)
-            }
+            cell.parameterValueTextField.text = calculatorViewModel.formatedDateForSource(source: .date1)
             
         case activity1IndexPath:
             cell.parameterValueTextField.delegate = self
