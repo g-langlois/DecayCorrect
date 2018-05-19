@@ -133,7 +133,11 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
                         else {
                             cell.datePicker.date = Date()
                             calculatorViewModel.setDate(Date(), forSource: activePicker)
-                            tableView.reloadData()
+                            // Delay required to avoid breaking the animation when inserting the row
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                tableView.reloadData()
+                            }
+                            
                         }
                     }
                 
@@ -286,6 +290,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             
             pickerIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
             tableView.insertRows(at: [pickerIndexPath!], with: .fade)
+            
             self.pickerType = pickerType
         }
         // To get third section appear:
@@ -297,6 +302,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.endUpdates()
+       
     }
     
     private func hidePickers() {
