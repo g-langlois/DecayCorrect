@@ -104,7 +104,7 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         return dateFormatter.string(from: date)
     }
     
-    func formatedActivity(forSource source: DecayCalculatorInput) -> String {
+    func formatedActivity(forSource source: DecayCalculatorInput) -> String? {
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.maximumFractionDigits = 3
@@ -118,7 +118,7 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         default:
             activity = nil
         }
-        return formatter.string(for: activity) ?? ""
+        return formatter.string(for: activity)
     }
     
     func formatedUnits(forSource source: DecayCalculatorInput) -> String {
@@ -138,6 +138,15 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         if let delegate = self.delegate {
             delegate.decayCalculatorViewModelChanged()
         }
+    }
+    
+    func resetModel() {
+        calculator.activity0 = nil
+        calculator.activity0Units = nil
+        calculator.activity1 = nil
+        calculator.activity1Units = nil
+        calculator.dateTime0 = nil
+        calculator.dateTime1 = nil
     }
     
 }

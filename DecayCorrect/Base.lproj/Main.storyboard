@@ -121,6 +121,28 @@
                                     <outlet property="unitsPicker" destination="bDF-pn-8qq" id="YUd-im-F8v"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="clear" id="6z7-jh-ggV" customClass="ClearTableViewCell" customModule="DecayCorrect">
+                                <rect key="frame" x="0.0" y="372" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6z7-jh-ggV" id="9kD-PN-sfL" userLabel="View">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lir-zc-pql">
+                                            <rect key="frame" x="169" y="6" width="36" height="30"/>
+                                            <state key="normal" title="Clear"/>
+                                            <connections>
+                                                <action selector="clear:" destination="6z7-jh-ggV" eventType="touchUpInside" id="ksS-WL-z03"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lir-zc-pql" firstAttribute="centerX" secondItem="9kD-PN-sfL" secondAttribute="centerX" id="5Z7-tQ-Cop"/>
+                                        <constraint firstItem="lir-zc-pql" firstAttribute="centerY" secondItem="9kD-PN-sfL" secondAttribute="centerY" id="eWg-Vl-w3R"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <viewLayoutGuide key="safeArea" id="SwL-of-xud"/>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>
@@ -168,11 +190,12 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="centerY" secondItem="x3i-df-SfM" secondAttribute="centerY" id="5sj-A8-xy2"/>
+                                        <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="leading" secondItem="x3i-df-SfM" secondAttribute="leading" constant="270" id="XrD-sU-KSm"/>
                                         <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="top" secondItem="x3i-df-SfM" secondAttribute="topMargin" id="oka-Pg-sET"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="DSJ-PZ-Ly4" secondAttribute="trailing" constant="48" id="2U4-oQ-NOg"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DSJ-PZ-Ly4" secondAttribute="trailing" id="2U4-oQ-NOg"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="isotopeName" destination="DSJ-PZ-Ly4" id="1rb-JG-uiu"/>

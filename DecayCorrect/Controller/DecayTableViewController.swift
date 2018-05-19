@@ -35,6 +35,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     var dateTime0IndexPath = IndexPath(row: 1, section: 1)
     var activity1IndexPath = IndexPath(row: 0, section: 2)
     var dateTime1IndexPath = IndexPath(row: 2, section: 1)
+    var clearButtonIndexPath = IndexPath(row: 1, section: 2)
     
     let calculatorViewModel = DecayCalculatorViewModel()
     
@@ -80,7 +81,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             if resultAvailable == true && pickerIndexPath == nil {
                 numberOfRows = 3
             } else if !resultAvailable && pickerIndexPath == nil {
-                numberOfRows = 4
+                numberOfRows = 5
             } else if resultAvailable && pickerIndexPath != nil && pickerIndexPath!.section == 1 {
                 numberOfRows = 4
             }
@@ -92,10 +93,10 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             }
         case 2:
             if pickerIndexPath != nil && pickerIndexPath!.section == 2 {
-                numberOfRows = 2
+                numberOfRows = 3
             }
             else {
-                numberOfRows = 1
+                numberOfRows = 2
             }
         default:
             break
@@ -150,15 +151,23 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
                 break
             }
         }
+        
+        if indexPath == correctedIndexPath(from: clearButtonIndexPath) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "clear", for: indexPath) as! ClearTableViewCell
+            cell.clearButtonDelegate = self
+        return cell
+            }
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "parameter", for: indexPath) as! ParameterTableViewCell
         switch indexPath {
-        case IndexPath(row: 0, section: 0):
+        case correctedIndexPath(from: IndexPath(row: 0, section: 0)):
             cell.parameterLabel.text = "Isotope"
             cell.parameterValueTextField.isHidden = true
             cell.unitsLabel.text = calculatorViewModel.calculator.isotope?.shortName ?? "Select isotope"
             
             
-        case dateTime0IndexPath:
+        case correctedIndexPath(from: dateTime0IndexPath):
             cell.parameterLabel.text = "Date (t0)"
             cell.accessoryType = .none
             cell.parameterValueTextField.isEnabled = false
@@ -167,7 +176,8 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(.date0)
             cell.parameterValueTextField.text = calculatorViewModel.formatedDateForSource(.date0)
             
-        case activity0IndexPath:
+        case correctedIndexPath(from: activity0IndexPath):
+            cell.parameterValueTextField.text = calculatorViewModel.formatedActivity(forSource: .activity0)
             cell.parameterLabel.text = "Activity (A0)"
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Enter activity"
@@ -175,7 +185,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(.activity0)
             cell.unitsLabel.text = calculatorViewModel.formatedUnits(forSource: .activity0)
             
-        case dateTime1IndexPath:
+        case correctedIndexPath(from: dateTime1IndexPath):
             cell.parameterLabel.text = "Date (t1)"
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Select date"
@@ -184,7 +194,8 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             cell.unitsLabel.text = ""
             cell.parameterValueTextField.text = calculatorViewModel.formatedDateForSource(.date1)
             
-        case activity1IndexPath:
+        case correctedIndexPath(from: activity1IndexPath):
+
             cell.parameterValueTextField.delegate = self
             cell.parameterLabel.text = "Activity (A1)"
             cell.accessoryType = .none
@@ -192,11 +203,14 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(.activity1)
             cell.parameterValueTextField.text = calculatorViewModel.formatedActivity(forSource: .activity1)
             cell.unitsLabel.text = calculatorViewModel.formatedUnits(forSource: .activity1)
-        
         default:
             break
-        }
+            }
         return cell
+        
+    
+        
+       
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -245,7 +259,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         var correctedIndexPath = indexPath
         if let pickerIndexPath = pickerIndexPath {
             if indexPath.section == pickerIndexPath.section {
-                if indexPath.row > pickerIndexPath.section {
+                if indexPath.row >= pickerIndexPath.row {
                     correctedIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
                 }
             }
@@ -319,7 +333,10 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     
     
     func decayCalculatorViewModelChanged() {
+        
         tableView.reloadData()
+        
+        
     }
     
     
@@ -399,15 +416,28 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         }
         calculatorViewModel.calculator.updateResult()
         
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row].rawValue
     }
     
-    
-    
+
     
 }
 
 
+extension DecayTableViewController: ClearTableDelegate {
+    func clearTable() {
+        pickerType = nil
+        pickerIndexPath = nil
+        activePicker = nil
+        datePickerDate = nil
+        calculatorViewModel.resetModel()
+        tableView.reloadData()
+    
+    }
+    
+    
+}
