@@ -125,8 +125,8 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
                 if let activePicker = self.activePicker {
                     
                         cell.delegate = self
-                        cell.datePicker.tag = calculatorViewModel.tagForSource(source: activePicker)
-                        if let date = calculatorViewModel.dateForSource(source: activePicker) {
+                        cell.datePicker.tag = calculatorViewModel.tagForSource(activePicker)
+                        if let date = calculatorViewModel.dateForSource(activePicker) {
                             cell.datePicker.date = date
                         }
                         else {
@@ -141,17 +141,14 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
                 let cell = tableView.dequeueReusableCell(withIdentifier: "unitsPicker", for: indexPath) as! UnitsPickerTableViewCell
                 if let activePicker = activePicker {
                     
-                        cell.unitsPicker.tag = calculatorViewModel.tagForSource(source: activePicker)
+                        cell.unitsPicker.tag = calculatorViewModel.tagForSource(activePicker)
                         cell.unitsPicker.delegate = self
                         cell.unitsPicker.dataSource = self
-
                 }
-                
                 return cell
             default:
                 break
             }
-            
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "parameter", for: indexPath) as! ParameterTableViewCell
         switch indexPath {
@@ -167,56 +164,35 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             cell.parameterValueTextField.isEnabled = false
             cell.parameterValueTextField.placeholder = "Select date"
             cell.unitsLabel.text = ""
-            cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(source: .date0)
-            cell.parameterValueTextField.text = calculatorViewModel.formatedDateForSource(source: .date0)
+            cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(.date0)
+            cell.parameterValueTextField.text = calculatorViewModel.formatedDateForSource(.date0)
             
         case activity0IndexPath:
             cell.parameterLabel.text = "Activity (A0)"
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Enter activity"
             cell.parameterValueTextField.delegate = self
-            cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(source: .activity0)
-            if let unitsLabel = calculatorViewModel.calculator.activity0Units {
-                cell.unitsLabel.text = unitsLabel.rawValue
-            }
-            else {
-                cell.unitsLabel.text = ""
-            }
-            
+            cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(.activity0)
+            cell.unitsLabel.text = calculatorViewModel.formatedUnits(forSource: .activity0)
             
         case dateTime1IndexPath:
             cell.parameterLabel.text = "Date (t1)"
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Select date"
             cell.parameterValueTextField.isEnabled = false
-            cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(source: .date1)
+            cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(.date1)
             cell.unitsLabel.text = ""
-            cell.parameterValueTextField.text = calculatorViewModel.formatedDateForSource(source: .date1)
+            cell.parameterValueTextField.text = calculatorViewModel.formatedDateForSource(.date1)
             
         case activity1IndexPath:
             cell.parameterValueTextField.delegate = self
             cell.parameterLabel.text = "Activity (A1)"
             cell.accessoryType = .none
             cell.parameterValueTextField.placeholder = "Enter activity"
-            cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(source: .activity1)
-            cell.unitsLabel.text = ""
-            
-            let formatter = NumberFormatter()
-            formatter.locale = Locale(identifier: "en_US_POSIX")
-            formatter.maximumFractionDigits = 3
-            formatter.minimumFractionDigits = 0
-            
-            if calculatorViewModel.calculator.activity1 != nil {
-                cell.parameterValueTextField.text = formatter.string(for: calculatorViewModel.calculator.activity1)
-                if let unitsLabel = calculatorViewModel.calculator.activity1Units {
-                    cell.unitsLabel.text = unitsLabel.rawValue
-                }
-                else {
-                    cell.unitsLabel.text = ""
-                    
-                }
-            }
-            
+            cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(.activity1)
+            cell.parameterValueTextField.text = calculatorViewModel.formatedActivity(forSource: .activity1)
+            cell.unitsLabel.text = calculatorViewModel.formatedUnits(forSource: .activity1)
+        
         default:
             break
         }

@@ -40,7 +40,7 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         calculator.delegate = self
     }
     
-    func tagForSource(source: DecayCalculatorInput) -> Int {
+    func tagForSource(_ source: DecayCalculatorInput) -> Int {
         var tag: Int = 0
         switch source {
         case .activity0:
@@ -58,17 +58,9 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         return tag
     }
     
-    func formatedDateForSource(source: DecayCalculatorInput) -> String {
+    func formatedDateForSource(_ source: DecayCalculatorInput) -> String {
         var date: Date?
-        switch source {
-        case .date0:
-            date = calculator.dateTime0
-        case .date1:
-            date = calculator.dateTime1
-        default:
-            date = nil
-            
-        }
+        date = dateForSource(source)
         if date != nil {
             return formatDate(date!)
         } else {
@@ -76,7 +68,7 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         }
     }
     
-    func dateForSource(source: DecayCalculatorInput) -> Date? {
+    func dateForSource(_ source: DecayCalculatorInput) -> Date? {
         var date: Date?
         switch source {
         case .date0:
@@ -111,7 +103,37 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         
         return dateFormatter.string(from: date)
     }
-
+    
+    func formatedActivity(forSource source: DecayCalculatorInput) -> String {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.maximumFractionDigits = 3
+        formatter.minimumFractionDigits = 0
+        let activity: Double?
+        switch source {
+        case .activity0:
+            activity = calculator.activity0
+        case .activity1:
+            activity = calculator.activity1
+        default:
+            activity = nil
+        }
+        return formatter.string(for: activity) ?? ""
+    }
+    
+    func formatedUnits(forSource source: DecayCalculatorInput) -> String {
+        let activityUnits: RadioactivityUnit?
+        switch source {
+        case .activity0:
+            activityUnits = calculator.activity0Units
+        case .activity1:
+            activityUnits = calculator.activity1Units
+        default:
+            activityUnits = nil
+        }
+        return activityUnits?.rawValue ?? ""
+    }
+    
     func decayCalculatorDataChanged() {
         if let delegate = self.delegate {
             delegate.decayCalculatorViewModelChanged()
