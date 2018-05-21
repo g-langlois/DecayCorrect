@@ -13,12 +13,14 @@ struct Isotope {
     var atomName: String
     var atomSymbol: String
     var massNumber: Int
+    var state: String?
     
-    init(atomName: String, atomSymbol: String, halfLife: TimeInterval, massNumber: Int) {
+    init(atomName: String, atomSymbol: String, halfLife: TimeInterval, massNumber: Int, state: String?=nil) {
         self.halfLife = halfLife
         self.atomName = atomName
         self.atomSymbol = atomSymbol
         self.massNumber = massNumber
+        self.state = state
     }
     
     var shortName: String {
