@@ -160,6 +160,22 @@ class DecayCorrectTests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
     
+    func testLoadIsotopeJson() {
+        let testBundle = Bundle(for: type(of: self))
+        guard let jsonPath = testBundle.url(forResource: "isotopesTest", withExtension: "json") else {
+            XCTFail()
+            return
+        }
+        
+        
+        
+        let isotopesData = sut.populateIsotopes(jsonUrl: jsonPath)
+    
+        XCTAssertEqual(isotopesData.count, 2)
+
+        
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

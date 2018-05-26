@@ -10,6 +10,7 @@
 		46203346208AD14D0043E2CF /* UnitsPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46203345208AD14D0043E2CF /* UnitsPickerTableViewCell.swift */; };
 		46203347208AD14D0043E2CF /* UnitsPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46203345208AD14D0043E2CF /* UnitsPickerTableViewCell.swift */; };
 		46203348208AD14D0043E2CF /* UnitsPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46203345208AD14D0043E2CF /* UnitsPickerTableViewCell.swift */; };
+		463EF93D20B7E4C600740BFC /* isotopesTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 463EF93C20B7E4C600740BFC /* isotopesTest.json */; };
 		464DB0FC20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DB0FB20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift */; };
 		464DB0FD20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DB0FB20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift */; };
 		464DB0FE20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DB0FB20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift */; };
@@ -90,6 +91,7 @@
 
 /* Begin PBXFileReference section */
 		46203345208AD14D0043E2CF /* UnitsPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsPickerTableViewCell.swift; sourceTree = "<group>"; };
+		463EF93C20B7E4C600740BFC /* isotopesTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = isotopesTest.json; sourceTree = "<group>"; };
 		464DB0FB20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecayCalculatorViewModel.swift; sourceTree = "<group>"; };
 		464DB0FF20AFF87A00EBE1BD /* ClearTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearTableViewCell.swift; sourceTree = "<group>"; };
 		4661A685204BE0ED00F6D86F /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			children = (
 				46BE6B602039340400B07831 /* DecayCorrectTests.swift */,
 				46BE6B622039340400B07831 /* Info.plist */,
+				463EF93C20B7E4C600740BFC /* isotopesTest.json */,
 			);
 			path = DecayCorrectTests;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				463EF93D20B7E4C600740BFC /* isotopesTest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

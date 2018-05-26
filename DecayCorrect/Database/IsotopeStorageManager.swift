@@ -60,4 +60,33 @@ class IsotopeStorageManager {
             }
         }
     }
+    
+    func populateIsotopes(jsonUrl: URL) -> [IsotopeData] {
+        var isotopes = [IsotopeData]()
+        var json: [String: Any]?
+        do {
+            let jsonData = try Data(contentsOf: jsonUrl, options: .mappedIfSafe)
+            json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any]
+        }
+        catch {
+            print(error)
+        }
+        if let json = json {
+            for key in json.keys {
+                if let atom = json[key] as? [String: Any] {
+                    let atomName = atom["Atom Name"] as? String ?? ""
+                    let atomSymbol = atom["Atom Symbol"] as? String ?? ""
+                    let halfLifeSec = atom["Half-Life (s)"] as? Double ?? 0
+                    let massNumber = atom["Mass Number"] as? Int ?? 0
+                    let isotope = Isotope(atomName: atomName, atomSymbol: atomSymbol, halfLife: halfLifeSec, massNumber: massNumber)
+                    let isotopeData = insertIsotope(isotope: isotope)
+                    if isotopeData != nil {
+                        isotopes.append(isotopeData!)
+                    }   
+                }
+            }
+        }
+        
+        return isotopes
+    }
 }
