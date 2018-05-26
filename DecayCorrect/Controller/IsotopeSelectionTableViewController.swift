@@ -11,10 +11,24 @@ import UIKit
 class IsotopeSelectionTableViewController: UITableViewController {
 
     var state: DecayCalculatorViewModel?
+    var sut: IsotopeStorageManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        sut = IsotopeStorageManager()
+        let url = Bundle.main.url(forResource: "nuclides", withExtension: "json")
+        
+        _ = sut.populateIsotopes(jsonUrl: url!)
+        sut.save()
+        
+        let fetchedIsotopes = sut.fetchAllIsotopes()
+        for isotope in fetchedIsotopes {
+            isotopes.append(isotope)
+        }
+        tableView.reloadData()
+        print(isotopes.count)
+        
         //self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -22,7 +36,6 @@ class IsotopeSelectionTableViewController: UITableViewController {
         
         if let state = self.state {
             selectedIsotopeIndex = state.selectedIsotopeIndex
-            isotopes = state.calculator.isotopes
         }
     }
 
@@ -41,15 +54,15 @@ class IsotopeSelectionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return isotopes.count
+        print(isotopes.count)
+                return isotopes.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "isotopeCell", for: indexPath) as! IsotopeSelectionTableViewCell
         let row = indexPath.row
-        cell.isotopeName.text = ("\(isotopes[row].atomSymbol ?? "")\(isotopes[row].massNumber)")
+        cell.isotopeName.text = ("\(isotopes[row].atomSymbol ?? "")\(isotopes[row].massNumber)  Half-life: \(isotopes[row].halfLifeSec) s")
         if selectedIsotopeIndex != nil && selectedIsotopeIndex == row {
             cell.accessoryType = .checkmark
         }

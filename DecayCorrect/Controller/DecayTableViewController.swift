@@ -54,8 +54,11 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             if calculatorViewModel.calculator.isotopes.count != 0 {
                 calculatorViewModel.calculator.isotope = calculatorViewModel.calculator.isotopes[selectedIsotopeIndex]
             }
-            tableView.reloadData()
+            
         }
+        calculatorViewModel.decayCalculatorDataChanged()
+        tableView.reloadData()
+        print("ViewWillapppear")
     }
     
     override func didReceiveMemoryWarning() {

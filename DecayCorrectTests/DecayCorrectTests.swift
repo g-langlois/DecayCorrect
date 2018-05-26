@@ -168,19 +168,46 @@ class DecayCorrectTests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
     
-    func testLoadIsotopeJson() {
+    func testLoadJsonFile() {
         let testBundle = Bundle(for: type(of: self))
         guard let jsonPath = testBundle.url(forResource: "isotopesTest", withExtension: "json") else {
             XCTFail()
             return
         }
         
-        
-        
         let isotopesData = sut.populateIsotopes(jsonUrl: jsonPath)
     
         XCTAssertEqual(isotopesData.count, 2)
-
+    }
+    
+    func testRetreiveIsotopeFromJson() {
+        //Given
+        let testBundle = Bundle(for: type(of: self))
+        guard let jsonPath = testBundle.url(forResource: "isotopesTest", withExtension: "json") else {
+            XCTFail()
+            return
+        }
+        
+        //When
+        let isotopes = sut.populateIsotopes(jsonUrl: jsonPath)
+        
+        
+        
+        //Then
+        XCTAssertEqual(isotopes[0].atomName!, "Atom Name 1")
+        XCTAssertEqual(isotopes[0].atomSymbol!, "A")
+        XCTAssertEqual(isotopes[0].halfLifeSec, 1.0)
+        XCTAssertEqual(isotopes[0].massNumber, Int32(1))
+    }
+    
+    func testSplitMassStateString() {
+        let massState = "123m"
+        
+        let massStateSplitted = sut.splitMassState(from: massState)
+        
+        XCTAssert(massStateSplitted.massNumber == 123)
+        XCTAssert(massStateSplitted.state == "m")
+        
         
     }
     

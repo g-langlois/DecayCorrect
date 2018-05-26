@@ -190,12 +190,12 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="centerY" secondItem="x3i-df-SfM" secondAttribute="centerY" id="5sj-A8-xy2"/>
-                                        <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="leading" secondItem="x3i-df-SfM" secondAttribute="leading" constant="270" id="XrD-sU-KSm"/>
+                                        <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="leading" relation="lessThanOrEqual" secondItem="x3i-df-SfM" secondAttribute="leading" constant="270" id="Q4y-Ol-ydK"/>
                                         <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="top" secondItem="x3i-df-SfM" secondAttribute="topMargin" id="oka-Pg-sET"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DSJ-PZ-Ly4" secondAttribute="trailing" id="2U4-oQ-NOg"/>
+                                    <constraint firstAttribute="trailing" secondItem="DSJ-PZ-Ly4" secondAttribute="trailing" constant="48" id="dJY-hl-mrd"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="isotopeName" destination="DSJ-PZ-Ly4" id="1rb-JG-uiu"/>

@@ -48,6 +48,8 @@ class IsotopeStorageManager {
         guard let isotope = NSEntityDescription.insertNewObject(forEntityName: "Isotope", into: backgroundContext) as? Isotope else {return nil}
         isotope.atomName = atomName
         isotope.atomSymbol = atomSymbol
+        isotope.massNumber = Int32(massNumber)
+        isotope.state = state
         isotope.halfLifeSec = halfLife
         return isotope
     }
@@ -77,16 +79,44 @@ class IsotopeStorageManager {
                 if let atom = json[key] as? [String: Any] {
                     let atomName = atom["Atom Name"] as? String ?? ""
                     let atomSymbol = atom["Atom Symbol"] as? String ?? ""
-                    let halfLifeSec = atom["Half-Life (s)"] as? Double ?? 0
-                    let massNumber = atom["Mass Number"] as? Int ?? 0
-                    let isotope = insertIsotope(atomName: atomName, atomSymbol: atomSymbol, halfLife: halfLifeSec, massNumber: massNumber)
+                    let halfLifeSec = Double(atom["Half-Life (s)"] as? String ?? "") ?? 0
+                    let massNumberState = atom["Mass Number"] as? String ?? ""
+                    
+                    let massStateSplit = splitMassState(from: massNumberState)
+                    let massNumber = massStateSplit.massNumber
+                    let state = massStateSplit.state
+                    let isotope = insertIsotope(atomName: atomName, atomSymbol: atomSymbol, halfLife: halfLifeSec, massNumber: massNumber, state: state)
                     if isotope != nil {
                         isotopes.append(isotope!)
                     }   
                 }
             }
         }
-        
         return isotopes
     }
+    
+    func splitMassState(from string: String) -> (massNumber: Int, state: String?) {
+        var massNumberString:String = ""
+        var state: String?
+        
+        let digitSet = CharacterSet.decimalDigits
+        
+        for char in string.unicodeScalars {
+            if digitSet.contains(char) {
+                massNumberString.append(char.escaped(asASCII: true))
+            } else {
+                if state != nil {
+                    state!.append(char.escaped(asASCII: true))
+                } else {
+                    state = char.escaped(asASCII: true)
+                }
+            }
+            
+        }
+        let massNumber = Int(massNumberString) ?? 0
+
+        return (massNumber, state)
+        
+    }
+    
 }

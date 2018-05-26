@@ -20,6 +20,7 @@
 		463EF94F20B92F6600740BFC /* Isotope+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463EF94B20B92F6600740BFC /* Isotope+CoreDataProperties.swift */; };
 		463EF95020B92F6600740BFC /* Isotope+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463EF94B20B92F6600740BFC /* Isotope+CoreDataProperties.swift */; };
 		463EF95120B92F6600740BFC /* Isotope+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463EF94B20B92F6600740BFC /* Isotope+CoreDataProperties.swift */; };
+		463EF95920B943EB00740BFC /* nuclides.json in Resources */ = {isa = PBXBuildFile; fileRef = 463EF95820B943EB00740BFC /* nuclides.json */; };
 		464DB0FC20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DB0FB20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift */; };
 		464DB0FD20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DB0FB20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift */; };
 		464DB0FE20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DB0FB20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift */; };
@@ -98,6 +99,7 @@
 		463EF93E20B90D2700740BFC /* IsotopesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsotopesViewModel.swift; sourceTree = "<group>"; };
 		463EF94A20B92F6600740BFC /* Isotope+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Isotope+CoreDataClass.swift"; sourceTree = "<group>"; };
 		463EF94B20B92F6600740BFC /* Isotope+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Isotope+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		463EF95820B943EB00740BFC /* nuclides.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nuclides.json; sourceTree = "<group>"; };
 		464DB0FB20A6A3C400EBE1BD /* DecayCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecayCalculatorViewModel.swift; sourceTree = "<group>"; };
 		464DB0FF20AFF87A00EBE1BD /* ClearTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearTableViewCell.swift; sourceTree = "<group>"; };
 		4661A685204BE0ED00F6D86F /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 		466DB57920B660A400C2609D /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				463EF95820B943EB00740BFC /* nuclides.json */,
 				463EF94A20B92F6600740BFC /* Isotope+CoreDataClass.swift */,
 				463EF94B20B92F6600740BFC /* Isotope+CoreDataProperties.swift */,
 				466DB57A20B660D400C2609D /* IsotopeStorageManager.swift */,
@@ -369,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				463EF95920B943EB00740BFC /* nuclides.json in Resources */,
 				46BE6B562039340400B07831 /* LaunchScreen.storyboard in Resources */,
 				46BE6B532039340400B07831 /* Assets.xcassets in Resources */,
 				46BE6B4E2039340400B07831 /* Main.storyboard in Resources */,
