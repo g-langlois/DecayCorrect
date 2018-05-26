@@ -27,8 +27,7 @@ class DecayCalculator {
    
     
     init() {
-        isotopes.append(Isotope(atomName: "Fluoride", atomSymbol: "F", halfLife: TimeInterval(110*60), massNumber: 18))
-        isotopes.append(Isotope(atomName: "Gallium", atomSymbol: "Ga", halfLife: TimeInterval(68*60), massNumber: 68))
+        //TODO
     }
     
     func updateResult() {

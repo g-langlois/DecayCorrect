@@ -51,7 +51,9 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         super.viewWillAppear(animated)
         
         if let selectedIsotopeIndex = calculatorViewModel.selectedIsotopeIndex  {
-            calculatorViewModel.calculator.isotope = calculatorViewModel.calculator.isotopes[selectedIsotopeIndex]
+            if calculatorViewModel.calculator.isotopes.count != 0 {
+                calculatorViewModel.calculator.isotope = calculatorViewModel.calculator.isotopes[selectedIsotopeIndex]
+            }
             tableView.reloadData()
         }
     }
@@ -168,7 +170,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         case correctedIndexPath(from: IndexPath(row: 0, section: 0)):
             cell.parameterLabel.text = "Isotope"
             cell.parameterValueTextField.isHidden = true
-            cell.unitsLabel.text = calculatorViewModel.calculator.isotope?.shortName ?? "Select isotope"
+            cell.unitsLabel.text = calculatorViewModel.isotopeShortName
             
             
         case correctedIndexPath(from: dateTime0IndexPath):

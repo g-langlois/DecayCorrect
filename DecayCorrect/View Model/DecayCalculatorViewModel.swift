@@ -149,6 +149,15 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         calculator.dateTime1 = nil
     }
     
+    var isotopeShortName: String {
+        get {
+            if let isotope = calculator.isotope {
+                return String("\(isotope.atomSymbol ?? "")\(isotope.massNumber)")
+            }
+            else {return "Select isotope"}
+        }
+    }
+    
 }
 
 

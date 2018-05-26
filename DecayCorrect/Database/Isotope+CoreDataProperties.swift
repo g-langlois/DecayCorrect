@@ -1,8 +1,8 @@
 //
-//  IsotopeData+CoreDataProperties.swift
+//  Isotope+CoreDataProperties.swift
 //  DecayCorrect
 //
-//  Created by Guillaume Langlois on 2018-05-23.
+//  Created by Guillaume Langlois on 2018-05-25.
 //  Copyright © 2018 Guillaume Langlois. All rights reserved.
 //
 //
@@ -11,10 +11,10 @@ import Foundation
 import CoreData
 
 
-extension IsotopeData {
+extension Isotope {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<IsotopeData> {
-        return NSFetchRequest<IsotopeData>(entityName: "IsotopeData")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Isotope> {
+        return NSFetchRequest<Isotope>(entityName: "Isotope")
     }
 
     @NSManaged public var atomName: String?

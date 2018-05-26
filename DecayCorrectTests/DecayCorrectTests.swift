@@ -42,11 +42,15 @@ class DecayCorrectTests: XCTestCase {
     func testDecayPrediction() {
         
         let accuracy = 0.00000001
-        let isotope1 = Isotope(atomName: "Fluoride", atomSymbol: "F", halfLife: TimeInterval(110*60), massNumber: 18)
+        let entity = NSEntityDescription.insertNewObject(forEntityName: "Isotope", into: mockPersistantContainer.viewContext)
+        entity.setValue("Fluoride", forKey: "atomName")
+        entity.setValue("F", forKey: "atomSymbol")
+        entity.setValue(TimeInterval(110*60), forKey: "halfLifeSec")
+        let isotope = entity as! Isotope
         let calendar = Calendar(identifier: .gregorian)
         let date = calendar.date(from: DateComponents(calendar: calendar, year: 2018, month: 01, day: 01, hour: 0, minute: 0))
         let initialRadioactivity = Radioactivity(time: date!, countRate: 1000, units: RadioactivityUnit.bq)
-        let activity1 = RadioactiveSubstance(isotope: isotope1, radioactivity: initialRadioactivity)
+        let activity1 = RadioactiveSubstance(isotope: isotope, radioactivity: initialRadioactivity)
         let predictedActivity = activity1.correct(to: calendar.date(from: DateComponents(calendar: calendar, year: 2018, month: 01, day: 01, hour: 0, minute: 110))!, with: RadioactivityUnit.bq)
         guard let countRate = predictedActivity?.countRate else {
             XCTFail()
@@ -81,13 +85,14 @@ class DecayCorrectTests: XCTestCase {
     
     
     func initStubs() {
-        func insertIsotopeData(atomName: String, atomSymbol: String, halfLife: TimeInterval) -> IsotopeData? {
-            let isotopeData = NSEntityDescription.insertNewObject(forEntityName: "IsotopeData", into: mockPersistantContainer.viewContext)
-            isotopeData.setValue(atomName, forKey: "atomName")
-            isotopeData.setValue(atomSymbol, forKey: "atomSymbol")
-            isotopeData.setValue(halfLife, forKey: "halfLifeSec")
-            return isotopeData as? IsotopeData
+        func insertIsotopeData(atomName: String, atomSymbol: String, halfLife: TimeInterval) -> Isotope? {
+            let isotope = NSEntityDescription.insertNewObject(forEntityName: "Isotope", into: mockPersistantContainer.viewContext)
+            isotope.setValue(atomName, forKey: "atomName")
+            isotope.setValue(atomSymbol, forKey: "atomSymbol")
+            isotope.setValue(halfLife, forKey: "halfLifeSec")
+            return isotope as? Isotope
         }
+        _ = insertIsotopeData(atomName: "Fluoride18", atomSymbol: "F18", halfLife: TimeInterval(110*60))
         _ = insertIsotopeData(atomName: "Atom1", atomSymbol: "A1", halfLife: TimeInterval(1))
         _ = insertIsotopeData(atomName: "Atom2", atomSymbol: "A2", halfLife: TimeInterval(2))
         do {
@@ -99,7 +104,7 @@ class DecayCorrectTests: XCTestCase {
     
     func flushData() {
         
-        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: "IsotopeData")
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: "Isotope")
         let objs = try! mockPersistantContainer.viewContext.fetch(fetchRequest)
         for case let obj as NSManagedObject in objs {
             mockPersistantContainer.viewContext.delete(obj)
@@ -111,19 +116,23 @@ class DecayCorrectTests: XCTestCase {
     
     func  testCreateIsotopeData() {
         // Given
-        let isotope1 = Isotope(atomName: "Fluoride", atomSymbol: "F", halfLife: TimeInterval(110*60), massNumber: 18)
-       
+        let atomName = "Fluoride"
+        let atomSymbol = "F"
+        let halfLife = 2.0
+        let massNumber = 18
+    
+        
         //When
-        let isotopeData = sut.insertIsotope(isotope: isotope1)
+        let isotope = sut.insertIsotope(atomName: atomName, atomSymbol: atomSymbol, halfLife: halfLife, massNumber: massNumber)
         
         // Assert
-        XCTAssertNotNil(isotopeData)
+        XCTAssertNotNil(isotope)
     }
     
     func testFetchAllIsotopesData() {
         let results = sut.fetchAllIsotopes()
         
-        XCTAssertEqual(results.count, 2)
+        XCTAssertEqual(results.count, 3)
     }
     
     func testRemoveIsotope() {
@@ -142,16 +151,15 @@ class DecayCorrectTests: XCTestCase {
     }
     
     func numberOfItemsInPersistentStore() -> Int {
-        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "IsotopeData")
+        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Isotope")
         let results = try! mockPersistantContainer.viewContext.fetch(request)
         return results.count
     }
     
     func testSave() {
-        // Given
-        let isotope1 = Isotope(atomName: "Fluoride", atomSymbol: "F", halfLife: TimeInterval(110*60), massNumber: 18)
+        
     
-        _ = sut.insertIsotope(isotope: isotope1)
+        _ = sut.insertIsotope(atomName: "Fluoride", atomSymbol: "F", halfLife: TimeInterval(110*60), massNumber: 18)
         
         expectation(forNotification:NSNotification.Name(rawValue: Notification.Name.NSManagedObjectContextDidSave.rawValue), object: nil)
         

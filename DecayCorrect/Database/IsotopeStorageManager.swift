@@ -32,10 +32,10 @@ class IsotopeStorageManager {
         return self.persistentContainer.newBackgroundContext()
     }()
     
-    func fetchAllIsotopes() -> [IsotopeData] {
-        let request: NSFetchRequest<IsotopeData> = IsotopeData.fetchRequest()
+    func fetchAllIsotopes() -> [Isotope] {
+        let request: NSFetchRequest<Isotope> = Isotope.fetchRequest()
         let results = try? persistentContainer.viewContext.fetch(request)
-        return results ?? [IsotopeData]()
+        return results ?? [Isotope]()
     }
     
     func remove( objectID: NSManagedObjectID ) {
@@ -43,12 +43,13 @@ class IsotopeStorageManager {
         backgroundContext.delete(obj)
     }
     
-    func insertIsotope(isotope: Isotope) -> IsotopeData? {
-        guard let isotopeData = NSEntityDescription.insertNewObject(forEntityName: "IsotopeData", into: backgroundContext) as? IsotopeData else {return nil}
-        isotopeData.atomName = isotope.atomName
-        isotopeData.atomSymbol = isotope.atomSymbol
-        isotopeData.halfLifeSec = isotope.halfLife
-        return isotopeData
+
+    func insertIsotope(atomName: String, atomSymbol: String, halfLife: TimeInterval, massNumber: Int, state: String?=nil) -> Isotope? {
+        guard let isotope = NSEntityDescription.insertNewObject(forEntityName: "Isotope", into: backgroundContext) as? Isotope else {return nil}
+        isotope.atomName = atomName
+        isotope.atomSymbol = atomSymbol
+        isotope.halfLifeSec = halfLife
+        return isotope
     }
     
     func save() {
@@ -61,8 +62,8 @@ class IsotopeStorageManager {
         }
     }
     
-    func populateIsotopes(jsonUrl: URL) -> [IsotopeData] {
-        var isotopes = [IsotopeData]()
+    func populateIsotopes(jsonUrl: URL) -> [Isotope] {
+        var isotopes = [Isotope]()
         var json: [String: Any]?
         do {
             let jsonData = try Data(contentsOf: jsonUrl, options: .mappedIfSafe)
@@ -78,10 +79,9 @@ class IsotopeStorageManager {
                     let atomSymbol = atom["Atom Symbol"] as? String ?? ""
                     let halfLifeSec = atom["Half-Life (s)"] as? Double ?? 0
                     let massNumber = atom["Mass Number"] as? Int ?? 0
-                    let isotope = Isotope(atomName: atomName, atomSymbol: atomSymbol, halfLife: halfLifeSec, massNumber: massNumber)
-                    let isotopeData = insertIsotope(isotope: isotope)
-                    if isotopeData != nil {
-                        isotopes.append(isotopeData!)
+                    let isotope = insertIsotope(atomName: atomName, atomSymbol: atomSymbol, halfLife: halfLifeSec, massNumber: massNumber)
+                    if isotope != nil {
+                        isotopes.append(isotope!)
                     }   
                 }
             }
