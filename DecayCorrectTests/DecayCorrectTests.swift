@@ -207,6 +207,19 @@ class DecayCorrectTests: XCTestCase {
         
         XCTAssert(massStateSplitted.massNumber == 123)
         XCTAssert(massStateSplitted.state == "m")
+    }
+    
+    func testFetchIsotopeFromUniqueId() {
+        //Given
+        let isotope = sut.insertIsotope(atomName: "Fluoride", atomSymbol: "F", halfLife: TimeInterval(110*60), massNumber: 18)
+        sut.save()
+        let uniqueId = isotope?.uniqueId
+        
+        // When
+        let fetchedIsotope = sut.fetchIsotope(with: uniqueId!)
+        
+        //Then
+        XCTAssertNotNil(fetchedIsotope)
         
         
     }

@@ -2,7 +2,7 @@
 //  Isotope+CoreDataProperties.swift
 //  DecayCorrect
 //
-//  Created by Guillaume Langlois on 2018-05-25.
+//  Created by Guillaume Langlois on 2018-05-26.
 //  Copyright © 2018 Guillaume Langlois. All rights reserved.
 //
 //
@@ -23,5 +23,6 @@ extension Isotope {
     @NSManaged public var halfLifeSec: Double
     @NSManaged public var massNumber: Int32
     @NSManaged public var state: String?
+    @NSManaged public var uniqueId: UUID?
 
 }

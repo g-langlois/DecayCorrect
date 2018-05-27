@@ -10,12 +10,13 @@ import UIKit
 
 class IsotopeSelectionTableViewController: UITableViewController {
 
-    var state: DecayCalculatorViewModel?
+    var viewModel: IsotopesViewModel?
     var sut: IsotopeStorageManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel = IsotopesViewModel()
         sut = IsotopeStorageManager()
         let url = Bundle.main.url(forResource: "nuclides", withExtension: "json")
         
@@ -27,15 +28,14 @@ class IsotopeSelectionTableViewController: UITableViewController {
             isotopes.append(isotope)
         }
         tableView.reloadData()
-        print(isotopes.count)
         
         //self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let state = self.state {
-            selectedIsotopeIndex = state.selectedIsotopeIndex
+        if let viewModel = self.viewModel {
+            selectedIsotopeId = viewModel.selectedIsotopeId
         }
     }
 
@@ -44,7 +44,7 @@ class IsotopeSelectionTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    var selectedIsotopeIndex: Int?
+    var selectedIsotopeId: UUID?
     var isotopes = [Isotope]()
 
     // MARK: - Table view data source
@@ -54,7 +54,6 @@ class IsotopeSelectionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(isotopes.count)
                 return isotopes.count
     }
 
@@ -63,7 +62,7 @@ class IsotopeSelectionTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "isotopeCell", for: indexPath) as! IsotopeSelectionTableViewCell
         let row = indexPath.row
         cell.isotopeName.text = ("\(isotopes[row].atomSymbol ?? "")\(isotopes[row].massNumber)  Half-life: \(isotopes[row].halfLifeSec) s")
-        if selectedIsotopeIndex != nil && selectedIsotopeIndex == row {
+        if selectedIsotopeId != nil && selectedIsotopeId == isotopes[row].uniqueId {
             cell.accessoryType = .checkmark
         }
         else {
@@ -74,15 +73,16 @@ class IsotopeSelectionTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIsotopeIndex = indexPath.row
+        selectedIsotopeId = isotopes[indexPath.row].uniqueId
+        print(isotopes[indexPath.row].uniqueId)
         tableView.reloadData()
         updateState()
     }
     
     func updateState() {
-        if let state = self.state {
-            state.selectedIsotopeIndex = selectedIsotopeIndex
-            state.calculator.isotopes = isotopes
+        if let viewModel = self.viewModel {
+            viewModel.selectedIsotopeId = selectedIsotopeId
+            //viewModel.calculator.isotopes = isotopes
         }
     }
 

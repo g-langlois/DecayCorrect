@@ -12,7 +12,18 @@ class IsotopesViewModel {
     
     var isotopes: [Isotope]?
     
+    let defaults = UserDefaults.standard
     
+    var selectedIsotopeId: UUID? {
+        willSet {
+            defaults.set(newValue?.uuidString, forKey: "selectedIsotopeId")
+        }
+    }
+    
+    init() {
+        selectedIsotopeId = UUID(uuidString: (defaults.value(forKey: "selectedIsotopeId") as? String) ?? "")
+        print("View loaded \(selectedIsotopeId)")
+    }
     
     
 }

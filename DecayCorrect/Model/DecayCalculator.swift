@@ -10,9 +10,20 @@ import UIKit
 
 class DecayCalculator {
     
-
-    var isotopes = [Isotope]()
-    var isotope: Isotope?
+    let defaults = UserDefaults.standard
+    let sut = IsotopeStorageManager()
+    
+    var isotope: Isotope? {
+        get {
+            let selectedIsotopeId = UUID(uuidString: (defaults.value(forKey: "selectedIsotopeId") as? String) ?? "")
+            if selectedIsotopeId != nil {
+                return sut.fetchIsotope(with: selectedIsotopeId!)
+            } else {
+                return nil
+            }
+            
+        }
+    }
     
     var activity0: Double?
     var dateTime0: Date?
@@ -24,10 +35,10 @@ class DecayCalculator {
 
     var delegate: DecayCalculatorDelegate?
     
-   
+    
     
     init() {
-        //TODO
+        
     }
     
     func updateResult() {

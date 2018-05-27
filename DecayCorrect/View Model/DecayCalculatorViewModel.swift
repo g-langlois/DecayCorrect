@@ -21,16 +21,16 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
     
     var delegate: DecayCalculatorViewModelDelegate?
     
-        let defaults = UserDefaults.standard
-    var selectedIsotopeIndex: Int? {
-        willSet {
-            defaults.set(newValue, forKey: "isotopeIndex")
-        }
-    }
+    let defaults = UserDefaults.standard
     
+//    var selectedIsotopeId: UUID? {
+//        willSet {
+//            defaults.set(newValue?.uuidString, forKey: "selectedIsotopeId")
+//        }
+//    }
+//
     init() {
-        
-        selectedIsotopeIndex = defaults.integer(forKey: "isotopeIndex")
+//        selectedIsotopeId = UUID(uuidString: (defaults.value(forKey: "selectedIsotopeId") as? String) ?? "")
         
         isotopeViewModel = DecayTableViewItem(source: .isotope, cellType: .isotopeView)
         activity0ViewModel = DecayTableViewItem(source: .activity0, cellType: .activityView)

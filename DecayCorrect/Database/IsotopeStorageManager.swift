@@ -44,13 +44,15 @@ class IsotopeStorageManager {
     }
     
 
-    func insertIsotope(atomName: String, atomSymbol: String, halfLife: TimeInterval, massNumber: Int, state: String?=nil) -> Isotope? {
+    func insertIsotope(atomName: String, atomSymbol: String, halfLife: TimeInterval, massNumber: Int, isCustom: Bool = false, state: String?=nil) -> Isotope? {
         guard let isotope = NSEntityDescription.insertNewObject(forEntityName: "Isotope", into: backgroundContext) as? Isotope else {return nil}
         isotope.atomName = atomName
         isotope.atomSymbol = atomSymbol
         isotope.massNumber = Int32(massNumber)
         isotope.state = state
         isotope.halfLifeSec = halfLife
+        isotope.custom = isCustom
+        isotope.uniqueId = UUID()
         return isotope
     }
     
@@ -94,6 +96,26 @@ class IsotopeStorageManager {
         }
         return isotopes
     }
+    
+    func fetchIsotope(with id: UUID) -> Isotope? {
+        let requestIsotope: NSFetchRequest<Isotope> = Isotope.fetchRequest()
+        
+        let query = NSPredicate(format: "%K == %@", "uniqueId", id as CVarArg)
+        
+        requestIsotope.predicate = query
+        
+        do {
+            let isotopes: [Isotope] = try backgroundContext.fetch(requestIsotope)
+            return isotopes[0]
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+        return nil
+    }
+    
+
+    // Helpers
     
     func splitMassState(from string: String) -> (massNumber: Int, state: String?) {
         var massNumberString:String = ""

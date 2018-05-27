@@ -39,6 +39,8 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     
     let calculatorViewModel = DecayCalculatorViewModel()
     
+    let sut = IsotopeStorageManager()
+    
     // MARK: - View life cycle
     
     override func viewDidLoad() {
@@ -50,15 +52,14 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let selectedIsotopeIndex = calculatorViewModel.selectedIsotopeIndex  {
-            if calculatorViewModel.calculator.isotopes.count != 0 {
-                calculatorViewModel.calculator.isotope = calculatorViewModel.calculator.isotopes[selectedIsotopeIndex]
-            }
-            
-        }
+//        if let selectedIsotopeId = calculatorViewModel.selectedIsotopeId {
+////            if calculatorViewModel.calculator.isotopes.count != 0 {
+////                calculatorViewModel.calculator.isotope = sut.fetchIsotope(with: selectedIsotopeId)
+////            }
+//             calculatorViewModel.calculator.isotope = sut.fetchIsotope(with: selectedIsotopeId)
+//        }
         calculatorViewModel.decayCalculatorDataChanged()
         tableView.reloadData()
-        print("ViewWillapppear")
     }
     
     override func didReceiveMemoryWarning() {
@@ -142,7 +143,6 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 tableView.reloadData()
                             }
-                            
                         }
                     }
                 
@@ -338,7 +338,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? IsotopeSelectionTableViewController {
-            destination.state = calculatorViewModel
+            // destination.state = calculatorViewModel
         }
     }
     
