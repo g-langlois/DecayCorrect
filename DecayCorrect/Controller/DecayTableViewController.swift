@@ -51,13 +51,6 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-//        if let selectedIsotopeId = calculatorViewModel.selectedIsotopeId {
-////            if calculatorViewModel.calculator.isotopes.count != 0 {
-////                calculatorViewModel.calculator.isotope = sut.fetchIsotope(with: selectedIsotopeId)
-////            }
-//             calculatorViewModel.calculator.isotope = sut.fetchIsotope(with: selectedIsotopeId)
-//        }
         calculatorViewModel.decayCalculatorDataChanged()
         tableView.reloadData()
     }
@@ -332,14 +325,14 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     }
     
     
-    
+    @IBAction func unwindFromIsotopeSelection(segue: UIStoryboardSegue) {
+
+    }
+
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? IsotopeSelectionTableViewController {
-            // destination.state = calculatorViewModel
-        }
     }
     
     

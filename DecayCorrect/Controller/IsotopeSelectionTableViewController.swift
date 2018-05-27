@@ -23,6 +23,7 @@ class IsotopeSelectionTableViewController: UITableViewController {
         _ = sut.populateIsotopes(jsonUrl: url!)
         sut.save()
         
+        
         let fetchedIsotopes = sut.fetchAllIsotopes()
         for isotope in fetchedIsotopes {
             isotopes.append(isotope)
@@ -74,17 +75,19 @@ class IsotopeSelectionTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIsotopeId = isotopes[indexPath.row].uniqueId
-        print(isotopes[indexPath.row].uniqueId)
         tableView.reloadData()
         updateState()
+        performSegue(withIdentifier: "unwindSegue", sender: self)
+        
     }
     
     func updateState() {
         if let viewModel = self.viewModel {
             viewModel.selectedIsotopeId = selectedIsotopeId
-            //viewModel.calculator.isotopes = isotopes
         }
     }
+    
+
 
     /*
     // Override to support conditional editing of the table view.

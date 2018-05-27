@@ -22,7 +22,6 @@ class IsotopesViewModel {
     
     init() {
         selectedIsotopeId = UUID(uuidString: (defaults.value(forKey: "selectedIsotopeId") as? String) ?? "")
-        print("View loaded \(selectedIsotopeId)")
     }
     
     
