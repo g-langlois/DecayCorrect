@@ -12,6 +12,7 @@ import UIKit
 
 class IsotopeStorageManager {
     
+    let defaults = UserDefaults.standard
     let persistentContainer: NSPersistentContainer!
     
     static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -66,6 +67,11 @@ class IsotopeStorageManager {
         }
     }
     
+    func isJsonInitiated() -> Bool {
+        return defaults.bool(forKey: "jsonInitiated")
+         
+    }
+    
     func populateIsotopes(jsonUrl: URL) -> [Isotope] {
         var isotopes = [Isotope]()
         var json: [String: Any]?
@@ -93,6 +99,7 @@ class IsotopeStorageManager {
                     }   
                 }
             }
+            defaults.set(true, forKey: "jsonInitiated")
         }
         return isotopes
     }

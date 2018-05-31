@@ -18,11 +18,12 @@ class IsotopeSelectionTableViewController: UITableViewController {
         
         viewModel = IsotopesViewModel()
         sut = IsotopeStorageManager()
-        let url = Bundle.main.url(forResource: "nuclides", withExtension: "json")
         
-        _ = sut.populateIsotopes(jsonUrl: url!)
-        sut.save()
-        
+        if !sut.isJsonInitiated() {
+            let url = Bundle.main.url(forResource: "nuclides", withExtension: "json")
+            _ = sut.populateIsotopes(jsonUrl: url!)
+            sut.save()
+        }
         
         let fetchedIsotopes = sut.fetchAllIsotopes()
         for isotope in fetchedIsotopes {
