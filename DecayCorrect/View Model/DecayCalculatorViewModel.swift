@@ -17,21 +17,11 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
     let activity1ViewModel: DecayTableViewItem
     let date1ViewModel: DecayTableViewItem
     let date0ViewModel: DecayTableViewItem
-    
-    
+
     var delegate: DecayCalculatorViewModelDelegate?
-    
     let defaults = UserDefaults.standard
-    
-//    var selectedIsotopeId: UUID? {
-//        willSet {
-//            defaults.set(newValue?.uuidString, forKey: "selectedIsotopeId")
-//        }
-//    }
-//
+  
     init() {
-//        selectedIsotopeId = UUID(uuidString: (defaults.value(forKey: "selectedIsotopeId") as? String) ?? "")
-        
         isotopeViewModel = DecayTableViewItem(source: .isotope, cellType: .isotopeView)
         activity0ViewModel = DecayTableViewItem(source: .activity0, cellType: .activityView)
         activity1ViewModel = DecayTableViewItem(source: .activity1, cellType: .activityView)
@@ -53,7 +43,6 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
             tag = date1ViewModel.source.tag
         default:
             break
-            
         }
         return tag
     }
@@ -64,7 +53,17 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         if date != nil {
             return formatDate(date!)
         } else {
-        return ""
+        return "Select date"
+        }
+    }
+    
+    func isDateAvailableForSource(_ source: DecayCalculatorInput) -> Bool {
+        var date: Date?
+        date = dateForSource(source)
+        if date != nil {
+            return true
+        } else {
+            return false
         }
     }
     
@@ -131,7 +130,47 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         default:
             activityUnits = nil
         }
-        return activityUnits?.rawValue ?? ""
+        return activityUnits?.rawValue ?? "Units"
+    }
+    
+    func isUnitsAvailableForSource(_ source: DecayCalculatorInput) -> Bool {
+        let activityUnits: RadioactivityUnit?
+        switch source {
+        case .activity0:
+            activityUnits = calculator.activity0Units
+        case .activity1:
+            activityUnits = calculator.activity1Units
+        default:
+            activityUnits = nil
+        }
+        if activityUnits == nil {
+            return false
+        } else {
+            return true
+        }
+    
+    }
+    
+    func isActivityAvailableForSource(_ source: DecayCalculatorInput) -> Bool {
+        let activity: Double?
+        switch source {
+        case .activity0:
+            activity = calculator.activity0
+        case .activity1:
+            activity = calculator.activity1
+        default:
+            activity = nil
+        }
+        if activity == nil {
+            return false
+        } else {
+            return true
+        }
+        
+    }
+    
+    func isotopeSelectionChanged() {
+        calculator.updateResult()
     }
     
     func decayCalculatorDataChanged() {
@@ -157,7 +196,6 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
             else {return "Select isotope"}
         }
     }
-    
 }
 
 

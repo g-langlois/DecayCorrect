@@ -16,23 +16,18 @@ class ParameterTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
-        parameterLabel.textColor =  UIColor.black
-        parameterValueTextField.textColor =  UIColor.black
-        unitsLabel.textColor = UIColor.black
     }
 
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
     @IBOutlet weak var parameterLabel: UILabel!
     
     @IBOutlet weak var parameterValueTextField: UITextField!
 
     @IBOutlet weak var unitsLabel: UILabel!
     
-
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        let color = self.unitsLabel.backgroundColor
+        super.setSelected(selected, animated: animated)
+        self.unitsLabel.backgroundColor = color
+    }
 }

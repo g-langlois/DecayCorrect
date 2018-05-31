@@ -107,6 +107,18 @@ enum DecayCalculatorInput: Int {
        return self.rawValue
     }
     
+    var id: Int {
+        switch self {
+        case .activity0, .date0:
+            return 0
+        case .activity1, .date1:
+            return 1
+
+        default:
+        return 0
+        }
+    }
+    
 }
 
 protocol DecayCalculatorDelegate {
