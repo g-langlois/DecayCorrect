@@ -35,6 +35,8 @@ class IsotopeStorageManager {
     
     func fetchAllIsotopes() -> [Isotope] {
         let request: NSFetchRequest<Isotope> = Isotope.fetchRequest()
+        let sort = NSSortDescriptor(key: #keyPath(Isotope.massNumber), ascending: true)
+        request.sortDescriptors = [sort]
         let results = try? persistentContainer.viewContext.fetch(request)
         return results ?? [Isotope]()
     }
