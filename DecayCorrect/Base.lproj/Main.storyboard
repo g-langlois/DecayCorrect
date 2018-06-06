@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4fL-fy-seR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4fL-fy-seR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +28,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="veH-dN-z6D">
-                                            <rect key="frame" x="0.0" y="-33.5" width="375" height="216"/>
+                                            <rect key="frame" x="0.0" y="-33.5" width="375" height="216.5"/>
                                             <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="375" id="e6e-Oe-xTO"/>
@@ -86,7 +84,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lir-zc-pql">
-                                            <rect key="frame" x="169" y="10" width="36" height="30"/>
+                                            <rect key="frame" x="169.5" y="10" width="36" height="30"/>
                                             <state key="normal" title="Clear">
                                                 <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
@@ -246,14 +244,22 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Isotope" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSJ-PZ-Ly4">
-                                            <rect key="frame" x="270" y="11" width="57" height="21"/>
+                                            <rect key="frame" x="270" y="11" width="57" height="21.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bqt-Ki-Qn2">
+                                            <rect key="frame" x="16" y="12" width="45" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Bqt-Ki-Qn2" firstAttribute="leading" secondItem="x3i-df-SfM" secondAttribute="leadingMargin" id="3yZ-PF-x1P"/>
                                         <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="centerY" secondItem="x3i-df-SfM" secondAttribute="centerY" id="5sj-A8-xy2"/>
+                                        <constraint firstItem="Bqt-Ki-Qn2" firstAttribute="centerY" secondItem="DSJ-PZ-Ly4" secondAttribute="centerY" id="7X8-yC-drt"/>
                                         <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="leading" relation="lessThanOrEqual" secondItem="x3i-df-SfM" secondAttribute="leading" constant="270" id="Q4y-Ol-ydK"/>
                                         <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="top" secondItem="x3i-df-SfM" secondAttribute="topMargin" id="oka-Pg-sET"/>
                                     </constraints>
@@ -262,6 +268,7 @@
                                     <constraint firstAttribute="trailing" secondItem="DSJ-PZ-Ly4" secondAttribute="trailing" constant="48" id="dJY-hl-mrd"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="isotopeId" destination="Bqt-Ki-Qn2" id="4jg-BH-faI"/>
                                     <outlet property="isotopeName" destination="DSJ-PZ-Ly4" id="1rb-JG-uiu"/>
                                 </connections>
                             </tableViewCell>

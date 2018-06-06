@@ -63,7 +63,8 @@ class IsotopeSelectionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "isotopeCell", for: indexPath) as! IsotopeSelectionTableViewCell
         let row = indexPath.row
-        cell.isotopeName.text = ("\(isotopes[row].atomSymbol ?? "")\(isotopes[row].massNumber)  Half-life: \(isotopes[row].halfLifeSec) s")
+        cell.isotopeId.text = ("\(isotopes[row].atomSymbol ?? "")-\(isotopes[row].massNumber)\(isotopes[row].state ?? "") ")
+        cell.isotopeName.text = ("t1/2= \(isotopes[row].halfLifeSec) s")
         if selectedIsotopeId != nil && selectedIsotopeId == isotopes[row].uniqueId {
             cell.accessoryType = .checkmark
         }
