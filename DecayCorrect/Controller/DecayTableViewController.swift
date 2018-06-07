@@ -129,6 +129,8 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         cell.unitsLabel.text = calculatorViewModel.formatedUnits(forSource: source)
         if !calculatorViewModel.isUnitsAvailableForSource(source) {
             cell.unitsLabel.textColor = UIColor.lightGray
+        } else if let pickerRow = pickerIndexPath?.row, pickerRow == correctedIndexPath(from: indexPath).row + 1{
+            cell.unitsLabel?.textColor = UIColor.red
         }
         else {
             cell.unitsLabel.textColor = UIColor.black
@@ -298,6 +300,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             
             
         }
+        tableView.reloadRows(at: [indexPath], with: .none)
         // To get third section appear:
         //resultAvailable = true
         // let indexSet = IndexSet.init()
