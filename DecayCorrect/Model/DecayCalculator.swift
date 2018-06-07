@@ -32,6 +32,7 @@ class DecayCalculator {
     var dateTime1: Date?
     var activity1Units: RadioactivityUnit?
     var targetParameter: DecayCalculatorInput?
+    var defaultUnits = RadioactivityUnit.mbq
 
     var delegate: DecayCalculatorDelegate?
     
@@ -56,6 +57,9 @@ class DecayCalculator {
         }
         
         if targetParameter == .activity1, let activity0 = activity0, let dateTime0 = dateTime0, let dateTime1 = dateTime1 {
+            if activity0Units == nil {
+                activity0Units = defaultUnits
+            }
             let initialRadioactivity = Radioactivity(time: dateTime0, countRate: activity0, units: activity0Units)
             let radioactiveSubstance = RadioactiveSubstance(isotope: isotope1, radioactivity: initialRadioactivity)
             let activity = radioactiveSubstance.correct(to: dateTime1, with: activity1Units)
