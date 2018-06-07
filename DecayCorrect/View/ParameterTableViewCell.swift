@@ -15,7 +15,13 @@ class ParameterTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        let toolbarDone = UIToolbar.init()
+        toolbarDone.sizeToFit()
+        let barBtnDone = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.done,
+                                              target: self, action: #selector(ParameterTableViewCell.endEditing(_:)))
         
+        toolbarDone.items = [barBtnDone]
+        parameterValueTextField.inputAccessoryView = toolbarDone
     }
 
 

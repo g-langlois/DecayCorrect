@@ -134,12 +134,6 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             cell.unitsLabel.textColor = UIColor.black
         }
         
-        if !calculatorViewModel.isActivityAvailableForSource(source) {
-            cell.parameterValueTextField.textColor = UIColor.lightGray
-        }
-        else {
-            cell.parameterValueTextField.textColor = UIColor.black
-        }
         return cell
     }
     
@@ -367,6 +361,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     // Hides soft keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
+        hidePickers()
         return false
     }
     
@@ -376,6 +371,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             return
             
         }
+        hidePickers()
         switch textField.tag {
         case calculatorViewModel.activity0ViewModel.source.tag:
             calculatorViewModel.calculator.activity0 = activityValue
