@@ -18,7 +18,7 @@ import UIKit
  Clear button clears everything except isotope and units
  
  */
-class DecayTableViewController: UITableViewController, DecayCalculatorViewModelDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class DecayTableViewController: UITableViewController, DecayCalculatorViewModelDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, ClearTableDelegate {
     
     // MARK: - Properties
     
@@ -35,7 +35,6 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     var dateTime0IndexPath = IndexPath(row: 1, section: 1)
     var activity1IndexPath = IndexPath(row: 0, section: 2)
     var dateTime1IndexPath = IndexPath(row: 2, section: 1)
-    var clearButtonIndexPath = IndexPath(row: 1, section: 2)
     
     let calculatorViewModel = DecayCalculatorViewModel()
     
@@ -47,6 +46,8 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         super.viewDidLoad()
         calculatorViewModel.delegate = self
         initUnitPickerData()
+        let clearButton = UIBarButtonItem(title: "Reset", style: UIBarButtonItemStyle.plain, target: self, action: #selector(clearTable))
+        self.navigationItem.rightBarButtonItems = [clearButton]
         
     }
     
@@ -93,10 +94,10 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             }
         case 2:
             if pickerIndexPath != nil && pickerIndexPath!.section == 2 {
-                numberOfRows = 3
+                numberOfRows = 2
             }
             else {
-                numberOfRows = 2
+                numberOfRows = 1
             }
         default:
             break
@@ -196,10 +197,6 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         
         
         switch indexPath {
-        case correctedIndexPath(from: clearButtonIndexPath):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "clear", for: indexPath) as! ClearTableViewCell
-            cell.clearButtonDelegate = self
-            return cell
         case correctedIndexPath(from: IndexPath(row: 0, section: 0)):
             let cell = tableView.dequeueReusableCell(withIdentifier: "isotope", for: indexPath)
             cell.textLabel?.text = "Isotope"
@@ -444,21 +441,17 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         return pickerData[row].rawValue
     }
     
-
-    
-}
-
-
-extension DecayTableViewController: ClearTableDelegate {
-    func clearTable() {
+    @objc func clearTable() {
         pickerType = nil
         pickerIndexPath = nil
         activePicker = nil
         datePickerDate = nil
         calculatorViewModel.resetModel()
         tableView.reloadData()
-    
+        
     }
-    
+
     
 }
+
+
