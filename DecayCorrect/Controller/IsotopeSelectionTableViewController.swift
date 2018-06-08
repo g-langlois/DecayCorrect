@@ -31,7 +31,12 @@ class IsotopeSelectionTableViewController: UITableViewController {
         }
         tableView.reloadData()
         
-        //self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        
+        
+        self.navigationItem.rightBarButtonItems = [self.editButtonItem]
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -107,7 +112,7 @@ class IsotopeSelectionTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 

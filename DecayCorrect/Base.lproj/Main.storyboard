@@ -213,7 +213,7 @@
                             <outletCollection property="gestureRecognizers" destination="S8P-ai-pxv" appends="YES" id="n1m-iL-6g1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Decay correction" id="oRZ-6i-m2Y"/>
+                    <navigationItem key="navigationItem" title="Decay correction" leftItemsSupplementBackButton="YES" id="oRZ-6i-m2Y"/>
                     <connections>
                         <segue destination="u1O-2P-FsP" kind="show" identifier="selectIsotope" id="tA8-xH-2wd"/>
                     </connections>
