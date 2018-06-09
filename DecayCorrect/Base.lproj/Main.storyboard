@@ -306,10 +306,10 @@
             </objects>
             <point key="canvasLocation" x="2772" y="-144"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Isotope Table View Controller-->
         <scene sceneID="lnN-Ls-PAv">
             <objects>
-                <tableViewController id="lLx-SE-FT9" sceneMemberID="viewController">
+                <tableViewController id="lLx-SE-FT9" customClass="IsotopeTableViewController" customModule="DecayCorrect" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Ve-un-ZKV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -329,8 +329,12 @@
                             <outlet property="delegate" destination="lLx-SE-FT9" id="JQ4-bL-lbl"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="Rwn-dY-l15" kind="unwind" identifier="unwind" unwindAction="unwindFromIsotopeEditWithSegue:" id="cbG-79-dle"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Sb-rX-LTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Rwn-dY-l15" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3680" y="-146"/>
         </scene>

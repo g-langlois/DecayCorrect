@@ -18,6 +18,7 @@ class IsotopeSelectionTableViewController: UITableViewController {
     var editButton: UIBarButtonItem?
     var doneButton: UIBarButtonItem?
     
+    var editingIsotope: Isotope?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +100,7 @@ class IsotopeSelectionTableViewController: UITableViewController {
         tableView.reloadData()
         updateState()
         if isEditing {
+            editingIsotope = isotopes[indexPath.row]
             performSegue(withIdentifier: "editIsotopeSegue", sender: self)
         } else {
         
@@ -130,7 +132,7 @@ class IsotopeSelectionTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .none
+        return .insert
     }
     
     
@@ -156,14 +158,20 @@ class IsotopeSelectionTableViewController: UITableViewController {
 
 
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        guard let isotopeViewController = segue.destination as? IsotopeTableViewController else {return}
+        
+        isotopeViewController.isotope = editingIsotope
+        
     }
-    */
+    
+    @IBAction func unwindFromIsotopeEdit(segue: UIStoryboardSegue) {
+        
+        // TODO
+    }
 
 }

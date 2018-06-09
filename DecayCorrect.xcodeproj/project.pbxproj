@@ -71,6 +71,9 @@
 		46BE6B562039340400B07831 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BE6B542039340400B07831 /* LaunchScreen.storyboard */; };
 		46BE6B612039340400B07831 /* DecayCorrectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE6B602039340400B07831 /* DecayCorrectTests.swift */; };
 		46BE6B6C2039340400B07831 /* DecayCorrectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE6B6B2039340400B07831 /* DecayCorrectUITests.swift */; };
+		46DCD8C620CC413400F2539A /* IsotopeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DCD8C520CC413400F2539A /* IsotopeTableViewController.swift */; };
+		46DCD8C720CC413400F2539A /* IsotopeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DCD8C520CC413400F2539A /* IsotopeTableViewController.swift */; };
+		46DCD8C820CC413400F2539A /* IsotopeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DCD8C520CC413400F2539A /* IsotopeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +126,7 @@
 		46BE6B672039340400B07831 /* DecayCorrectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DecayCorrectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46BE6B6B2039340400B07831 /* DecayCorrectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecayCorrectUITests.swift; sourceTree = "<group>"; };
 		46BE6B6D2039340400B07831 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46DCD8C520CC413400F2539A /* IsotopeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsotopeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +192,7 @@
 			children = (
 				466F777D2039562D00DF7702 /* DecayTableViewController.swift */,
 				46967D5C209ADEC40094968D /* IsotopeSelectionTableViewController.swift */,
+				46DCD8C520CC413400F2539A /* IsotopeTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 			files = (
 				46BE6B492039340400B07831 /* AppDelegate.swift in Sources */,
 				46967D59209ADE6E0094968D /* IsotopeSelectionTableViewCell.swift in Sources */,
+				46DCD8C620CC413400F2539A /* IsotopeTableViewController.swift in Sources */,
 				464A375220BA067400224730 /* Isotope+CoreDataProperties.swift in Sources */,
 				466DB58820B6720900C2609D /* DecayCorrect.xcdatamodeld in Sources */,
 				46203346208AD14D0043E2CF /* UnitsPickerTableViewCell.swift in Sources */,
@@ -432,6 +438,7 @@
 				4661A68B204BE10200F6D86F /* ParameterTableViewCell.swift in Sources */,
 				464DB10120AFF87A00EBE1BD /* ClearTableViewCell.swift in Sources */,
 				463EF94020B90D2700740BFC /* IsotopesViewModel.swift in Sources */,
+				46DCD8C720CC413400F2539A /* IsotopeTableViewController.swift in Sources */,
 				4637AE7620BA240400062C7A /* Isotope+CoreDataClass.swift in Sources */,
 				466DB57C20B660D400C2609D /* IsotopeStorageManager.swift in Sources */,
 				46998FE1209EDC1A00CE2304 /* DecayTableViewItem.swift in Sources */,
@@ -459,6 +466,7 @@
 				4661A68C204BE10200F6D86F /* ParameterTableViewCell.swift in Sources */,
 				464DB10220AFF87A00EBE1BD /* ClearTableViewCell.swift in Sources */,
 				463EF94120B90D2700740BFC /* IsotopesViewModel.swift in Sources */,
+				46DCD8C820CC413400F2539A /* IsotopeTableViewController.swift in Sources */,
 				4637AE7720BA240500062C7A /* Isotope+CoreDataClass.swift in Sources */,
 				466DB57D20B660D400C2609D /* IsotopeStorageManager.swift in Sources */,
 				46998FE2209EDC1A00CE2304 /* DecayTableViewItem.swift in Sources */,
