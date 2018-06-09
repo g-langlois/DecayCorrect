@@ -13,8 +13,16 @@ class IsotopeSelectionTableViewController: UITableViewController {
     var viewModel: IsotopesViewModel?
     var sut: IsotopeStorageManager!
     
+    
+    var addButton: UIBarButtonItem?
+    var editButton: UIBarButtonItem?
+    var doneButton: UIBarButtonItem?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.allowsSelectionDuringEditing = true
         
         viewModel = IsotopesViewModel()
         sut = IsotopeStorageManager()
@@ -31,10 +39,11 @@ class IsotopeSelectionTableViewController: UITableViewController {
         }
         tableView.reloadData()
         
+        addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(IsotopeSelectionTableViewController.addIsotope))
+        editButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.edit, target: self, action: #selector(editIsotopes))
+        doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(commitEdits))
         
-        
-        
-        self.navigationItem.rightBarButtonItems = [self.editButtonItem]
+        self.navigationItem.rightBarButtonItems = [editButton!, addButton!]
         
         
     }
@@ -80,12 +89,21 @@ class IsotopeSelectionTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView,
+                            shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIsotopeId = isotopes[indexPath.row].uniqueId
         tableView.reloadData()
         updateState()
-        performSegue(withIdentifier: "unwindSegue", sender: self)
+        if isEditing {
+            performSegue(withIdentifier: "editIsotopeSegue", sender: self)
+        } else {
         
+        performSegue(withIdentifier: "unwindSegue", sender: self)
+        }
     }
     
     func updateState() {
@@ -94,42 +112,49 @@ class IsotopeSelectionTableViewController: UITableViewController {
         }
     }
     
-
-
-    /*
-    // Override to support conditional editing of the table view.
+    @objc func addIsotope() {
+        print("Add isotope")
+        performSegue(withIdentifier: "editIsotopeSegue", sender: self)
+    }
+    
+    @objc func editIsotopes() {
+        self.navigationItem.rightBarButtonItems = [doneButton!]
+        setEditing(true, animated: true)
+        
+    }
+    
+    @objc func commitEdits() {
+        self.navigationItem.rightBarButtonItems = [editButton!, addButton!]
+        setEditing(false, animated:true)
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+    
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
+    
+    
+
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
+            
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
-    */
+ 
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation

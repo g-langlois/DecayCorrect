@@ -236,7 +236,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="isotopeCell" editingAccessoryType="detailButton" id="YlA-pR-CYl" customClass="IsotopeSelectionTableViewCell" customModule="DecayCorrect" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="isotopeCell" editingAccessoryType="disclosureIndicator" focusStyle="custom" id="YlA-pR-CYl" customClass="IsotopeSelectionTableViewCell" customModule="DecayCorrect" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YlA-pR-CYl" id="x3i-df-SfM">
@@ -267,10 +267,28 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="DSJ-PZ-Ly4" secondAttribute="trailing" constant="48" id="dJY-hl-mrd"/>
                                 </constraints>
+                                <inset key="separatorInset" minX="11" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="isotopeId" destination="Bqt-Ki-Qn2" id="4jg-BH-faI"/>
                                     <outlet property="isotopeName" destination="DSJ-PZ-Ly4" id="1rb-JG-uiu"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addIsotope" editingAccessoryType="detailButton" textLabel="eRi-4v-4MY" style="IBUITableViewCellStyleDefault" id="9s2-bb-IHd">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9s2-bb-IHd" id="rSL-yk-nhA">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Add" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eRi-4v-4MY">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -280,12 +298,41 @@
                     </tableView>
                     <connections>
                         <segue destination="25Z-J8-fkE" kind="unwind" identifier="unwindSegue" unwindAction="unwindFromIsotopeSelectionWithSegue:" id="Rz1-OT-Bze"/>
+                        <segue destination="lLx-SE-FT9" kind="show" identifier="editIsotopeSegue" id="hsz-hb-lX3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AyT-Mh-f9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="25Z-J8-fkE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2772" y="-144"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="lnN-Ls-PAv">
+            <objects>
+                <tableViewController id="lLx-SE-FT9" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Ve-un-ZKV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="NNB-aK-8aC">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NNB-aK-8aC" id="D3i-0x-SBF">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lLx-SE-FT9" id="TfN-wC-JL6"/>
+                            <outlet property="delegate" destination="lLx-SE-FT9" id="JQ4-bL-lbl"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Sb-rX-LTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3680" y="-146"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="XxB-j2-UhY">
