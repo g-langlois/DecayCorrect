@@ -47,6 +47,11 @@ class IsotopeStorageManager {
     }
     
 
+    func insertIsotope() -> Isotope? {
+        guard let isotope = NSEntityDescription.insertNewObject(forEntityName: "Isotope", into: backgroundContext) as? Isotope else {return nil}
+        return isotope
+    }
+    
     func insertIsotope(atomName: String, atomSymbol: String, halfLife: TimeInterval, massNumber: Int, isCustom: Bool = false, state: String?=nil) -> Isotope? {
         guard let isotope = NSEntityDescription.insertNewObject(forEntityName: "Isotope", into: backgroundContext) as? Isotope else {return nil}
         isotope.atomName = atomName

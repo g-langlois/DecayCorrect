@@ -73,6 +73,8 @@ class IsotopeSelectionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
                 return isotopes.count
     }
+    
+
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -165,7 +167,7 @@ class IsotopeSelectionTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let isotopeViewController = segue.destination as? IsotopeTableViewController else {return}
         
-        isotopeViewController.isotope = editingIsotope
+        isotopeViewController.isotopeViewModel = IsotopeViewModel(editingIsotope)
         
     }
     

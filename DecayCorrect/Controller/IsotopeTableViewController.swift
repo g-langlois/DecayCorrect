@@ -10,12 +10,13 @@ import UIKit
 
 class IsotopeTableViewController: UITableViewController {
 
-    var isotope: Isotope?
-    
-    
+
     var saveButton: UIBarButtonItem?
     var cancelButton: UIBarButtonItem?
     
+    var parameterList = [IsotopeParameter]()
+    
+    var isotopeViewModel: IsotopeViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,29 +29,44 @@ class IsotopeTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = cancelButton!
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadParameterList()
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return parameterList.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "parameter", for: indexPath) as! IsotopeTableViewCell
+        guard let isotopeViewModel = isotopeViewModel else {return cell}
+        cell.parameterTitleLabel.text = isotopeViewModel.titleForParameter(parameterList[indexPath.row])
+        cell.parameterValueTextField.text = isotopeViewModel.valueForParameter(parameterList[indexPath.row])
 
-        // Configure the cell...
-
+        
+            cell.parameterValueTextField.isEnabled = isotopeViewModel.isEditable(parameterList[indexPath.row])
+        
         return cell
     }
-    */
-
+ 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return isotopeViewModel?.header()
+    }
+    
+    override func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
+        return isotopeViewModel?.isEditable(parameterList[indexPath.row]) ?? false
+        
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -93,6 +109,13 @@ class IsotopeTableViewController: UITableViewController {
     
     @objc func cancelEdits() {
         performSegue(withIdentifier: "unwind", sender: self)
+    }
+    
+    func loadParameterList() {
+        parameterList.append(.atomName)
+        parameterList.append(.massNumber)
+        parameterList.append(.halfLifeSec)
+        
     }
 
     /*

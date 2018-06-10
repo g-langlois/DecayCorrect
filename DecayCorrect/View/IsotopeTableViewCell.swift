@@ -1,17 +1,15 @@
 //
-//  ClearTableViewCell.swift
+//  IsotopeTableViewCell.swift
 //  DecayCorrect
 //
-//  Created by Guillaume Langlois on 2018-05-18.
+//  Created by Guillaume Langlois on 2018-06-09.
 //  Copyright © 2018 Guillaume Langlois. All rights reserved.
 //
 
 import UIKit
 
-class ClearTableViewCell: UITableViewCell {
+class IsotopeTableViewCell: UITableViewCell {
 
-    var clearButtonDelegate:ClearTableDelegate?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,14 +20,7 @@ class ClearTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    @IBAction func clear(_ sender: UIButton) {
-        if clearButtonDelegate != nil {
-            clearButtonDelegate!.clearTable()
-        }
-    }
-}
-
-
-protocol ClearTableDelegate {
-    func clearTable()
+    @IBOutlet weak var parameterTitleLabel: UILabel!
+    
+    @IBOutlet weak var parameterValueTextField: UITextField!
 }

@@ -18,7 +18,7 @@ import UIKit
  Clear button clears everything except isotope and units
  
  */
-class DecayTableViewController: UITableViewController, DecayCalculatorViewModelDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, ClearTableDelegate {
+class DecayTableViewController: UITableViewController, DecayCalculatorViewModelDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     // MARK: - Properties
     
