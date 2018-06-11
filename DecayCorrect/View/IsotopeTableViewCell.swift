@@ -14,6 +14,8 @@ class IsotopeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    var delegate: IsotopeTableViewCellDelegate? = nil
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -23,4 +25,14 @@ class IsotopeTableViewCell: UITableViewCell {
     @IBOutlet weak var parameterTitleLabel: UILabel!
     
     @IBOutlet weak var parameterValueTextField: UITextField!
+    @IBAction func editingDidEnd(_ sender: UITextField) {
+        if delegate != nil {
+            delegate!.editingDidEnd(sender.text!)
+        }
+    }
 }
+
+protocol IsotopeTableViewCellDelegate {
+    func editingDidEnd(_ value: String)
+}
+

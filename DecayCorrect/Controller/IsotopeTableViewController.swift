@@ -8,20 +8,19 @@
 
 import UIKit
 
-class IsotopeTableViewController: UITableViewController {
-
-
+class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
+    
+    
     var saveButton: UIBarButtonItem?
     var cancelButton: UIBarButtonItem?
     
-    var parameterList = [IsotopeParameter]()
-    
+    var parameterList = [[IsotopeParameter]]()
+    var cells = [[IsotopeTableViewCell]]()
+
     var isotopeViewModel: IsotopeViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveIsotope))
         cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(cancelEdits))
         
@@ -31,76 +30,41 @@ class IsotopeTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        cells.append([])
+        cells.append([])
+        for _ in 0...2 {
+            cells[0].append(tableView.dequeueReusableCell(withIdentifier: "parameter") as! IsotopeTableViewCell)
+        }
         loadParameterList()
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return parameterList.count
+        return parameterList[section].count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "parameter", for: indexPath) as! IsotopeTableViewCell
+        let cell = cells[indexPath.section][indexPath.row]
         guard let isotopeViewModel = isotopeViewModel else {return cell}
-        cell.parameterTitleLabel.text = isotopeViewModel.titleForParameter(parameterList[indexPath.row])
-        cell.parameterValueTextField.text = isotopeViewModel.valueForParameter(parameterList[indexPath.row])
-
-        
-            cell.parameterValueTextField.isEnabled = isotopeViewModel.isEditable(parameterList[indexPath.row])
-        
+        cell.parameterTitleLabel.text = isotopeViewModel.titleForParameter(parameterList[indexPath.section][indexPath.row])
+        cell.parameterValueTextField.text = isotopeViewModel.valueForParameter(parameterList[indexPath.section][indexPath.row])
+        cell.parameterValueTextField.isEnabled = isotopeViewModel.isEditable(parameterList[indexPath.section][indexPath.row])
+        if !isotopeViewModel.isEditable(parameterList[indexPath.section][indexPath.row]) {
+        }
+    
         return cell
     }
- 
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return isotopeViewModel?.header()
     }
     
-    override func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
-        return isotopeViewModel?.isEditable(parameterList[indexPath.row]) ?? false
-        
-    }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
     
     @objc func saveIsotope() {
     
@@ -112,20 +76,29 @@ class IsotopeTableViewController: UITableViewController {
     }
     
     func loadParameterList() {
-        parameterList.append(.atomName)
-        parameterList.append(.massNumber)
-        parameterList.append(.halfLifeSec)
+        parameterList.append([])
+        parameterList.append([])
+        parameterList[0].append(.atomName)
+        parameterList[0].append(.massNumber)
+        parameterList[0].append(.halfLifeSec)
         
     }
+    
+     // MARK: - Navigation
+    
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // TODO
+     }
+ 
+    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+class IsotopeTableViewCellValue: IsotopeTableViewCellDelegate {
+    var value = ""
+    
+    func editingDidEnd(_ value: String) {
+        self.value = value
     }
-    */
-
+    
+    
 }

@@ -46,7 +46,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         super.viewDidLoad()
         calculatorViewModel.delegate = self
         initUnitPickerData()
-        let clearButton = UIBarButtonItem(title: "Reset", style: UIBarButtonItemStyle.plain, target: self, action: #selector(clearTable))
+        let clearButton = UIBarButtonItem(title: "Clear", style: UIBarButtonItemStyle.plain, target: self, action: #selector(clearTable))
         self.navigationItem.rightBarButtonItems = [clearButton]
         
     }
@@ -109,7 +109,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return ""
+            return "Isotope"
         case 1:
             return "Inputs"
         case 2:
@@ -199,8 +199,9 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         switch indexPath {
         case correctedIndexPath(from: IndexPath(row: 0, section: 0)):
             let cell = tableView.dequeueReusableCell(withIdentifier: "isotope", for: indexPath)
-            cell.textLabel?.text = "Isotope"
-            cell.detailTextLabel?.text = calculatorViewModel.isotopeShortName
+            cell.textLabel?.text = calculatorViewModel.isotopeShortName
+            cell.detailTextLabel?.text = "t1/2 = \(calculatorViewModel.halfLifeSec) s"
+            cell.detailTextLabel?.textColor = UIColor.gray
             return cell
         case correctedIndexPath(from: dateTime0IndexPath):
             return dequeueDateCell(tableView, indexPath, source: .date0)
@@ -384,7 +385,16 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string))
+        if CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string)) {
+            return true
+        } else if textField.text!.contains(".") {
+            return false
+        } else if CharacterSet(charactersIn: ".").isSuperset(of:  CharacterSet(charactersIn: string)) {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
     // MARK: - Date picker delegates

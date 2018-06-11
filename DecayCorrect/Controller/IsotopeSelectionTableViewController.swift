@@ -82,6 +82,7 @@ class IsotopeSelectionTableViewController: UITableViewController {
         let row = indexPath.row
         cell.isotopeId.text = ("\(isotopes[row].atomSymbol ?? "")-\(isotopes[row].massNumber)\(isotopes[row].state ?? "") ")
         cell.isotopeName.text = ("t1/2= \(isotopes[row].halfLifeSec) s")
+        cell.isotopeName.textColor = UIColor.gray
         if selectedIsotopeId != nil && selectedIsotopeId == isotopes[row].uniqueId {
             cell.accessoryType = .checkmark
         }
@@ -98,15 +99,14 @@ class IsotopeSelectionTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIsotopeId = isotopes[indexPath.row].uniqueId
-        tableView.reloadData()
-        updateState()
         if isEditing {
             editingIsotope = isotopes[indexPath.row]
             performSegue(withIdentifier: "editIsotopeSegue", sender: self)
         } else {
-        
-        performSegue(withIdentifier: "unwindSegue", sender: self)
+            selectedIsotopeId = isotopes[indexPath.row].uniqueId
+            updateState()
+            tableView.reloadData()
+            performSegue(withIdentifier: "unwindSegue", sender: self)
         }
     }
     
@@ -166,7 +166,7 @@ class IsotopeSelectionTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let isotopeViewController = segue.destination as? IsotopeTableViewController else {return}
-        
+        commitEdits()
         isotopeViewController.isotopeViewModel = IsotopeViewModel(editingIsotope)
         
     }
