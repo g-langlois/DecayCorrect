@@ -13,14 +13,14 @@
         <!--Decay correction-->
         <scene sceneID="p5x-oD-aFn">
             <objects>
-                <tableViewController id="20K-gL-5Kh" customClass="DecayTableViewController" customModule="DecayCorrect" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="20K-gL-5Kh" customClass="DecayTableViewController" customModule="Decay_Correct" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" estimatedRowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" id="Qis-3y-d2A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <gestureRecognizers/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="datePicker" rowHeight="150" id="iCQ-lG-Vpm" customClass="DatePickerTableViewCell" customModule="DecayCorrect" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="datePicker" rowHeight="150" id="iCQ-lG-Vpm" customClass="DatePickerTableViewCell" customModule="Decay_Correct" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iCQ-lG-Vpm" id="cq6-9N-vIy">
@@ -51,7 +51,7 @@
                                     <outlet property="datePicker" destination="veH-dN-z6D" id="XiY-vx-rqE"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="unitsPicker" rowHeight="150" id="1kf-48-xfS" userLabel="unitsPicker" customClass="UnitsPickerTableViewCell" customModule="DecayCorrect" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="unitsPicker" rowHeight="150" id="1kf-48-xfS" userLabel="unitsPicker" customClass="UnitsPickerTableViewCell" customModule="Decay_Correct" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="205.5" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1kf-48-xfS" id="5IC-XV-x5S" userLabel="Units Picker">
@@ -76,7 +76,7 @@
                                     <outlet property="unitsPicker" destination="bDF-pn-8qq" id="YUd-im-F8v"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="parameter" id="xkw-fy-oWh" userLabel="activity" customClass="ParameterTableViewCell" customModule="DecayCorrect" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="parameter" id="xkw-fy-oWh" userLabel="activity" customClass="ParameterTableViewCell" customModule="Decay_Correct" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="355.5" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xkw-fy-oWh" id="hmV-mQ-93L">
@@ -91,12 +91,12 @@
                                         </label>
                                         <label userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Units" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwF-r9-tBS" userLabel="Units Label">
                                             <rect key="frame" x="315" y="-0.5" width="60" height="50.5"/>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <color key="tintColor" red="0.94711129729999999" green="0.9492457433" blue="0.98181710030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="WpT-mo-JhB"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Value" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RDA-DJ-cRs">
@@ -105,17 +105,25 @@
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                         </textField>
+                                        <view alpha="0.34999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SD0-v0-U9x">
+                                            <rect key="frame" x="315" y="-0.5" width="1" height="50.5"/>
+                                            <color key="backgroundColor" red="0.73725490196078436" green="0.73333333333333328" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vfv-sb-xkS" secondAttribute="trailingMargin" id="1Wn-w8-pKb"/>
+                                        <constraint firstItem="SD0-v0-U9x" firstAttribute="leading" secondItem="XwF-r9-tBS" secondAttribute="leading" id="7B6-mb-ZYs"/>
                                         <constraint firstItem="XwF-r9-tBS" firstAttribute="leading" secondItem="RDA-DJ-cRs" secondAttribute="trailing" constant="8" id="AMw-bP-LGi"/>
                                         <constraint firstItem="vfv-sb-xkS" firstAttribute="leading" secondItem="hmV-mQ-93L" secondAttribute="leadingMargin" id="F3s-Zx-Tlf"/>
                                         <constraint firstItem="vfv-sb-xkS" firstAttribute="centerY" secondItem="hmV-mQ-93L" secondAttribute="centerY" id="JPh-Uf-6FK"/>
                                         <constraint firstItem="RDA-DJ-cRs" firstAttribute="leading" secondItem="hmV-mQ-93L" secondAttribute="leadingMargin" constant="70" id="NwF-gA-JEj"/>
+                                        <constraint firstItem="SD0-v0-U9x" firstAttribute="centerY" secondItem="XwF-r9-tBS" secondAttribute="centerY" id="WY8-iK-l2K"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="SD0-v0-U9x" secondAttribute="trailing" constant="43" id="XLu-zj-px5"/>
                                         <constraint firstAttribute="trailing" secondItem="XwF-r9-tBS" secondAttribute="trailing" id="Yax-aU-qT0"/>
                                         <constraint firstItem="XwF-r9-tBS" firstAttribute="centerY" secondItem="hmV-mQ-93L" secondAttribute="centerY" id="cSA-T3-O0P"/>
                                         <constraint firstItem="RDA-DJ-cRs" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="XwF-r9-tBS" secondAttribute="leadingMargin" id="eTn-CU-myu"/>
                                         <constraint firstItem="RDA-DJ-cRs" firstAttribute="centerY" secondItem="hmV-mQ-93L" secondAttribute="centerY" id="fde-EJ-YZ7"/>
+                                        <constraint firstItem="SD0-v0-U9x" firstAttribute="bottom" secondItem="XwF-r9-tBS" secondAttribute="bottom" id="u1o-Ch-4ju"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -206,13 +214,13 @@
         <!--Isotope Selection Table View Controller-->
         <scene sceneID="Wij-xa-bIv">
             <objects>
-                <tableViewController id="u1O-2P-FsP" customClass="IsotopeSelectionTableViewController" customModule="DecayCorrect" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="u1O-2P-FsP" customClass="IsotopeSelectionTableViewController" customModule="Decay_Correct" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="LVq-lT-lol">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="isotopeCell" editingAccessoryType="disclosureIndicator" focusStyle="custom" id="YlA-pR-CYl" customClass="IsotopeSelectionTableViewCell" customModule="DecayCorrect" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="isotopeCell" editingAccessoryType="disclosureIndicator" focusStyle="custom" id="YlA-pR-CYl" customClass="IsotopeSelectionTableViewCell" customModule="Decay_Correct" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YlA-pR-CYl" id="x3i-df-SfM">
@@ -285,13 +293,13 @@
         <!--Isotope Table View Controller-->
         <scene sceneID="lnN-Ls-PAv">
             <objects>
-                <tableViewController id="lLx-SE-FT9" customClass="IsotopeTableViewController" customModule="DecayCorrect" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="lLx-SE-FT9" customClass="IsotopeTableViewController" customModule="Decay_Correct" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="7Ve-un-ZKV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationLevel="1" indentationWidth="10" reuseIdentifier="parameter" id="NNB-aK-8aC" customClass="IsotopeTableViewCell" customModule="DecayCorrect" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationLevel="1" indentationWidth="10" reuseIdentifier="parameter" id="NNB-aK-8aC" customClass="IsotopeTableViewCell" customModule="Decay_Correct" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NNB-aK-8aC" id="D3i-0x-SBF">
@@ -305,7 +313,7 @@
                                             </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                             <connections>
                                                 <action selector="editingDidEnd:" destination="NNB-aK-8aC" eventType="editingDidEnd" id="CXy-Ra-JH6"/>
                                             </connections>

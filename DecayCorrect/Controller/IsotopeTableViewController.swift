@@ -15,7 +15,7 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
     var cancelButton: UIBarButtonItem?
     
     var parameterList = [[IsotopeParameter]]()
-    var cells = [[IsotopeTableViewCell]]()
+    var cells = [[UITableViewCell]]()
 
     var isotopeViewModel: IsotopeViewModel?
     
@@ -30,12 +30,17 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        loadParameterList()
         cells.append([])
         cells.append([])
-        for _ in 0...2 {
+        for _ in 0...parameterList[0].count {
             cells[0].append(tableView.dequeueReusableCell(withIdentifier: "parameter") as! IsotopeTableViewCell)
         }
-        loadParameterList()
+        for _ in 0...parameterList[1].count {
+            
+            cells[1].append(UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "time"))
+        }
+        
     }
     
     // MARK: - Table view data source
@@ -50,24 +55,41 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = cells[indexPath.section][indexPath.row]
-        guard let isotopeViewModel = isotopeViewModel else {return cell}
-        cell.parameterTitleLabel.text = isotopeViewModel.titleForParameter(parameterList[indexPath.section][indexPath.row])
-        cell.parameterValueTextField.text = isotopeViewModel.valueForParameter(parameterList[indexPath.section][indexPath.row])
-        cell.parameterValueTextField.isEnabled = isotopeViewModel.isEditable(parameterList[indexPath.section][indexPath.row])
-        if !isotopeViewModel.isEditable(parameterList[indexPath.section][indexPath.row]) {
+        switch indexPath.section {
+        case 0:
+            let cell = cells[indexPath.section][indexPath.row] as! IsotopeTableViewCell
+            guard let isotopeViewModel = isotopeViewModel else {return cell}
+            cell.parameterTitleLabel.text = isotopeViewModel.titleForParameter(parameterList[indexPath.section][indexPath.row])
+            cell.parameterValueTextField.text = isotopeViewModel.valueForParameter(parameterList[indexPath.section][indexPath.row])
+            cell.parameterValueTextField.isEnabled = isotopeViewModel.isEditable(parameterList[indexPath.section][indexPath.row])
+            if !isotopeViewModel.isEditable(parameterList[indexPath.section][indexPath.row]) {
+            }
+            return cell
+        case 1:
+            let cell = cells[indexPath.section][indexPath.row]
+            if isotopeViewModel?.isCheckmarkSelected(parameterList[indexPath.section][indexPath.row]) ?? false {
+                cell.accessoryType = .checkmark
+            }
+            cell.textLabel?.text = isotopeViewModel?.titleForParameter(parameterList[indexPath.section][indexPath.row])
+            return cell
+        default:
+            return UITableViewCell()
+            
         }
-    
-        return cell
+        
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return isotopeViewModel?.header()
+        return isotopeViewModel?.header(section: section)
     }
     
     
     @objc func saveIsotope() {
-    
+        for row in 0 ... (parameterList[0].count - 1) {
+        let cell = cells[0][row] as! IsotopeTableViewCell
+            isotopeViewModel?.saveValueForParameter(parameterList[0][row], value:  cell.parameterValueTextField.text!)
+        }
+        performSegue(withIdentifier: "unwind", sender: self)
     
     }
     
@@ -80,8 +102,13 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
         parameterList.append([])
         parameterList[0].append(.atomName)
         parameterList[0].append(.massNumber)
-        parameterList[0].append(.halfLifeSec)
+        parameterList[0].append(.halfLife)
         
+        parameterList[1].append(.secSelection)
+        parameterList[1].append(.minSelection)
+        parameterList[1].append(.hourSelection)
+        parameterList[1].append(.daySelection)
+        parameterList[1].append(.yearSelection)
     }
     
      // MARK: - Navigation

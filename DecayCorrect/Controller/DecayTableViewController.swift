@@ -124,7 +124,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         cell.parameterValueTextField.text = calculatorViewModel.formatedActivity(forSource: source)
         cell.parameterLabel.text = "Activity (A\(source.id))"
         cell.accessoryType = .none
-        cell.parameterValueTextField.placeholder = "Activity"
+        cell.parameterValueTextField.attributedPlaceholder = NSAttributedString(string: "Activity", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         cell.parameterValueTextField.delegate = self
         cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(source)
         cell.unitsLabel.text = calculatorViewModel.formatedUnits(forSource: source)

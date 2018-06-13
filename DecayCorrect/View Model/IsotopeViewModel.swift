@@ -15,6 +15,7 @@ class IsotopeViewModel {
     
     
     init(_ isotope: Isotope?) {
+        sut = IsotopeStorageManager()
         if isotope != nil {
         self.isotope = isotope
         } else {
@@ -29,15 +30,28 @@ class IsotopeViewModel {
         }
     }
     
-    func header() -> String {
-        if let atomName =  isotope?.atomName, let massNumber = isotope?.massNumber {
-        return "\(atomName)-\(String(massNumber))"
-        } else {
-            return "New isotope"
+    func header(section: Int) -> String {
+        switch section {
+        case 0:
+            if let atomName =  isotope?.atomName, let massNumber = isotope?.massNumber {
+                return "\(atomName)-\(String(massNumber))"
+            } else {
+                return "New isotope"
+            }
+        case 1:
+            return "Half-life units"
+        default:
+            return ""
         }
     }
     func titleForParameter(_ parameter: IsotopeParameter) -> String {
-        return parameter.rawValue
+        switch parameter {
+        case .halfLife:
+            return "\(parameter.rawValue) (\(unitsSelection.rawValue))"
+        default:
+            return parameter.rawValue
+        }
+        
     }
     
     func valueForParameter(_ parameter: IsotopeParameter) -> String {
@@ -55,6 +69,30 @@ class IsotopeViewModel {
         }
     }
     
+    func saveValueForParameter(_ parameter: IsotopeParameter, value: String) {
+        switch parameter {
+            
+        // TODO exception handling
+        case .atomName:
+            isotope?.atomName = value
+        case .massNumber:
+            if let massNumber = Int32(value) {
+                isotope?.massNumber = massNumber
+            }
+        case .halfLifeSec:
+            if let halfLifeSec = Double(value) {
+                isotope?.halfLifeSec = halfLifeSec
+            }
+        case .state:
+            // TODO verify it is only 1 char
+            isotope?.state = value
+
+        default:
+            break
+        }
+        sut.save()
+    }
+    
     func setValueForParameter(_ parameter: IsotopeParameter, value: String) {
         switch parameter {
         case .atomName:
@@ -67,6 +105,16 @@ class IsotopeViewModel {
             isotope?.state = value
         default:
             break
+        }
+    }
+    
+    var unitsSelection = IsotopeParameter.secSelection
+    
+    func isCheckmarkSelected(_ parameter: IsotopeParameter) -> Bool {
+        if unitsSelection == parameter {
+            return true
+        } else {
+            return false
         }
     }
     
