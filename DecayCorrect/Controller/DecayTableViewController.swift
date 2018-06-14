@@ -172,11 +172,9 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
                     else {
                         cell.datePicker.date = Date()
                         calculatorViewModel.setDate(Date(), forSource: activePicker)
-                    }
-                    
-                    // Delay required to avoid breaking the animation when inserting the row
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                        tableView.reloadRows(at: [IndexPath(row: indexPath.row - 1, section: indexPath.section)], with: .none)
+                        
+                                self.calculatorViewModel.calculator.updateResult()
+                        
                     }
                 }
                 return cell
@@ -282,39 +280,36 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         if (pickerIndexPath != nil && pickerIndexPath == indexPath) {
             return
         } else if (pickerIndexPath != nil) {
+            tableView.reloadRows(at: [IndexPath(row: pickerIndexPath!.row - 1, section: pickerIndexPath!.section)], with: .none)
             tableView.deleteRows(at: [pickerIndexPath!], with: .fade)
             pickerIndexPath = nil
             datePickerDate = nil
             unitsPickerUnit = nil
             self.pickerType = nil
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.tableView.reloadData()
-            }
             
         } else  {
             self.pickerType = pickerType
             pickerIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
+            
             tableView.insertRows(at: [pickerIndexPath!], with: .fade)
-            
-            
         }
+        
         tableView.reloadRows(at: [indexPath], with: .none)
+        
         // To get third section appear:
         //resultAvailable = true
         // let indexSet = IndexSet.init()
         //indexSet.insert(2)
         //tableView.insertSections(indexSet, with: .fade)
         //
-        
-        
         tableView.endUpdates()
-        
-        
+
     }
     
     private func hidePickers() {
         tableView.beginUpdates()
         if (pickerIndexPath != nil) {
+              tableView.reloadRows(at: [IndexPath(row: pickerIndexPath!.row - 1, section: pickerIndexPath!.section)], with: .none)
             tableView.deleteRows(at: [pickerIndexPath!], with: .fade)
             pickerIndexPath = nil
         }
@@ -323,9 +318,6 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         
         activePicker = nil
         tableView.endUpdates()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.tableView.reloadData()
-        }
     }
     
     
@@ -351,7 +343,9 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     
     
     func decayCalculatorViewModelChanged() {
-        tableView.reloadData()
+        DispatchQueue.main.async {
+         self.tableView.reloadData()
+        }
         
         
     }
