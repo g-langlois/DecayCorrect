@@ -89,9 +89,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Units" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwF-r9-tBS" userLabel="Units Label">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Units" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwF-r9-tBS" userLabel="Units Label">
                                             <rect key="frame" x="315" y="-0.5" width="60" height="50.5"/>
-                                            <color key="tintColor" red="0.94711129729999999" green="0.9492457433" blue="0.98181710030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="WpT-mo-JhB"/>
                                             </constraints>
@@ -244,6 +243,7 @@
                                         <constraint firstItem="Bqt-Ki-Qn2" firstAttribute="leading" secondItem="x3i-df-SfM" secondAttribute="leadingMargin" id="3yZ-PF-x1P"/>
                                         <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="centerY" secondItem="x3i-df-SfM" secondAttribute="centerY" id="5sj-A8-xy2"/>
                                         <constraint firstItem="Bqt-Ki-Qn2" firstAttribute="centerY" secondItem="DSJ-PZ-Ly4" secondAttribute="centerY" id="7X8-yC-drt"/>
+                                        <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bqt-Ki-Qn2" secondAttribute="trailing" constant="8" symbolic="YES" id="O8e-0u-AJL"/>
                                         <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="leading" relation="lessThanOrEqual" secondItem="x3i-df-SfM" secondAttribute="leading" constant="270" id="Q4y-Ol-ydK"/>
                                         <constraint firstItem="DSJ-PZ-Ly4" firstAttribute="top" secondItem="x3i-df-SfM" secondAttribute="topMargin" id="oka-Pg-sET"/>
                                     </constraints>
