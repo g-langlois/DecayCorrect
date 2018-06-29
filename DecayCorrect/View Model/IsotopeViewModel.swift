@@ -14,7 +14,7 @@ class IsotopeViewModel {
     var sut: IsotopeStorageManager!
     
     
-    init(_ isotope: Isotope?) {
+    init(_ isotope: Isotope? = nil) {
         sut = IsotopeStorageManager()
         if isotope != nil {
         self.isotope = isotope
@@ -60,10 +60,13 @@ class IsotopeViewModel {
             return isotope?.atomName ?? ""
         case .massNumber:
             return String(isotope?.massNumber ?? 0)
-        case .halfLifeSec:
+        case .halfLife:
             return String(isotope?.halfLifeSec ?? 0)
         case .state:
             return isotope?.state ?? ""
+        case .atomSymbol:
+            return isotope?.atomSymbol ?? ""
+            
         default:
             return ""
         }
@@ -79,14 +82,15 @@ class IsotopeViewModel {
             if let massNumber = Int32(value) {
                 isotope?.massNumber = massNumber
             }
-        case .halfLifeSec:
-            if let halfLifeSec = Double(value) {
-                isotope?.halfLifeSec = halfLifeSec
+        case .halfLife:
+            if let halfLife = Double(value) {
+                isotope?.halfLifeSec = halfLife
             }
         case .state:
             // TODO verify it is only 1 char
             isotope?.state = value
-
+        case .atomSymbol:
+            isotope?.atomSymbol = value
         default:
             break
         }
@@ -142,6 +146,7 @@ enum IsotopeParameter: String {
     case daySelection = "Day"
     case yearSelection = "Year"
     case state = "Isomeric state"
+    case atomSymbol = "Symbol"
 }
 
 

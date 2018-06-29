@@ -20,18 +20,30 @@ class IsotopeStorageManager {
     init(container: NSPersistentContainer) {
         self.persistentContainer = container
         self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+        initJson()
     }
     
     convenience init() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError("Could not get shared app delegate")
         }
+        
         self.init(container: appDelegate.persistentContainer)
     }
+    
+    
     
     lazy var backgroundContext: NSManagedObjectContext = {
         return self.persistentContainer.newBackgroundContext()
     }()
+    
+    func initJson() {
+        if !self.isJsonInitiated() {
+            let url = Bundle.main.url(forResource: "nuclides", withExtension: "json")
+            _ = populateIsotopes(jsonUrl: url!)
+            save()
+        }
+    }
     
     func fetchAllIsotopes() -> [Isotope] {
         let request: NSFetchRequest<Isotope> = Isotope.fetchRequest()
@@ -120,6 +132,8 @@ class IsotopeStorageManager {
         
         do {
             let isotopes: [Isotope] = try backgroundContext.fetch(requestIsotope)
+            print(isotopes[0].state)
+            print(id)
             return isotopes[0]
         } catch {
             let fetchError = error as NSError

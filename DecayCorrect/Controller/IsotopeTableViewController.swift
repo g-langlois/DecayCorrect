@@ -14,6 +14,8 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
     var saveButton: UIBarButtonItem?
     var cancelButton: UIBarButtonItem?
     
+    var isNew: Bool = false
+    
     var parameterList = [[IsotopeParameter]]()
     var cells = [[UITableViewCell]]()
 
@@ -101,7 +103,9 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
         parameterList.append([])
         parameterList.append([])
         parameterList[0].append(.atomName)
+        parameterList[0].append(.atomSymbol)
         parameterList[0].append(.massNumber)
+        parameterList[0].append(.state)
         parameterList[0].append(.halfLife)
         
         parameterList[1].append(.secSelection)

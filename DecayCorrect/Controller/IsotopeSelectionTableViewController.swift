@@ -28,16 +28,8 @@ class IsotopeSelectionTableViewController: UITableViewController {
         viewModel = IsotopesViewModel()
         sut = IsotopeStorageManager()
         
-        if !sut.isJsonInitiated() {
-            let url = Bundle.main.url(forResource: "nuclides", withExtension: "json")
-            _ = sut.populateIsotopes(jsonUrl: url!)
-            sut.save()
-        }
-        
-        let fetchedIsotopes = sut.fetchAllIsotopes()
-        for isotope in fetchedIsotopes {
-            isotopes.append(isotope)
-        }
+        isotopes = sut.fetchAllIsotopes()
+
         tableView.reloadData()
         
         addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(IsotopeSelectionTableViewController.addIsotope))
@@ -117,8 +109,7 @@ class IsotopeSelectionTableViewController: UITableViewController {
     }
     
     @objc func addIsotope() {
-        print("Add isotope")
-        performSegue(withIdentifier: "editIsotopeSegue", sender: self)
+        performSegue(withIdentifier: "addIsotopeSegue", sender: self)
     }
     
     @objc func editIsotopes() {
@@ -165,15 +156,24 @@ class IsotopeSelectionTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let isotopeViewController = segue.destination as? IsotopeTableViewController else {return}
         commitEdits()
-        isotopeViewController.isotopeViewModel = IsotopeViewModel(editingIsotope)
+        guard let isotopeViewController = segue.destination as? IsotopeTableViewController else {return}
+        
+        switch segue.identifier {
+        case "addIsotopeSegue":
+            isotopeViewController.isotopeViewModel = IsotopeViewModel()
+        case "editIsotopeSegue":
+            isotopeViewController.isotopeViewModel = IsotopeViewModel(editingIsotope)
+        default:
+            break
+        }
+        
         
     }
     
     @IBAction func unwindFromIsotopeEdit(segue: UIStoryboardSegue) {
         
-        // TODO
+        tableView.reloadData()
     }
 
 }

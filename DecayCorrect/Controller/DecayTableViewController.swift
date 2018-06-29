@@ -332,6 +332,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     @IBAction func unwindFromIsotopeSelection(segue: UIStoryboardSegue) {
         
         calculatorViewModel.isotopeSelectionChanged()
+        tableView.reloadData()
     }
 
     // MARK: - Navigation
