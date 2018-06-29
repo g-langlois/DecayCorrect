@@ -17,7 +17,7 @@ class ParameterTableViewCell: UITableViewCell {
         super.awakeFromNib()
         let toolbarDone = UIToolbar.init()
         toolbarDone.sizeToFit()
-        let barBtnDone = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.done,
+        let barBtnDone = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.done,
                                               target: self, action: #selector(ParameterTableViewCell.endEditing(_:)))
         
         toolbarDone.items = [barBtnDone]

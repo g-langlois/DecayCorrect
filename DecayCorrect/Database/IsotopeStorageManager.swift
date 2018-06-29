@@ -132,8 +132,6 @@ class IsotopeStorageManager {
         
         do {
             let isotopes: [Isotope] = try backgroundContext.fetch(requestIsotope)
-            print(isotopes[0].state)
-            print(id)
             return isotopes[0]
         } catch {
             let fetchError = error as NSError

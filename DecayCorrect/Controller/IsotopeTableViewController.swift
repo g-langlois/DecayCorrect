@@ -23,8 +23,8 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveIsotope))
-        cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(cancelEdits))
+        saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveIsotope))
+        cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(cancelEdits))
         
         self.navigationItem.rightBarButtonItems = [saveButton!]
         self.navigationItem.leftBarButtonItem = cancelButton!
@@ -40,7 +40,7 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
         }
         for _ in 0...parameterList[1].count {
             
-            cells[1].append(UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "time"))
+            cells[1].append(UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "time"))
         }
         
     }

@@ -46,7 +46,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         super.viewDidLoad()
         calculatorViewModel.delegate = self
         initUnitPickerData()
-        let clearButton = UIBarButtonItem(title: "Clear", style: UIBarButtonItemStyle.plain, target: self, action: #selector(clearTable))
+        let clearButton = UIBarButtonItem(title: "Clear", style: UIBarButtonItem.Style.plain, target: self, action: #selector(clearTable))
         self.navigationItem.rightBarButtonItems = [clearButton]
         
     }
@@ -124,7 +124,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         cell.parameterValueTextField.text = calculatorViewModel.formatedActivity(forSource: source)
         cell.parameterLabel.text = "Activity (A\(source.id))"
         cell.accessoryType = .none
-        cell.parameterValueTextField.attributedPlaceholder = NSAttributedString(string: "Activity", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        cell.parameterValueTextField.attributedPlaceholder = NSAttributedString(string: "Activity", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         cell.parameterValueTextField.delegate = self
         cell.parameterValueTextField.tag = calculatorViewModel.tagForSource(source)
         cell.unitsLabel.text = calculatorViewModel.formatedUnits(forSource: source)
@@ -362,7 +362,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     }
     
     
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         guard let activityValue = Double(textField.text!) else {
             return
             
