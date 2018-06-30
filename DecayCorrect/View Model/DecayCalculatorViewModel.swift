@@ -191,7 +191,7 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
     var isotopeShortName: String {
         get {
             if let isotope = calculator.isotope {
-                return String("\(isotope.atomSymbol ?? "")-\(isotope.massNumber)\(isotope.state ?? "g")")
+                return String("\(isotope.atomSymbol ?? "")-\(isotope.massNumber)\(isotope.state ?? "")")
             }
             else {return "Select isotope"}
         }
