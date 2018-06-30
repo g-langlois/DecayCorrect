@@ -14,8 +14,7 @@ class IsotopeStorageManager {
     
     let defaults = UserDefaults.standard
     let persistentContainer: NSPersistentContainer!
-    
-    static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
 
     init(container: NSPersistentContainer) {
         self.persistentContainer = container
@@ -33,8 +32,8 @@ class IsotopeStorageManager {
     
     
     
-    lazy var backgroundContext: NSManagedObjectContext = {
-        return self.persistentContainer.newBackgroundContext()
+    lazy var context: NSManagedObjectContext = {
+        return self.persistentContainer.viewContext
     }()
     
     func initJson() {
@@ -54,18 +53,18 @@ class IsotopeStorageManager {
     }
     
     func remove( objectID: NSManagedObjectID ) {
-        let obj = backgroundContext.object(with: objectID)
-        backgroundContext.delete(obj)
+        let obj = context.object(with: objectID)
+        context.delete(obj)
     }
     
 
     func insertIsotope() -> Isotope? {
-        guard let isotope = NSEntityDescription.insertNewObject(forEntityName: "Isotope", into: backgroundContext) as? Isotope else {return nil}
+        guard let isotope = NSEntityDescription.insertNewObject(forEntityName: "Isotope", into: context) as? Isotope else {return nil}
         return isotope
     }
     
     func insertIsotope(atomName: String, atomSymbol: String, halfLife: TimeInterval, massNumber: Int, isCustom: Bool = false, state: String?=nil) -> Isotope? {
-        guard let isotope = NSEntityDescription.insertNewObject(forEntityName: "Isotope", into: backgroundContext) as? Isotope else {return nil}
+        guard let isotope = NSEntityDescription.insertNewObject(forEntityName: "Isotope", into: context) as? Isotope else {return nil}
         isotope.atomName = atomName
         isotope.atomSymbol = atomSymbol
         isotope.massNumber = Int32(massNumber)
@@ -77,9 +76,9 @@ class IsotopeStorageManager {
     }
     
     func save() {
-        if backgroundContext.hasChanges {
+        if context.hasChanges {
             do {
-                try backgroundContext.save()
+                try context.save()
             } catch {
                 print("Save error \(error)")
             }
@@ -131,7 +130,7 @@ class IsotopeStorageManager {
         requestIsotope.predicate = query
         
         do {
-            let isotopes: [Isotope] = try backgroundContext.fetch(requestIsotope)
+            let isotopes: [Isotope] = try context.fetch(requestIsotope)
             return isotopes[0]
         } catch {
             let fetchError = error as NSError
