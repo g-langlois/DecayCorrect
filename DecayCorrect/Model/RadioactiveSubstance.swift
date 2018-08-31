@@ -25,7 +25,7 @@ struct RadioactiveSubstance {
             return nil
         }
         let correctedCountRate: Double
-        let halfLife = isotope.halfLife
+        let halfLife = isotope.halfLifeSec
         let originalDate = originalRadioactivity.time
         let duration: TimeInterval
         if originalDate < targetDate {

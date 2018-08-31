@@ -21,5 +21,6 @@ class IsotopeSelectionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBOutlet weak var isotopeId: UILabel!
     @IBOutlet weak var isotopeName: UILabel!
 }
