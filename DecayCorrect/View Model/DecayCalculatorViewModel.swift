@@ -30,7 +30,7 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         calculator.delegate = self
     }
     
-    func tagForSource(_ source: DecayCalculatorInput) -> Int {
+    func tagForSource(_ source: DecayCalculatorInputType) -> Int {
         var tag: Int = 0
         switch source {
         case .activity0:
@@ -47,7 +47,7 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         return tag
     }
     
-    func formatedDateForSource(_ source: DecayCalculatorInput) -> String {
+    func formatedDateForSource(_ source: DecayCalculatorInputType) -> String {
         var date: Date?
         date = dateForSource(source)
         if date != nil {
@@ -57,7 +57,7 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         }
     }
     
-    func isDateAvailableForSource(_ source: DecayCalculatorInput) -> Bool {
+    func isDateAvailableForSource(_ source: DecayCalculatorInputType) -> Bool {
         var date: Date?
         date = dateForSource(source)
         if date != nil {
@@ -67,7 +67,7 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         }
     }
     
-    func dateForSource(_ source: DecayCalculatorInput) -> Date? {
+    func dateForSource(_ source: DecayCalculatorInputType) -> Date? {
         var date: Date?
         switch source {
         case .date0:
@@ -81,7 +81,7 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         return date
     }
     
-    func setDate(_ date: Date, forSource source: DecayCalculatorInput) {
+    func setDate(_ date: Date, forSource source: DecayCalculatorInputType) {
         switch source {
         case .date0:
             calculator.dateTime0 = date
@@ -103,7 +103,7 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         return dateFormatter.string(from: date)
     }
     
-    func formatedActivity(forSource source: DecayCalculatorInput) -> String? {
+    func formatedActivity(forSource source: DecayCalculatorInputType) -> String? {
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.maximumFractionDigits = 3
@@ -120,7 +120,7 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         return formatter.string(for: activity)
     }
     
-    func formatedUnits(forSource source: DecayCalculatorInput) -> String {
+    func formatedUnits(forSource source: DecayCalculatorInputType) -> String {
         let activityUnits: RadioactivityUnit?
         switch source {
         case .activity0:
@@ -133,7 +133,7 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
         return activityUnits?.rawValue ?? "Units"
     }
     
-    func isUnitsAvailableForSource(_ source: DecayCalculatorInput) -> Bool {
+    func isUnitsAvailableForSource(_ source: DecayCalculatorInputType) -> Bool {
         let activityUnits: RadioactivityUnit?
         switch source {
         case .activity0:
@@ -151,7 +151,7 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
     
     }
     
-    func isActivityAvailableForSource(_ source: DecayCalculatorInput) -> Bool {
+    func isActivityAvailableForSource(_ source: DecayCalculatorInputType) -> Bool {
         let activity: Double?
         switch source {
         case .activity0:
@@ -208,6 +208,3 @@ class DecayCalculatorViewModel: DecayCalculatorDelegate {
 }
 
 
-protocol DecayCalculatorViewModelDelegate {
-    func decayCalculatorViewModelChanged()
-}

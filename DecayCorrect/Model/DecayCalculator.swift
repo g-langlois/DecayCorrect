@@ -8,10 +8,15 @@
 
 import UIKit
 
+
+/*
+ * Responsible for the decay calculation
+ */
+ 
 class DecayCalculator {
     
     let defaults = UserDefaults.standard
-    let sut = IsotopeStorageManager()
+    let sut = IsotopeDAO()
     
     var isotope: Isotope? {
         get {
@@ -31,7 +36,7 @@ class DecayCalculator {
     var activity1: Double?
     var dateTime1: Date?
     var activity1Units: RadioactivityUnit?
-    var targetParameter: DecayCalculatorInput?
+    var targetParameter: DecayCalculatorInputType?
     var defaultUnits = RadioactivityUnit.mbq
 
     var delegate: DecayCalculatorDelegate?
@@ -74,7 +79,7 @@ class DecayCalculator {
     
     func findTargetParameter(){
         
-        var parameterType: DecayCalculatorInput?
+        var parameterType: DecayCalculatorInputType?
         var count = 0
         // Verifies that exactly 1 parameter is missing
         if activity0 == nil {
@@ -98,35 +103,3 @@ class DecayCalculator {
         }
     }
 }
-
-enum DecayCalculatorInput: Int {
-    case activity0 = 1000
-    case activity1 = 1001
-    case date0 = 10000
-    case date1 = 10001
-    case isotope = 0
-    
-    
-    var tag: Int {
-       return self.rawValue
-    }
-    
-    var id: Int {
-        switch self {
-        case .activity0, .date0:
-            return 0
-        case .activity1, .date1:
-            return 1
-
-        default:
-        return 0
-        }
-    }
-    
-}
-
-protocol DecayCalculatorDelegate {
-    func decayCalculatorDataChanged()
-}
-
-

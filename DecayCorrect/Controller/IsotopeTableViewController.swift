@@ -123,13 +123,3 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
  
     
 }
-
-class IsotopeTableViewCellValue: IsotopeTableViewCellDelegate {
-    var value = ""
-    
-    func editingDidEnd(_ value: String) {
-        self.value = value
-    }
-    
-    
-}

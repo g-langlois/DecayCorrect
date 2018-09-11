@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class IsotopeStorageManager {
+class IsotopeDAO {
     
     let defaults = UserDefaults.standard
     let persistentContainer: NSPersistentContainer!
