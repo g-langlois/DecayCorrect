@@ -13,12 +13,12 @@ import CoreData
 class DecayCorrectTests: XCTestCase {
     
     
-    var sut: IsotopeStorageManager!
+    var sut: IsotopeDAO!
 
     override func setUp() {
         super.setUp()
         initStubs()
-        sut = IsotopeStorageManager(container: mockPersistantContainer)
+        sut = IsotopeDAO(container: mockPersistantContainer)
         
     }
     

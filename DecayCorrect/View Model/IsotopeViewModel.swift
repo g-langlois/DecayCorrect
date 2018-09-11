@@ -11,11 +11,11 @@ import Foundation
 class IsotopeViewModel {
     
     var isotope: Isotope?
-    var sut: IsotopeStorageManager!
+    var sut: IsotopeDAO!
     
     
     init(_ isotope: Isotope? = nil) {
-        sut = IsotopeStorageManager()
+        sut = IsotopeDAO()
         if isotope != nil {
         self.isotope = isotope
         } else {
@@ -133,20 +133,5 @@ class IsotopeViewModel {
     
 }
 
-enum IsotopeParameter: String {
-    case atomName = "Atom"
-    case massNumber = "Mass number"
-    case isFavorite = "Favorite"
-    case custom = "Edited"
-    case halfLifeSec = "Half life (sec)"
-    case halfLife = "Half life"
-    case secSelection = "Seconds"
-    case minSelection = "Minutes"
-    case hourSelection = "Hour"
-    case daySelection = "Day"
-    case yearSelection = "Year"
-    case state = "Isomeric state"
-    case atomSymbol = "Symbol"
-}
 
 

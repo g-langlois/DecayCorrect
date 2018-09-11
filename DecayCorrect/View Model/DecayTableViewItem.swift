@@ -18,9 +18,9 @@ enum CellType {
 
 struct DecayTableViewItem {
     var cellType: CellType
-    var source: DecayCalculatorInput
+    var source: DecayCalculatorInputType
     
-    init(source: DecayCalculatorInput, cellType: CellType) {
+    init(source: DecayCalculatorInputType, cellType: CellType) {
         self.source = source
         self.cellType = cellType
     }

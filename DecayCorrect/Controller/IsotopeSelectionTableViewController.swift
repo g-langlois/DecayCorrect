@@ -11,8 +11,7 @@ import UIKit
 class IsotopeSelectionTableViewController: UITableViewController {
 
     var viewModel: IsotopesViewModel?
-    var sut: IsotopeStorageManager!
-    
+    var dao: IsotopeDAO!
     
     var addButton: UIBarButtonItem?
     var editButton: UIBarButtonItem?
@@ -26,9 +25,9 @@ class IsotopeSelectionTableViewController: UITableViewController {
         tableView.allowsSelectionDuringEditing = true
         
         viewModel = IsotopesViewModel()
-        sut = IsotopeStorageManager()
+        dao = IsotopeDAO()
         
-        isotopes = sut.fetchAllIsotopes()
+        isotopes = dao.fetchAllIsotopes()
 
         tableView.reloadData()
         
@@ -65,9 +64,6 @@ class IsotopeSelectionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
                 return isotopes.count
     }
-    
-
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "isotopeCell", for: indexPath) as! IsotopeSelectionTableViewCell
@@ -133,10 +129,6 @@ class IsotopeSelectionTableViewController: UITableViewController {
         return true
     }
 
-    
-    
-
-    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -147,10 +139,6 @@ class IsotopeSelectionTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
- 
-
-
-
     
     // MARK: - Navigation
 
@@ -167,13 +155,10 @@ class IsotopeSelectionTableViewController: UITableViewController {
         default:
             break
         }
-        
-        
     }
     
     @IBAction func unwindFromIsotopeEdit(segue: UIStoryboardSegue) {
         
         tableView.reloadData()
     }
-
 }
