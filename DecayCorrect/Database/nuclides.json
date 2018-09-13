@@ -1,1 +1,1322 @@
-{"Ac-225": {"Atom Name": "Actinium", "Atom Symbol": "Ac", "Half-Life (s)": "864E3", "Mass Number": "225"}, "Ac-227": {"Atom Name": "Actinium", "Atom Symbol": "Ac", "Half-Life (s)": "687.06E6", "Mass Number": "227"}, "Ac-228": {"Atom Name": "Actinium", "Atom Symbol": "Ac", "Half-Life (s)": "22.14E3", "Mass Number": "228"}, "Ag-108": {"Atom Name": "Silver", "Atom Symbol": "Ag", "Half-Life (s)": "142.9", "Mass Number": "108"}, "Ag-108m": {"Atom Name": "Silver", "Atom Symbol": "Ag", "Half-Life (s)": "13.82E9", "Mass Number": "108m"}, "Ag-110": {"Atom Name": "Silver", "Atom Symbol": "Ag", "Half-Life (s)": "24.56", "Mass Number": "110"}, "Ag-110m": {"Atom Name": "Silver", "Atom Symbol": "Ag", "Half-Life (s)": "21.5810E6", "Mass Number": "110m"}, "Al-26": {"Atom Name": "Aluminium", "Atom Symbol": "Al", "Half-Life (s)": "22.6E12", "Mass Number": "26"}, "Am-241": {"Atom Name": "Americium", "Atom Symbol": "Am", "Half-Life (s)": "13.652E9", "Mass Number": "241"}, "Am-242": {"Atom Name": "Americium", "Atom Symbol": "Am", "Half-Life (s)": "57.64E3", "Mass Number": "242"}, "Am-242m": {"Atom Name": "Americium", "Atom Symbol": "Am", "Half-Life (s)": "4.51E9", "Mass Number": "242m"}, "Am-243": {"Atom Name": "Americium", "Atom Symbol": "Am", "Half-Life (s)": "232.5E9", "Mass Number": "243"}, "Am-244": {"Atom Name": "Americium", "Atom Symbol": "Am", "Half-Life (s)": "36.36E3", "Mass Number": "244"}, "Am-244m": {"Atom Name": "Americium", "Atom Symbol": "Am", "Half-Life (s)": "1.56E3", "Mass Number": "244m"}, "Ar-37": {"Atom Name": "Argon", "Atom Symbol": "Ar", "Half-Life (s)": "3.0249E6", "Mass Number": "37"}, "Ar-41": {"Atom Name": "Argon", "Atom Symbol": "Ar", "Half-Life (s)": "6.5765E3", "Mass Number": "41"}, "At-211": {"Atom Name": "Astatine", "Atom Symbol": "At", "Half-Life (s)": "25.978E3", "Mass Number": "211"}, "At-215": {"Atom Name": "Astatine", "Atom Symbol": "At", "Half-Life (s)": "100E-6", "Mass Number": "215"}, "At-217": {"Atom Name": "Astatine", "Atom Symbol": "At", "Half-Life (s)": "32.30E-3", "Mass Number": "217"}, "At-218": {"Atom Name": "Astatine", "Atom Symbol": "At", "Half-Life (s)": "1.4", "Mass Number": "218"}, "At-219": {"Atom Name": "Astatine", "Atom Symbol": "At", "Half-Life (s)": "56", "Mass Number": "219"}, "Au-195": {"Atom Name": "Gold", "Atom Symbol": "Au", "Half-Life (s)": "15.96E6", "Mass Number": "195"}, "Au-198": {"Atom Name": "Gold", "Atom Symbol": "Au", "Half-Life (s)": "232.788E3", "Mass Number": "198"}, "Ba-133": {"Atom Name": "Barium", "Atom Symbol": "Ba", "Half-Life (s)": "332.58E6", "Mass Number": "133"}, "Ba-137m": {"Atom Name": "Barium", "Atom Symbol": "Ba", "Half-Life (s)": "153.12", "Mass Number": "137m"}, "Ba-140": {"Atom Name": "Barium", "Atom Symbol": "Ba", "Half-Life (s)": "1.10186E6", "Mass Number": "140"}, "Be-7": {"Atom Name": "Beryllium", "Atom Symbol": "Be", "Half-Life (s)": "4.598E6", "Mass Number": "7"}, "Bi-207": {"Atom Name": "Bismuth", "Atom Symbol": "Bi", "Half-Life (s)": "1.038E9", "Mass Number": "207"}, "Bi-210": {"Atom Name": "Bismuth", "Atom Symbol": "Bi", "Half-Life (s)": "432.95E3", "Mass Number": "210"}, "Bi-211": {"Atom Name": "Bismuth", "Atom Symbol": "Bi", "Half-Life (s)": "129.0", "Mass Number": "211"}, "Bi-212": {"Atom Name": "Bismuth", "Atom Symbol": "Bi", "Half-Life (s)": "3.6324E3", "Mass Number": "212"}, "Bi-213": {"Atom Name": "Bismuth", "Atom Symbol": "Bi", "Half-Life (s)": "2.7354E3", "Mass Number": "213"}, "Bi-214": {"Atom Name": "Bismuth", "Atom Symbol": "Bi", "Half-Life (s)": "1.188E3", "Mass Number": "214"}, "Bi-215": {"Atom Name": "Bismuth", "Atom Symbol": "Bi", "Half-Life (s)": "456", "Mass Number": "215"}, "Br-76": {"Atom Name": "Bromine", "Atom Symbol": "Br", "Half-Life (s)": "58.0E3", "Mass Number": "76"}, "C-11": {"Atom Name": "Carbon", "Atom Symbol": "C", "Half-Life (s)": "1.2217E3", "Mass Number": "11"}, "C-14": {"Atom Name": "Carbon", "Atom Symbol": "C", "Half-Life (s)": "179.9E9", "Mass Number": "14"}, "Ca-41": {"Atom Name": "Calcium", "Atom Symbol": "Ca", "Half-Life (s)": "3.16E12", "Mass Number": "41"}, "Ca-45": {"Atom Name": "Calcium", "Atom Symbol": "Ca", "Half-Life (s)": "14.052E6", "Mass Number": "45"}, "Cd-109": {"Atom Name": "Cadmium", "Atom Symbol": "Cd", "Half-Life (s)": "39.908E6", "Mass Number": "109"}, "Ce-139": {"Atom Name": "Cerium", "Atom Symbol": "Ce", "Half-Life (s)": "11.8922E6", "Mass Number": "139"}, "Ce-141": {"Atom Name": "Cerium", "Atom Symbol": "Ce", "Half-Life (s)": "2.8083E6", "Mass Number": "141"}, "Ce-144": {"Atom Name": "Cerium", "Atom Symbol": "Ce", "Half-Life (s)": "24.614E6", "Mass Number": "144"}, "Cf-252": {"Atom Name": "Californium", "Atom Symbol": "Cf", "Half-Life (s)": "83.53E6", "Mass Number": "252"}, "Cl-36": {"Atom Name": "Chlorine", "Atom Symbol": "Cl", "Half-Life (s)": "9.53E12", "Mass Number": "36"}, "Cm-242": {"Atom Name": "Curium", "Atom Symbol": "Cm", "Half-Life (s)": "14.071E6", "Mass Number": "242"}, "Cm-243": {"Atom Name": "Curium", "Atom Symbol": "Cm", "Half-Life (s)": "912E6", "Mass Number": "243"}, "Cm-244": {"Atom Name": "Curium", "Atom Symbol": "Cm", "Half-Life (s)": "571.5E6", "Mass Number": "244"}, "Cm-245": {"Atom Name": "Curium", "Atom Symbol": "Cm", "Half-Life (s)": "260.3E9", "Mass Number": "245"}, "Cm-246": {"Atom Name": "Curium", "Atom Symbol": "Cm", "Half-Life (s)": "149.0E9", "Mass Number": "246"}, "Co-56": {"Atom Name": "Cobalt", "Atom Symbol": "Co", "Half-Life (s)": "6.6732E6", "Mass Number": "56"}, "Co-57": {"Atom Name": "Cobalt", "Atom Symbol": "Co", "Half-Life (s)": "23.4844E6", "Mass Number": "57"}, "Co-58": {"Atom Name": "Cobalt", "Atom Symbol": "Co", "Half-Life (s)": "6.1214E6", "Mass Number": "58"}, "Co-60": {"Atom Name": "Cobalt", "Atom Symbol": "Co", "Half-Life (s)": "166.340E6", "Mass Number": "60"}, "Cr-51": {"Atom Name": "Chromium", "Atom Symbol": "Cr", "Half-Life (s)": "2.39363E6", "Mass Number": "51"}, "Cs-134": {"Atom Name": "Cesium", "Atom Symbol": "Cs", "Half-Life (s)": "65.146E6", "Mass Number": "134"}, "Cs-137": {"Atom Name": "Cesium", "Atom Symbol": "Cs", "Half-Life (s)": "948.3E6", "Mass Number": "137"}, "Cu-61": {"Atom Name": "Copper", "Atom Symbol": "Cu", "Half-Life (s)": "12.12E3", "Mass Number": "61"}, "Cu-64": {"Atom Name": "Copper", "Atom Symbol": "Cu", "Half-Life (s)": "45.721E3", "Mass Number": "64"}, "Er-169": {"Atom Name": "Erbium", "Atom Symbol": "Er", "Half-Life (s)": "810.4E3", "Mass Number": "169"}, "Eu-152": {"Atom Name": "Europium", "Atom Symbol": "Eu", "Half-Life (s)": "426.7E6", "Mass Number": "152"}, "Eu-154": {"Atom Name": "Europium", "Atom Symbol": "Eu", "Half-Life (s)": "271.42E6", "Mass Number": "154"}, "Eu-155": {"Atom Name": "Europium", "Atom Symbol": "Eu", "Half-Life (s)": "149.99E6", "Mass Number": "155"}, "F-18": {"Atom Name": "Fluorine", "Atom Symbol": "F", "Half-Life (s)": "6.5840E3", "Mass Number": "18"}, "Fe-52": {"Atom Name": "Iron", "Atom Symbol": "Fe", "Half-Life (s)": "29.783E3", "Mass Number": "52"}, "Fe-55": {"Atom Name": "Iron", "Atom Symbol": "Fe", "Half-Life (s)": "86.69E6", "Mass Number": "55"}, "Fe-59": {"Atom Name": "Iron", "Atom Symbol": "Fe", "Half-Life (s)": "3.8443E6", "Mass Number": "59"}, "Fr-221": {"Atom Name": "Francium", "Atom Symbol": "Fr", "Half-Life (s)": "287.4", "Mass Number": "221"}, "Fr-223": {"Atom Name": "Francium", "Atom Symbol": "Fr", "Half-Life (s)": "1.3200E3", "Mass Number": "223"}, "Ga-66": {"Atom Name": "Gallium", "Atom Symbol": "Ga", "Half-Life (s)": "34.16E3", "Mass Number": "66"}, "Ga-67": {"Atom Name": "Gallium", "Atom Symbol": "Ga", "Half-Life (s)": "281.776E3", "Mass Number": "67"}, "Ga-68": {"Atom Name": "Gallium", "Atom Symbol": "Ga", "Half-Life (s)": "4.070E3", "Mass Number": "68"}, "Gd-153": {"Atom Name": "Gadolinium", "Atom Symbol": "Gd", "Half-Life (s)": "20.77E6", "Mass Number": "153"}, "Gd-159": {"Atom Name": "Gadolinium", "Atom Symbol": "Gd", "Half-Life (s)": "66.524E3", "Mass Number": "159"}, "Ge-68": {"Atom Name": "Germanium", "Atom Symbol": "Ge", "Half-Life (s)": "23.410E6", "Mass Number": "68"}, "H-3": {"Atom Name": "Tritium", "Atom Symbol": "H", "Half-Life (s)": "388.5E6", "Mass Number": "3"}, "Hg-203": {"Atom Name": "Mercury", "Atom Symbol": "Hg", "Half-Life (s)": "4.0257E6", "Mass Number": "203"}, "Hg-206": {"Atom Name": "Mercury", "Atom Symbol": "Hg", "Half-Life (s)": "499.2", "Mass Number": "206"}, "Ho-166": {"Atom Name": "Holmium", "Atom Symbol": "Ho", "Half-Life (s)": "96.46E3", "Mass Number": "166"}, "Ho-166m": {"Atom Name": "Holmium", "Atom Symbol": "Ho", "Half-Life (s)": "35.75E9", "Mass Number": "166m"}, "I-123": {"Atom Name": "Iodine", "Atom Symbol": "I", "Half-Life (s)": "47.604E3", "Mass Number": "123"}, "I-125": {"Atom Name": "Iodine", "Atom Symbol": "I", "Half-Life (s)": "5.1311E6", "Mass Number": "125"}, "I-129": {"Atom Name": "Iodine", "Atom Symbol": "I", "Half-Life (s)": "508E12", "Mass Number": "129"}, "I-131": {"Atom Name": "Iodine", "Atom Symbol": "I", "Half-Life (s)": "693.21E3", "Mass Number": "131"}, "I-133": {"Atom Name": "Iodine", "Atom Symbol": "I", "Half-Life (s)": "75.13E3", "Mass Number": "133"}, "In-111": {"Atom Name": "Indium", "Atom Symbol": "In", "Half-Life (s)": "242.343E3", "Mass Number": "111"}, "Ir-192": {"Atom Name": "Iridium", "Atom Symbol": "Ir", "Half-Life (s)": "6.3787E6", "Mass Number": "192"}, "Ir-194": {"Atom Name": "Iridium", "Atom Symbol": "Ir", "Half-Life (s)": "69.48E3", "Mass Number": "194"}, "K-40": {"Atom Name": "Potassium", "Atom Symbol": "K", "Half-Life (s)": "39.46E15", "Mass Number": "40"}, "Kr-85": {"Atom Name": "Krypton", "Atom Symbol": "Kr", "Half-Life (s)": "339.3E6", "Mass Number": "85"}, "La-138": {"Atom Name": "Lanthanum", "Atom Symbol": "La", "Half-Life (s)": "3.27E18", "Mass Number": "138"}, "La-140": {"Atom Name": "Lanthanum", "Atom Symbol": "La", "Half-Life (s)": "145.029E3", "Mass Number": "140"}, "Lu-177": {"Atom Name": "Lutetium", "Atom Symbol": "Lu", "Half-Life (s)": "574.30E3", "Mass Number": "177"}, "Mn-54": {"Atom Name": "Manganese", "Atom Symbol": "Mn", "Half-Life (s)": "26.9732E6", "Mass Number": "54"}, "Mn-56": {"Atom Name": "Manganese", "Atom Symbol": "Mn", "Half-Life (s)": "9.2836E3", "Mass Number": "56"}, "Mo-99": {"Atom Name": "Molybdenum", "Atom Symbol": "Mo", "Half-Life (s)": "237.42E3", "Mass Number": "99"}, "N-13": {"Atom Name": "Nitrogen", "Atom Symbol": "N", "Half-Life (s)": "598.02", "Mass Number": "13"}, "Na-22": {"Atom Name": "Sodium", "Atom Symbol": "Na", "Half-Life (s)": "82.140E6", "Mass Number": "22"}, "Na-24": {"Atom Name": "Sodium", "Atom Symbol": "Na", "Half-Life (s)": "53.849E3", "Mass Number": "24"}, "Nb-93m": {"Atom Name": "Niobium", "Atom Symbol": "Nb", "Half-Life (s)": "508.7E6", "Mass Number": "93m"}, "Nb-95": {"Atom Name": "Niobium", "Atom Symbol": "Nb", "Half-Life (s)": "3.0232E6", "Mass Number": "95"}, "Nb-95m": {"Atom Name": "Niobium", "Atom Symbol": "Nb", "Half-Life (s)": "311.9E3", "Mass Number": "95m"}, "Nd-147": {"Atom Name": "Neodymium", "Atom Symbol": "Nd", "Half-Life (s)": "949.3E3", "Mass Number": "147"}, "Ni-57": {"Atom Name": "Nickel", "Atom Symbol": "Ni", "Half-Life (s)": "129.3E3", "Mass Number": "57"}, "Ni-59": {"Atom Name": "Nickel", "Atom Symbol": "Ni", "Half-Life (s)": "2.40E12", "Mass Number": "59"}, "Ni-63": {"Atom Name": "Nickel", "Atom Symbol": "Ni", "Half-Life (s)": "3.11E9", "Mass Number": "63"}, "Np-236": {"Atom Name": "Neptunium", "Atom Symbol": "Np", "Half-Life (s)": "4.89E12", "Mass Number": "236"}, "Np-236m": {"Atom Name": "Neptunium", "Atom Symbol": "Np", "Half-Life (s)": "81.0E3", "Mass Number": "236m"}, "Np-237": {"Atom Name": "Neptunium", "Atom Symbol": "Np", "Half-Life (s)": "67.66E12", "Mass Number": "237"}, "Np-238": {"Atom Name": "Neptunium", "Atom Symbol": "Np", "Half-Life (s)": "181.61E3", "Mass Number": "238"}, "Np-239": {"Atom Name": "Neptunium", "Atom Symbol": "Np", "Half-Life (s)": "203.56E3", "Mass Number": "239"}, "O-15": {"Atom Name": "Oxygen", "Atom Symbol": "O", "Half-Life (s)": "122.46", "Mass Number": "15"}, "P-32": {"Atom Name": "Phosphorus", "Atom Symbol": "P", "Half-Life (s)": "1.2341E6", "Mass Number": "32"}, "P-33": {"Atom Name": "Phosphorus", "Atom Symbol": "P", "Half-Life (s)": "2.1931E6", "Mass Number": "33"}, "Pa-231": {"Atom Name": "Protactinium", "Atom Symbol": "Pa", "Half-Life (s)": "1.031E12", "Mass Number": "231"}, "Pa-233": {"Atom Name": "Protactinium", "Atom Symbol": "Pa", "Half-Life (s)": "2.3311E6", "Mass Number": "233"}, "Pa-234": {"Atom Name": "Protactinium", "Atom Symbol": "Pa", "Half-Life (s)": "24.12E3", "Mass Number": "234"}, "Pa-234m": {"Atom Name": "Protactinium", "Atom Symbol": "Pa", "Half-Life (s)": "69.5", "Mass Number": "234m"}, "Pb-203": {"Atom Name": "Lead", "Atom Symbol": "Pb", "Half-Life (s)": "186.944E3", "Mass Number": "203"}, "Pb-209": {"Atom Name": "Lead", "Atom Symbol": "Pb", "Half-Life (s)": "11.80E3", "Mass Number": "209"}, "Pb-210": {"Atom Name": "Lead", "Atom Symbol": "Pb", "Half-Life (s)": "701.5E6", "Mass Number": "210"}, "Pb-211": {"Atom Name": "Lead", "Atom Symbol": "Pb", "Half-Life (s)": "2.166E3", "Mass Number": "211"}, "Pb-212": {"Atom Name": "Lead", "Atom Symbol": "Pb", "Half-Life (s)": "38.304E3", "Mass Number": "212"}, "Pb-214": {"Atom Name": "Lead", "Atom Symbol": "Pb", "Half-Life (s)": "1.6150E3", "Mass Number": "214"}, "Pd-109": {"Atom Name": "Palladium", "Atom Symbol": "Pd", "Half-Life (s)": "48.89E3", "Mass Number": "109"}, "Pm-147": {"Atom Name": "Promethium", "Atom Symbol": "Pm", "Half-Life (s)": "82.786E6", "Mass Number": "147"}, "Pm-148": {"Atom Name": "Promethium", "Atom Symbol": "Pm", "Half-Life (s)": "464.0E3", "Mass Number": "148"}, "Pm-148m": {"Atom Name": "Promethium", "Atom Symbol": "Pm", "Half-Life (s)": "3.567E6", "Mass Number": "148m"}, "Po-209": {"Atom Name": "Polonium", "Atom Symbol": "Po", "Half-Life (s)": "3.63E9", "Mass Number": "209"}, "Po-210": {"Atom Name": "Polonium", "Atom Symbol": "Po", "Half-Life (s)": "11.95571E6", "Mass Number": "210"}, "Po-211": {"Atom Name": "Polonium", "Atom Symbol": "Po", "Half-Life (s)": "516E-3", "Mass Number": "211"}, "Po-212": {"Atom Name": "Polonium", "Atom Symbol": "Po", "Half-Life (s)": "300E-9", "Mass Number": "212"}, "Po-213": {"Atom Name": "Polonium", "Atom Symbol": "Po", "Half-Life (s)": "3.70E-6", "Mass Number": "213"}, "Po-214": {"Atom Name": "Polonium", "Atom Symbol": "Po", "Half-Life (s)": "162.3E-6", "Mass Number": "214"}, "Po-215": {"Atom Name": "Polonium", "Atom Symbol": "Po", "Half-Life (s)": "1.7810E-3", "Mass Number": "215"}, "Po-216": {"Atom Name": "Polonium", "Atom Symbol": "Po", "Half-Life (s)": "148E-3", "Mass Number": "216"}, "Po-218": {"Atom Name": "Polonium", "Atom Symbol": "Po", "Half-Life (s)": "184.3", "Mass Number": "218"}, "Pr-142": {"Atom Name": "Praseodymium", "Atom Symbol": "Pr", "Half-Life (s)": "68.90E3", "Mass Number": "142"}, "Pr-144": {"Atom Name": "Praseodymium", "Atom Symbol": "Pr", "Half-Life (s)": "1.0374E3", "Mass Number": "144"}, "Pr-144m": {"Atom Name": "Praseodymium", "Atom Symbol": "Pr", "Half-Life (s)": "432", "Mass Number": "144m"}, "Pu-238": {"Atom Name": "Plutonium", "Atom Symbol": "Pu", "Half-Life (s)": "2.7688E9", "Mass Number": "238"}, "Pu-239": {"Atom Name": "Plutonium", "Atom Symbol": "Pu", "Half-Life (s)": "760.52E9", "Mass Number": "239"}, "Pu-240": {"Atom Name": "Plutonium", "Atom Symbol": "Pu", "Half-Life (s)": "207.04E9", "Mass Number": "240"}, "Pu-241": {"Atom Name": "Plutonium", "Atom Symbol": "Pu", "Half-Life (s)": "452.2E6", "Mass Number": "241"}, "Pu-242": {"Atom Name": "Plutonium", "Atom Symbol": "Pu", "Half-Life (s)": "11.77E12", "Mass Number": "242"}, "Ra-223": {"Atom Name": "Radium", "Atom Symbol": "Ra", "Half-Life (s)": "987.6E3", "Mass Number": "223"}, "Ra-224": {"Atom Name": "Radium", "Atom Symbol": "Ra", "Half-Life (s)": "313.72E3", "Mass Number": "224"}, "Ra-225": {"Atom Name": "Radium", "Atom Symbol": "Ra", "Half-Life (s)": "1.280E6", "Mass Number": "225"}, "Ra-226": {"Atom Name": "Radium", "Atom Symbol": "Ra", "Half-Life (s)": "50.49E9", "Mass Number": "226"}, "Ra-228": {"Atom Name": "Radium", "Atom Symbol": "Ra", "Half-Life (s)": "181.5E6", "Mass Number": "228"}, "Rb-82": {"Atom Name": "Rubidium", "Atom Symbol": "Rb", "Half-Life (s)": "75.91", "Mass Number": "82"}, "Re-186": {"Atom Name": "Rhenium", "Atom Symbol": "Re", "Half-Life (s)": "321.29E3", "Mass Number": "186"}, "Re-188": {"Atom Name": "Rhenium", "Atom Symbol": "Re", "Half-Life (s)": "61.218E3", "Mass Number": "188"}, "Rh-106": {"Atom Name": "Rhodium", "Atom Symbol": "Rh", "Half-Life (s)": "30.1", "Mass Number": "106"}, "Rn-217": {"Atom Name": "Radon", "Atom Symbol": "Rn", "Half-Life (s)": "540E-6", "Mass Number": "217"}, "Rn-218": {"Atom Name": "Radon", "Atom Symbol": "Rn", "Half-Life (s)": "36.0E-3", "Mass Number": "218"}, "Rn-219": {"Atom Name": "Radon", "Atom Symbol": "Rn", "Half-Life (s)": "3.98", "Mass Number": "219"}, "Rn-220": {"Atom Name": "Radon", "Atom Symbol": "Rn", "Half-Life (s)": "55.8", "Mass Number": "220"}, "Rn-222": {"Atom Name": "Radon", "Atom Symbol": "Rn", "Half-Life (s)": "330.32E3", "Mass Number": "222"}, "Ru-106": {"Atom Name": "Ruthenium", "Atom Symbol": "Ru", "Half-Life (s)": "32.10E6", "Mass Number": "106"}, "S-35": {"Atom Name": "Sulfur", "Atom Symbol": "S", "Half-Life (s)": "7.538E6", "Mass Number": "35"}, "Sb-124": {"Atom Name": "Antimony", "Atom Symbol": "Sb", "Half-Life (s)": "5.2020E6", "Mass Number": "124"}, "Sb-125": {"Atom Name": "Antimony", "Atom Symbol": "Sb", "Half-Life (s)": "87.051E6", "Mass Number": "125"}, "Sb-127": {"Atom Name": "Antimony", "Atom Symbol": "Sb", "Half-Life (s)": "333E3", "Mass Number": "127"}, "Sc-44": {"Atom Name": "Scandium", "Atom Symbol": "Sc", "Half-Life (s)": "14.29E3", "Mass Number": "44"}, "Sc-46": {"Atom Name": "Scandium", "Atom Symbol": "Sc", "Half-Life (s)": "7.2392E6", "Mass Number": "46"}, "Sc-47": {"Atom Name": "Scandium", "Atom Symbol": "Sc", "Half-Life (s)": "289.31E3", "Mass Number": "47"}, "Se-73": {"Atom Name": "Selenium", "Atom Symbol": "Se", "Half-Life (s)": "25.56E3", "Mass Number": "73"}, "Se-75": {"Atom Name": "Selenium", "Atom Symbol": "Se", "Half-Life (s)": "10.3491E6", "Mass Number": "75"}, "Se-79": {"Atom Name": "Selenium", "Atom Symbol": "Se", "Half-Life (s)": "11.2E12", "Mass Number": "79"}, "Sm-151": {"Atom Name": "Samarium", "Atom Symbol": "Sm", "Half-Life (s)": "2.988E9", "Mass Number": "151"}, "Sm-153": {"Atom Name": "Samarium", "Atom Symbol": "Sm", "Half-Life (s)": "166.6267E3", "Mass Number": "153"}, "Sn-113": {"Atom Name": "Tin", "Atom Symbol": "Sn", "Half-Life (s)": "9.9438E6", "Mass Number": "113"}, "Sr-82": {"Atom Name": "Strontium", "Atom Symbol": "Sr", "Half-Life (s)": "2.1900E6", "Mass Number": "82"}, "Sr-85": {"Atom Name": "Strontium", "Atom Symbol": "Sr", "Half-Life (s)": "5.6030E6", "Mass Number": "85"}, "Sr-89": {"Atom Name": "Strontium", "Atom Symbol": "Sr", "Half-Life (s)": "4.3692E6", "Mass Number": "89"}, "Sr-90": {"Atom Name": "Strontium", "Atom Symbol": "Sr", "Half-Life (s)": "908.8E6", "Mass Number": "90"}, "Ta-182": {"Atom Name": "Tantalum", "Atom Symbol": "Ta", "Half-Life (s)": "9.902E6", "Mass Number": "182"}, "Tc-94m": {"Atom Name": "Technetium", "Atom Symbol": "Tc", "Half-Life (s)": "3.11E3", "Mass Number": "94m"}, "Tc-99": {"Atom Name": "Technetium", "Atom Symbol": "Tc", "Half-Life (s)": "6.674E12", "Mass Number": "99"}, "Tc-99m": {"Atom Name": "Technetium", "Atom Symbol": "Tc", "Half-Life (s)": "21.6241E3", "Mass Number": "99m"}, "Te-123m": {"Atom Name": "Tellurium", "Atom Symbol": "Te", "Half-Life (s)": "10.308E6", "Mass Number": "123m"}, "Te-127": {"Atom Name": "Tellurium", "Atom Symbol": "Te", "Half-Life (s)": "33.66E3", "Mass Number": "127"}, "Te-127m": {"Atom Name": "Tellurium", "Atom Symbol": "Te", "Half-Life (s)": "9.17E6", "Mass Number": "127m"}, "Te-132": {"Atom Name": "Tellurium", "Atom Symbol": "Te", "Half-Life (s)": "279.1E3", "Mass Number": "132"}, "Th-228": {"Atom Name": "Thorium", "Atom Symbol": "Th", "Half-Life (s)": "60.356E6", "Mass Number": "228"}, "Th-231": {"Atom Name": "Thorium", "Atom Symbol": "Th", "Half-Life (s)": "91.879E3", "Mass Number": "231"}, "Th-232": {"Atom Name": "Thorium", "Atom Symbol": "Th", "Half-Life (s)": "442.4E15", "Mass Number": "232"}, "Th-233": {"Atom Name": "Thorium", "Atom Symbol": "Th", "Half-Life (s)": "1.3290E3", "Mass Number": "233"}, "Th-234": {"Atom Name": "Thorium", "Atom Symbol": "Th", "Half-Life (s)": "2.0822E6", "Mass Number": "234"}, "Ti-44": {"Atom Name": "Titanium", "Atom Symbol": "Ti", "Half-Life (s)": "1.893E9", "Mass Number": "44"}, "Tl-201": {"Atom Name": "Thallium", "Atom Symbol": "Tl", "Half-Life (s)": "262.84E3", "Mass Number": "201"}, "Tl-204": {"Atom Name": "Thallium", "Atom Symbol": "Tl", "Half-Life (s)": "119.54E6", "Mass Number": "204"}, "Tl-206": {"Atom Name": "Thallium", "Atom Symbol": "Tl", "Half-Life (s)": "252.1", "Mass Number": "206"}, "Tl-207": {"Atom Name": "Thallium", "Atom Symbol": "Tl", "Half-Life (s)": "286.4", "Mass Number": "207"}, "Tl-208": {"Atom Name": "Thallium", "Atom Symbol": "Tl", "Half-Life (s)": "183.48", "Mass Number": "208"}, "Tl-209": {"Atom Name": "Thallium", "Atom Symbol": "Tl", "Half-Life (s)": "129.66", "Mass Number": "209"}, "Tl-210": {"Atom Name": "Thallium", "Atom Symbol": "Tl", "Half-Life (s)": "78.0", "Mass Number": "210"}, "Tm-170": {"Atom Name": "Thullium", "Atom Symbol": "Tm", "Half-Life (s)": "11.04E6", "Mass Number": "170"}, "U-232": {"Atom Name": "Uranium", "Atom Symbol": "U", "Half-Life (s)": "2.228E9", "Mass Number": "232"}, "U-234": {"Atom Name": "Uranium", "Atom Symbol": "U", "Half-Life (s)": "7.747E12", "Mass Number": "234"}, "U-235": {"Atom Name": "Uranium", "Atom Symbol": "U", "Half-Life (s)": "22.216E15", "Mass Number": "235"}, "U-236": {"Atom Name": "Uranium", "Atom Symbol": "U", "Half-Life (s)": "739.4E12", "Mass Number": "236"}, "U-237": {"Atom Name": "Uranium", "Atom Symbol": "U", "Half-Life (s)": "583.1E3", "Mass Number": "237"}, "U-238": {"Atom Name": "Uranium", "Atom Symbol": "U", "Half-Life (s)": "141.00E15", "Mass Number": "238"}, "U-239": {"Atom Name": "Uranium", "Atom Symbol": "U", "Half-Life (s)": "1.4076E3", "Mass Number": "239"}, "Xe-127": {"Atom Name": "Xenon", "Atom Symbol": "Xe", "Half-Life (s)": "3.1413E6", "Mass Number": "127"}, "Xe-131m": {"Atom Name": "Xenon", "Atom Symbol": "Xe", "Half-Life (s)": "1.0335E6", "Mass Number": "131m"}, "Xe-133": {"Atom Name": "Xenon", "Atom Symbol": "Xe", "Half-Life (s)": "453.375E3", "Mass Number": "133"}, "Xe-133m": {"Atom Name": "Xenon", "Atom Symbol": "Xe", "Half-Life (s)": "189.9E3", "Mass Number": "133m"}, "Xe-135m": {"Atom Name": "Xenon", "Atom Symbol": "Xe", "Half-Life (s)": "918.0", "Mass Number": "135m"}, "Y-88": {"Atom Name": "Yttrium", "Atom Symbol": "Y", "Half-Life (s)": "9.2128E6", "Mass Number": "88"}, "Y-90": {"Atom Name": "Yttrium", "Atom Symbol": "Y", "Half-Life (s)": "230.55E3", "Mass Number": "90"}, "Y-90m": {"Atom Name": "Yttrium", "Atom Symbol": "Y", "Half-Life (s)": "11.48E3", "Mass Number": "90m"}, "Yb-169": {"Atom Name": "Ytterbium", "Atom Symbol": "Yb", "Half-Life (s)": "2.76636E6", "Mass Number": "169"}, "Zn-63": {"Atom Name": "Zinc", "Atom Symbol": "Zn", "Half-Life (s)": "2.300E3", "Mass Number": "63"}, "Zn-65": {"Atom Name": "Zinc", "Atom Symbol": "Zn", "Half-Life (s)": "21.082E6", "Mass Number": "65"}, "Zr-89": {"Atom Name": "Zirconium", "Atom Symbol": "Zr", "Half-Life (s)": "282.31E3", "Mass Number": "89"}, "Zr-93": {"Atom Name": "Zirconium", "Atom Symbol": "Zr", "Half-Life (s)": "50.8E12", "Mass Number": "93"}, "Zr-95": {"Atom Name": "Zirconium", "Atom Symbol": "Zr", "Half-Life (s)": "5.5324E6", "Mass Number": "95"}}
+{
+    "Ac-225": {
+        "Atom Name": "Actinium",
+        "Atom Symbol": "Ac",
+        "Half-Life (s)": "864E3",
+        "Mass Number": "225"
+    },
+    "Ac-227": {
+        "Atom Name": "Actinium",
+        "Atom Symbol": "Ac",
+        "Half-Life (s)": "687.06E6",
+        "Mass Number": "227"
+    },
+    "Ac-228": {
+        "Atom Name": "Actinium",
+        "Atom Symbol": "Ac",
+        "Half-Life (s)": "22.14E3",
+        "Mass Number": "228"
+    },
+    "Ag-108": {
+        "Atom Name": "Silver",
+        "Atom Symbol": "Ag",
+        "Half-Life (s)": "142.9",
+        "Mass Number": "108"
+    },
+    "Ag-108m": {
+        "Atom Name": "Silver",
+        "Atom Symbol": "Ag",
+        "Half-Life (s)": "13.82E9",
+        "Mass Number": "108m"
+    },
+    "Ag-110": {
+        "Atom Name": "Silver",
+        "Atom Symbol": "Ag",
+        "Half-Life (s)": "24.56",
+        "Mass Number": "110"
+    },
+    "Ag-110m": {
+        "Atom Name": "Silver",
+        "Atom Symbol": "Ag",
+        "Half-Life (s)": "21.5810E6",
+        "Mass Number": "110m"
+    },
+    "Al-26": {
+        "Atom Name": "Aluminium",
+        "Atom Symbol": "Al",
+        "Half-Life (s)": "22.6E12",
+        "Mass Number": "26"
+    },
+    "Am-241": {
+        "Atom Name": "Americium",
+        "Atom Symbol": "Am",
+        "Half-Life (s)": "13.652E9",
+        "Mass Number": "241"
+    },
+    "Am-242": {
+        "Atom Name": "Americium",
+        "Atom Symbol": "Am",
+        "Half-Life (s)": "57.64E3",
+        "Mass Number": "242"
+    },
+    "Am-242m": {
+        "Atom Name": "Americium",
+        "Atom Symbol": "Am",
+        "Half-Life (s)": "4.51E9",
+        "Mass Number": "242m"
+    },
+    "Am-243": {
+        "Atom Name": "Americium",
+        "Atom Symbol": "Am",
+        "Half-Life (s)": "232.5E9",
+        "Mass Number": "243"
+    },
+    "Am-244": {
+        "Atom Name": "Americium",
+        "Atom Symbol": "Am",
+        "Half-Life (s)": "36.36E3",
+        "Mass Number": "244"
+    },
+    "Am-244m": {
+        "Atom Name": "Americium",
+        "Atom Symbol": "Am",
+        "Half-Life (s)": "1.56E3",
+        "Mass Number": "244m"
+    },
+    "Ar-37": {
+        "Atom Name": "Argon",
+        "Atom Symbol": "Ar",
+        "Half-Life (s)": "3.0249E6",
+        "Mass Number": "37"
+    },
+    "Ar-41": {
+        "Atom Name": "Argon",
+        "Atom Symbol": "Ar",
+        "Half-Life (s)": "6.5765E3",
+        "Mass Number": "41"
+    },
+    "At-211": {
+        "Atom Name": "Astatine",
+        "Atom Symbol": "At",
+        "Half-Life (s)": "25.978E3",
+        "Mass Number": "211"
+    },
+    "At-215": {
+        "Atom Name": "Astatine",
+        "Atom Symbol": "At",
+        "Half-Life (s)": "100E-6",
+        "Mass Number": "215"
+    },
+    "At-217": {
+        "Atom Name": "Astatine",
+        "Atom Symbol": "At",
+        "Half-Life (s)": "32.30E-3",
+        "Mass Number": "217"
+    },
+    "At-218": {
+        "Atom Name": "Astatine",
+        "Atom Symbol": "At",
+        "Half-Life (s)": "1.4",
+        "Mass Number": "218"
+    },
+    "At-219": {
+        "Atom Name": "Astatine",
+        "Atom Symbol": "At",
+        "Half-Life (s)": "56",
+        "Mass Number": "219"
+    },
+    "Au-195": {
+        "Atom Name": "Gold",
+        "Atom Symbol": "Au",
+        "Half-Life (s)": "15.96E6",
+        "Mass Number": "195"
+    },
+    "Au-198": {
+        "Atom Name": "Gold",
+        "Atom Symbol": "Au",
+        "Half-Life (s)": "232.788E3",
+        "Mass Number": "198"
+    },
+    "Ba-133": {
+        "Atom Name": "Barium",
+        "Atom Symbol": "Ba",
+        "Half-Life (s)": "332.58E6",
+        "Mass Number": "133"
+    },
+    "Ba-137m": {
+        "Atom Name": "Barium",
+        "Atom Symbol": "Ba",
+        "Half-Life (s)": "153.12",
+        "Mass Number": "137m"
+    },
+    "Ba-140": {
+        "Atom Name": "Barium",
+        "Atom Symbol": "Ba",
+        "Half-Life (s)": "1.10186E6",
+        "Mass Number": "140"
+    },
+    "Be-7": {
+        "Atom Name": "Beryllium",
+        "Atom Symbol": "Be",
+        "Half-Life (s)": "4.598E6",
+        "Mass Number": "7"
+    },
+    "Bi-207": {
+        "Atom Name": "Bismuth",
+        "Atom Symbol": "Bi",
+        "Half-Life (s)": "1.038E9",
+        "Mass Number": "207"
+    },
+    "Bi-210": {
+        "Atom Name": "Bismuth",
+        "Atom Symbol": "Bi",
+        "Half-Life (s)": "432.95E3",
+        "Mass Number": "210"
+    },
+    "Bi-211": {
+        "Atom Name": "Bismuth",
+        "Atom Symbol": "Bi",
+        "Half-Life (s)": "129.0",
+        "Mass Number": "211"
+    },
+    "Bi-212": {
+        "Atom Name": "Bismuth",
+        "Atom Symbol": "Bi",
+        "Half-Life (s)": "3.6324E3",
+        "Mass Number": "212"
+    },
+    "Bi-213": {
+        "Atom Name": "Bismuth",
+        "Atom Symbol": "Bi",
+        "Half-Life (s)": "2.7354E3",
+        "Mass Number": "213"
+    },
+    "Bi-214": {
+        "Atom Name": "Bismuth",
+        "Atom Symbol": "Bi",
+        "Half-Life (s)": "1.188E3",
+        "Mass Number": "214"
+    },
+    "Bi-215": {
+        "Atom Name": "Bismuth",
+        "Atom Symbol": "Bi",
+        "Half-Life (s)": "456",
+        "Mass Number": "215"
+    },
+    "Br-76": {
+        "Atom Name": "Bromine",
+        "Atom Symbol": "Br",
+        "Half-Life (s)": "58.0E3",
+        "Mass Number": "76"
+    },
+    "C-11": {
+        "Atom Name": "Carbon",
+        "Atom Symbol": "C",
+        "Half-Life (s)": "1.2217E3",
+        "Mass Number": "11"
+    },
+    "C-14": {
+        "Atom Name": "Carbon",
+        "Atom Symbol": "C",
+        "Half-Life (s)": "179.9E9",
+        "Mass Number": "14"
+    },
+    "Ca-41": {
+        "Atom Name": "Calcium",
+        "Atom Symbol": "Ca",
+        "Half-Life (s)": "3.16E12",
+        "Mass Number": "41"
+    },
+    "Ca-45": {
+        "Atom Name": "Calcium",
+        "Atom Symbol": "Ca",
+        "Half-Life (s)": "14.052E6",
+        "Mass Number": "45"
+    },
+    "Cd-109": {
+        "Atom Name": "Cadmium",
+        "Atom Symbol": "Cd",
+        "Half-Life (s)": "39.908E6",
+        "Mass Number": "109"
+    },
+    "Ce-139": {
+        "Atom Name": "Cerium",
+        "Atom Symbol": "Ce",
+        "Half-Life (s)": "11.8922E6",
+        "Mass Number": "139"
+    },
+    "Ce-141": {
+        "Atom Name": "Cerium",
+        "Atom Symbol": "Ce",
+        "Half-Life (s)": "2.8083E6",
+        "Mass Number": "141"
+    },
+    "Ce-144": {
+        "Atom Name": "Cerium",
+        "Atom Symbol": "Ce",
+        "Half-Life (s)": "24.614E6",
+        "Mass Number": "144"
+    },
+    "Cf-252": {
+        "Atom Name": "Californium",
+        "Atom Symbol": "Cf",
+        "Half-Life (s)": "83.53E6",
+        "Mass Number": "252"
+    },
+    "Cl-36": {
+        "Atom Name": "Chlorine",
+        "Atom Symbol": "Cl",
+        "Half-Life (s)": "9.53E12",
+        "Mass Number": "36"
+    },
+    "Cm-242": {
+        "Atom Name": "Curium",
+        "Atom Symbol": "Cm",
+        "Half-Life (s)": "14.071E6",
+        "Mass Number": "242"
+    },
+    "Cm-243": {
+        "Atom Name": "Curium",
+        "Atom Symbol": "Cm",
+        "Half-Life (s)": "912E6",
+        "Mass Number": "243"
+    },
+    "Cm-244": {
+        "Atom Name": "Curium",
+        "Atom Symbol": "Cm",
+        "Half-Life (s)": "571.5E6",
+        "Mass Number": "244"
+    },
+    "Cm-245": {
+        "Atom Name": "Curium",
+        "Atom Symbol": "Cm",
+        "Half-Life (s)": "260.3E9",
+        "Mass Number": "245"
+    },
+    "Cm-246": {
+        "Atom Name": "Curium",
+        "Atom Symbol": "Cm",
+        "Half-Life (s)": "149.0E9",
+        "Mass Number": "246"
+    },
+    "Co-56": {
+        "Atom Name": "Cobalt",
+        "Atom Symbol": "Co",
+        "Half-Life (s)": "6.6732E6",
+        "Mass Number": "56"
+    },
+    "Co-57": {
+        "Atom Name": "Cobalt",
+        "Atom Symbol": "Co",
+        "Half-Life (s)": "23.4844E6",
+        "Mass Number": "57"
+    },
+    "Co-58": {
+        "Atom Name": "Cobalt",
+        "Atom Symbol": "Co",
+        "Half-Life (s)": "6.1214E6",
+        "Mass Number": "58"
+    },
+    "Co-60": {
+        "Atom Name": "Cobalt",
+        "Atom Symbol": "Co",
+        "Half-Life (s)": "166.340E6",
+        "Mass Number": "60"
+    },
+    "Cr-51": {
+        "Atom Name": "Chromium",
+        "Atom Symbol": "Cr",
+        "Half-Life (s)": "2.39363E6",
+        "Mass Number": "51"
+    },
+    "Cs-134": {
+        "Atom Name": "Cesium",
+        "Atom Symbol": "Cs",
+        "Half-Life (s)": "65.146E6",
+        "Mass Number": "134"
+    },
+    "Cs-137": {
+        "Atom Name": "Cesium",
+        "Atom Symbol": "Cs",
+        "Half-Life (s)": "948.3E6",
+        "Mass Number": "137"
+    },
+    "Cu-61": {
+        "Atom Name": "Copper",
+        "Atom Symbol": "Cu",
+        "Half-Life (s)": "12.12E3",
+        "Mass Number": "61"
+    },
+    "Cu-64": {
+        "Atom Name": "Copper",
+        "Atom Symbol": "Cu",
+        "Half-Life (s)": "45.721E3",
+        "Mass Number": "64"
+    },
+    "Er-169": {
+        "Atom Name": "Erbium",
+        "Atom Symbol": "Er",
+        "Half-Life (s)": "810.4E3",
+        "Mass Number": "169"
+    },
+    "Eu-152": {
+        "Atom Name": "Europium",
+        "Atom Symbol": "Eu",
+        "Half-Life (s)": "426.7E6",
+        "Mass Number": "152"
+    },
+    "Eu-154": {
+        "Atom Name": "Europium",
+        "Atom Symbol": "Eu",
+        "Half-Life (s)": "271.42E6",
+        "Mass Number": "154"
+    },
+    "Eu-155": {
+        "Atom Name": "Europium",
+        "Atom Symbol": "Eu",
+        "Half-Life (s)": "149.99E6",
+        "Mass Number": "155"
+    },
+    "F-18": {
+        "Atom Name": "Fluorine",
+        "Atom Symbol": "F",
+        "Half-Life (s)": "6.5840E3",
+        "Mass Number": "18"
+    },
+    "Fe-52": {
+        "Atom Name": "Iron",
+        "Atom Symbol": "Fe",
+        "Half-Life (s)": "29.783E3",
+        "Mass Number": "52"
+    },
+    "Fe-55": {
+        "Atom Name": "Iron",
+        "Atom Symbol": "Fe",
+        "Half-Life (s)": "86.69E6",
+        "Mass Number": "55"
+    },
+    "Fe-59": {
+        "Atom Name": "Iron",
+        "Atom Symbol": "Fe",
+        "Half-Life (s)": "3.8443E6",
+        "Mass Number": "59"
+    },
+    "Fr-221": {
+        "Atom Name": "Francium",
+        "Atom Symbol": "Fr",
+        "Half-Life (s)": "287.4",
+        "Mass Number": "221"
+    },
+    "Fr-223": {
+        "Atom Name": "Francium",
+        "Atom Symbol": "Fr",
+        "Half-Life (s)": "1.3200E3",
+        "Mass Number": "223"
+    },
+    "Ga-66": {
+        "Atom Name": "Gallium",
+        "Atom Symbol": "Ga",
+        "Half-Life (s)": "34.16E3",
+        "Mass Number": "66"
+    },
+    "Ga-67": {
+        "Atom Name": "Gallium",
+        "Atom Symbol": "Ga",
+        "Half-Life (s)": "281.776E3",
+        "Mass Number": "67"
+    },
+    "Ga-68": {
+        "Atom Name": "Gallium",
+        "Atom Symbol": "Ga",
+        "Half-Life (s)": "4.070E3",
+        "Mass Number": "68"
+    },
+    "Gd-153": {
+        "Atom Name": "Gadolinium",
+        "Atom Symbol": "Gd",
+        "Half-Life (s)": "20.77E6",
+        "Mass Number": "153"
+    },
+    "Gd-159": {
+        "Atom Name": "Gadolinium",
+        "Atom Symbol": "Gd",
+        "Half-Life (s)": "66.524E3",
+        "Mass Number": "159"
+    },
+    "Ge-68": {
+        "Atom Name": "Germanium",
+        "Atom Symbol": "Ge",
+        "Half-Life (s)": "23.410E6",
+        "Mass Number": "68"
+    },
+    "H-3": {
+        "Atom Name": "Tritium",
+        "Atom Symbol": "H",
+        "Half-Life (s)": "388.5E6",
+        "Mass Number": "3"
+    },
+    "Hg-203": {
+        "Atom Name": "Mercury",
+        "Atom Symbol": "Hg",
+        "Half-Life (s)": "4.0257E6",
+        "Mass Number": "203"
+    },
+    "Hg-206": {
+        "Atom Name": "Mercury",
+        "Atom Symbol": "Hg",
+        "Half-Life (s)": "499.2",
+        "Mass Number": "206"
+    },
+    "Ho-166": {
+        "Atom Name": "Holmium",
+        "Atom Symbol": "Ho",
+        "Half-Life (s)": "96.46E3",
+        "Mass Number": "166"
+    },
+    "Ho-166m": {
+        "Atom Name": "Holmium",
+        "Atom Symbol": "Ho",
+        "Half-Life (s)": "35.75E9",
+        "Mass Number": "166m"
+    },
+    "I-123": {
+        "Atom Name": "Iodine",
+        "Atom Symbol": "I",
+        "Half-Life (s)": "47.604E3",
+        "Mass Number": "123"
+    },
+    "I-125": {
+        "Atom Name": "Iodine",
+        "Atom Symbol": "I",
+        "Half-Life (s)": "5.1311E6",
+        "Mass Number": "125"
+    },
+    "I-129": {
+        "Atom Name": "Iodine",
+        "Atom Symbol": "I",
+        "Half-Life (s)": "508E12",
+        "Mass Number": "129"
+    },
+    "I-131": {
+        "Atom Name": "Iodine",
+        "Atom Symbol": "I",
+        "Half-Life (s)": "693.21E3",
+        "Mass Number": "131"
+    },
+    "I-133": {
+        "Atom Name": "Iodine",
+        "Atom Symbol": "I",
+        "Half-Life (s)": "75.13E3",
+        "Mass Number": "133"
+    },
+    "In-111": {
+        "Atom Name": "Indium",
+        "Atom Symbol": "In",
+        "Half-Life (s)": "242.343E3",
+        "Mass Number": "111"
+    },
+    "Ir-192": {
+        "Atom Name": "Iridium",
+        "Atom Symbol": "Ir",
+        "Half-Life (s)": "6.3787E6",
+        "Mass Number": "192"
+    },
+    "Ir-194": {
+        "Atom Name": "Iridium",
+        "Atom Symbol": "Ir",
+        "Half-Life (s)": "69.48E3",
+        "Mass Number": "194"
+    },
+    "K-40": {
+        "Atom Name": "Potassium",
+        "Atom Symbol": "K",
+        "Half-Life (s)": "39.46E15",
+        "Mass Number": "40"
+    },
+    "Kr-85": {
+        "Atom Name": "Krypton",
+        "Atom Symbol": "Kr",
+        "Half-Life (s)": "339.3E6",
+        "Mass Number": "85"
+    },
+    "La-138": {
+        "Atom Name": "Lanthanum",
+        "Atom Symbol": "La",
+        "Half-Life (s)": "3.27E18",
+        "Mass Number": "138"
+    },
+    "La-140": {
+        "Atom Name": "Lanthanum",
+        "Atom Symbol": "La",
+        "Half-Life (s)": "145.029E3",
+        "Mass Number": "140"
+    },
+    "Lu-177": {
+        "Atom Name": "Lutetium",
+        "Atom Symbol": "Lu",
+        "Half-Life (s)": "574.30E3",
+        "Mass Number": "177"
+    },
+    "Mn-54": {
+        "Atom Name": "Manganese",
+        "Atom Symbol": "Mn",
+        "Half-Life (s)": "26.9732E6",
+        "Mass Number": "54"
+    },
+    "Mn-56": {
+        "Atom Name": "Manganese",
+        "Atom Symbol": "Mn",
+        "Half-Life (s)": "9.2836E3",
+        "Mass Number": "56"
+    },
+    "Mo-99": {
+        "Atom Name": "Molybdenum",
+        "Atom Symbol": "Mo",
+        "Half-Life (s)": "237.42E3",
+        "Mass Number": "99"
+    },
+    "N-13": {
+        "Atom Name": "Nitrogen",
+        "Atom Symbol": "N",
+        "Half-Life (s)": "598.02",
+        "Mass Number": "13"
+    },
+    "Na-22": {
+        "Atom Name": "Sodium",
+        "Atom Symbol": "Na",
+        "Half-Life (s)": "82.140E6",
+        "Mass Number": "22"
+    },
+    "Na-24": {
+        "Atom Name": "Sodium",
+        "Atom Symbol": "Na",
+        "Half-Life (s)": "53.849E3",
+        "Mass Number": "24"
+    },
+    "Nb-93m": {
+        "Atom Name": "Niobium",
+        "Atom Symbol": "Nb",
+        "Half-Life (s)": "508.7E6",
+        "Mass Number": "93m"
+    },
+    "Nb-95": {
+        "Atom Name": "Niobium",
+        "Atom Symbol": "Nb",
+        "Half-Life (s)": "3.0232E6",
+        "Mass Number": "95"
+    },
+    "Nb-95m": {
+        "Atom Name": "Niobium",
+        "Atom Symbol": "Nb",
+        "Half-Life (s)": "311.9E3",
+        "Mass Number": "95m"
+    },
+    "Nd-147": {
+        "Atom Name": "Neodymium",
+        "Atom Symbol": "Nd",
+        "Half-Life (s)": "949.3E3",
+        "Mass Number": "147"
+    },
+    "Ni-57": {
+        "Atom Name": "Nickel",
+        "Atom Symbol": "Ni",
+        "Half-Life (s)": "129.3E3",
+        "Mass Number": "57"
+    },
+    "Ni-59": {
+        "Atom Name": "Nickel",
+        "Atom Symbol": "Ni",
+        "Half-Life (s)": "2.40E12",
+        "Mass Number": "59"
+    },
+    "Ni-63": {
+        "Atom Name": "Nickel",
+        "Atom Symbol": "Ni",
+        "Half-Life (s)": "3.11E9",
+        "Mass Number": "63"
+    },
+    "Np-236": {
+        "Atom Name": "Neptunium",
+        "Atom Symbol": "Np",
+        "Half-Life (s)": "4.89E12",
+        "Mass Number": "236"
+    },
+    "Np-236m": {
+        "Atom Name": "Neptunium",
+        "Atom Symbol": "Np",
+        "Half-Life (s)": "81.0E3",
+        "Mass Number": "236m"
+    },
+    "Np-237": {
+        "Atom Name": "Neptunium",
+        "Atom Symbol": "Np",
+        "Half-Life (s)": "67.66E12",
+        "Mass Number": "237"
+    },
+    "Np-238": {
+        "Atom Name": "Neptunium",
+        "Atom Symbol": "Np",
+        "Half-Life (s)": "181.61E3",
+        "Mass Number": "238"
+    },
+    "Np-239": {
+        "Atom Name": "Neptunium",
+        "Atom Symbol": "Np",
+        "Half-Life (s)": "203.56E3",
+        "Mass Number": "239"
+    },
+    "O-15": {
+        "Atom Name": "Oxygen",
+        "Atom Symbol": "O",
+        "Half-Life (s)": "122.46",
+        "Mass Number": "15"
+    },
+    "P-32": {
+        "Atom Name": "Phosphorus",
+        "Atom Symbol": "P",
+        "Half-Life (s)": "1.2341E6",
+        "Mass Number": "32"
+    },
+    "P-33": {
+        "Atom Name": "Phosphorus",
+        "Atom Symbol": "P",
+        "Half-Life (s)": "2.1931E6",
+        "Mass Number": "33"
+    },
+    "Pa-231": {
+        "Atom Name": "Protactinium",
+        "Atom Symbol": "Pa",
+        "Half-Life (s)": "1.031E12",
+        "Mass Number": "231"
+    },
+    "Pa-233": {
+        "Atom Name": "Protactinium",
+        "Atom Symbol": "Pa",
+        "Half-Life (s)": "2.3311E6",
+        "Mass Number": "233"
+    },
+    "Pa-234": {
+        "Atom Name": "Protactinium",
+        "Atom Symbol": "Pa",
+        "Half-Life (s)": "24.12E3",
+        "Mass Number": "234"
+    },
+    "Pa-234m": {
+        "Atom Name": "Protactinium",
+        "Atom Symbol": "Pa",
+        "Half-Life (s)": "69.5",
+        "Mass Number": "234m"
+    },
+    "Pb-203": {
+        "Atom Name": "Lead",
+        "Atom Symbol": "Pb",
+        "Half-Life (s)": "186.944E3",
+        "Mass Number": "203"
+    },
+    "Pb-209": {
+        "Atom Name": "Lead",
+        "Atom Symbol": "Pb",
+        "Half-Life (s)": "11.80E3",
+        "Mass Number": "209"
+    },
+    "Pb-210": {
+        "Atom Name": "Lead",
+        "Atom Symbol": "Pb",
+        "Half-Life (s)": "701.5E6",
+        "Mass Number": "210"
+    },
+    "Pb-211": {
+        "Atom Name": "Lead",
+        "Atom Symbol": "Pb",
+        "Half-Life (s)": "2.166E3",
+        "Mass Number": "211"
+    },
+    "Pb-212": {
+        "Atom Name": "Lead",
+        "Atom Symbol": "Pb",
+        "Half-Life (s)": "38.304E3",
+        "Mass Number": "212"
+    },
+    "Pb-214": {
+        "Atom Name": "Lead",
+        "Atom Symbol": "Pb",
+        "Half-Life (s)": "1.6150E3",
+        "Mass Number": "214"
+    },
+    "Pd-109": {
+        "Atom Name": "Palladium",
+        "Atom Symbol": "Pd",
+        "Half-Life (s)": "48.89E3",
+        "Mass Number": "109"
+    },
+    "Pm-147": {
+        "Atom Name": "Promethium",
+        "Atom Symbol": "Pm",
+        "Half-Life (s)": "82.786E6",
+        "Mass Number": "147"
+    },
+    "Pm-148": {
+        "Atom Name": "Promethium",
+        "Atom Symbol": "Pm",
+        "Half-Life (s)": "464.0E3",
+        "Mass Number": "148"
+    },
+    "Pm-148m": {
+        "Atom Name": "Promethium",
+        "Atom Symbol": "Pm",
+        "Half-Life (s)": "3.567E6",
+        "Mass Number": "148m"
+    },
+    "Po-209": {
+        "Atom Name": "Polonium",
+        "Atom Symbol": "Po",
+        "Half-Life (s)": "3.63E9",
+        "Mass Number": "209"
+    },
+    "Po-210": {
+        "Atom Name": "Polonium",
+        "Atom Symbol": "Po",
+        "Half-Life (s)": "11.95571E6",
+        "Mass Number": "210"
+    },
+    "Po-211": {
+        "Atom Name": "Polonium",
+        "Atom Symbol": "Po",
+        "Half-Life (s)": "516E-3",
+        "Mass Number": "211"
+    },
+    "Po-212": {
+        "Atom Name": "Polonium",
+        "Atom Symbol": "Po",
+        "Half-Life (s)": "300E-9",
+        "Mass Number": "212"
+    },
+    "Po-213": {
+        "Atom Name": "Polonium",
+        "Atom Symbol": "Po",
+        "Half-Life (s)": "3.70E-6",
+        "Mass Number": "213"
+    },
+    "Po-214": {
+        "Atom Name": "Polonium",
+        "Atom Symbol": "Po",
+        "Half-Life (s)": "162.3E-6",
+        "Mass Number": "214"
+    },
+    "Po-215": {
+        "Atom Name": "Polonium",
+        "Atom Symbol": "Po",
+        "Half-Life (s)": "1.7810E-3",
+        "Mass Number": "215"
+    },
+    "Po-216": {
+        "Atom Name": "Polonium",
+        "Atom Symbol": "Po",
+        "Half-Life (s)": "148E-3",
+        "Mass Number": "216"
+    },
+    "Po-218": {
+        "Atom Name": "Polonium",
+        "Atom Symbol": "Po",
+        "Half-Life (s)": "184.3",
+        "Mass Number": "218"
+    },
+    "Pr-142": {
+        "Atom Name": "Praseodymium",
+        "Atom Symbol": "Pr",
+        "Half-Life (s)": "68.90E3",
+        "Mass Number": "142"
+    },
+    "Pr-144": {
+        "Atom Name": "Praseodymium",
+        "Atom Symbol": "Pr",
+        "Half-Life (s)": "1.0374E3",
+        "Mass Number": "144"
+    },
+    "Pr-144m": {
+        "Atom Name": "Praseodymium",
+        "Atom Symbol": "Pr",
+        "Half-Life (s)": "432",
+        "Mass Number": "144m"
+    },
+    "Pu-238": {
+        "Atom Name": "Plutonium",
+        "Atom Symbol": "Pu",
+        "Half-Life (s)": "2.7688E9",
+        "Mass Number": "238"
+    },
+    "Pu-239": {
+        "Atom Name": "Plutonium",
+        "Atom Symbol": "Pu",
+        "Half-Life (s)": "760.52E9",
+        "Mass Number": "239"
+    },
+    "Pu-240": {
+        "Atom Name": "Plutonium",
+        "Atom Symbol": "Pu",
+        "Half-Life (s)": "207.04E9",
+        "Mass Number": "240"
+    },
+    "Pu-241": {
+        "Atom Name": "Plutonium",
+        "Atom Symbol": "Pu",
+        "Half-Life (s)": "452.2E6",
+        "Mass Number": "241"
+    },
+    "Pu-242": {
+        "Atom Name": "Plutonium",
+        "Atom Symbol": "Pu",
+        "Half-Life (s)": "11.77E12",
+        "Mass Number": "242"
+    },
+    "Ra-223": {
+        "Atom Name": "Radium",
+        "Atom Symbol": "Ra",
+        "Half-Life (s)": "987.6E3",
+        "Mass Number": "223"
+    },
+    "Ra-224": {
+        "Atom Name": "Radium",
+        "Atom Symbol": "Ra",
+        "Half-Life (s)": "313.72E3",
+        "Mass Number": "224"
+    },
+    "Ra-225": {
+        "Atom Name": "Radium",
+        "Atom Symbol": "Ra",
+        "Half-Life (s)": "1.280E6",
+        "Mass Number": "225"
+    },
+    "Ra-226": {
+        "Atom Name": "Radium",
+        "Atom Symbol": "Ra",
+        "Half-Life (s)": "50.49E9",
+        "Mass Number": "226"
+    },
+    "Ra-228": {
+        "Atom Name": "Radium",
+        "Atom Symbol": "Ra",
+        "Half-Life (s)": "181.5E6",
+        "Mass Number": "228"
+    },
+    "Rb-82": {
+        "Atom Name": "Rubidium",
+        "Atom Symbol": "Rb",
+        "Half-Life (s)": "75.91",
+        "Mass Number": "82"
+    },
+    "Re-186": {
+        "Atom Name": "Rhenium",
+        "Atom Symbol": "Re",
+        "Half-Life (s)": "321.29E3",
+        "Mass Number": "186"
+    },
+    "Re-188": {
+        "Atom Name": "Rhenium",
+        "Atom Symbol": "Re",
+        "Half-Life (s)": "61.218E3",
+        "Mass Number": "188"
+    },
+    "Rh-106": {
+        "Atom Name": "Rhodium",
+        "Atom Symbol": "Rh",
+        "Half-Life (s)": "30.1",
+        "Mass Number": "106"
+    },
+    "Rn-217": {
+        "Atom Name": "Radon",
+        "Atom Symbol": "Rn",
+        "Half-Life (s)": "540E-6",
+        "Mass Number": "217"
+    },
+    "Rn-218": {
+        "Atom Name": "Radon",
+        "Atom Symbol": "Rn",
+        "Half-Life (s)": "36.0E-3",
+        "Mass Number": "218"
+    },
+    "Rn-219": {
+        "Atom Name": "Radon",
+        "Atom Symbol": "Rn",
+        "Half-Life (s)": "3.98",
+        "Mass Number": "219"
+    },
+    "Rn-220": {
+        "Atom Name": "Radon",
+        "Atom Symbol": "Rn",
+        "Half-Life (s)": "55.8",
+        "Mass Number": "220"
+    },
+    "Rn-222": {
+        "Atom Name": "Radon",
+        "Atom Symbol": "Rn",
+        "Half-Life (s)": "330.32E3",
+        "Mass Number": "222"
+    },
+    "Ru-106": {
+        "Atom Name": "Ruthenium",
+        "Atom Symbol": "Ru",
+        "Half-Life (s)": "32.10E6",
+        "Mass Number": "106"
+    },
+    "S-35": {
+        "Atom Name": "Sulfur",
+        "Atom Symbol": "S",
+        "Half-Life (s)": "7.538E6",
+        "Mass Number": "35"
+    },
+    "Sb-124": {
+        "Atom Name": "Antimony",
+        "Atom Symbol": "Sb",
+        "Half-Life (s)": "5.2020E6",
+        "Mass Number": "124"
+    },
+    "Sb-125": {
+        "Atom Name": "Antimony",
+        "Atom Symbol": "Sb",
+        "Half-Life (s)": "87.051E6",
+        "Mass Number": "125"
+    },
+    "Sb-127": {
+        "Atom Name": "Antimony",
+        "Atom Symbol": "Sb",
+        "Half-Life (s)": "333E3",
+        "Mass Number": "127"
+    },
+    "Sc-44": {
+        "Atom Name": "Scandium",
+        "Atom Symbol": "Sc",
+        "Half-Life (s)": "14.29E3",
+        "Mass Number": "44"
+    },
+    "Sc-46": {
+        "Atom Name": "Scandium",
+        "Atom Symbol": "Sc",
+        "Half-Life (s)": "7.2392E6",
+        "Mass Number": "46"
+    },
+    "Sc-47": {
+        "Atom Name": "Scandium",
+        "Atom Symbol": "Sc",
+        "Half-Life (s)": "289.31E3",
+        "Mass Number": "47"
+    },
+    "Se-73": {
+        "Atom Name": "Selenium",
+        "Atom Symbol": "Se",
+        "Half-Life (s)": "25.56E3",
+        "Mass Number": "73"
+    },
+    "Se-75": {
+        "Atom Name": "Selenium",
+        "Atom Symbol": "Se",
+        "Half-Life (s)": "10.3491E6",
+        "Mass Number": "75"
+    },
+    "Se-79": {
+        "Atom Name": "Selenium",
+        "Atom Symbol": "Se",
+        "Half-Life (s)": "11.2E12",
+        "Mass Number": "79"
+    },
+    "Sm-151": {
+        "Atom Name": "Samarium",
+        "Atom Symbol": "Sm",
+        "Half-Life (s)": "2.988E9",
+        "Mass Number": "151"
+    },
+    "Sm-153": {
+        "Atom Name": "Samarium",
+        "Atom Symbol": "Sm",
+        "Half-Life (s)": "166.6267E3",
+        "Mass Number": "153"
+    },
+    "Sn-113": {
+        "Atom Name": "Tin",
+        "Atom Symbol": "Sn",
+        "Half-Life (s)": "9.9438E6",
+        "Mass Number": "113"
+    },
+    "Sr-82": {
+        "Atom Name": "Strontium",
+        "Atom Symbol": "Sr",
+        "Half-Life (s)": "2.1900E6",
+        "Mass Number": "82"
+    },
+    "Sr-85": {
+        "Atom Name": "Strontium",
+        "Atom Symbol": "Sr",
+        "Half-Life (s)": "5.6030E6",
+        "Mass Number": "85"
+    },
+    "Sr-89": {
+        "Atom Name": "Strontium",
+        "Atom Symbol": "Sr",
+        "Half-Life (s)": "4.3692E6",
+        "Mass Number": "89"
+    },
+    "Sr-90": {
+        "Atom Name": "Strontium",
+        "Atom Symbol": "Sr",
+        "Half-Life (s)": "908.8E6",
+        "Mass Number": "90"
+    },
+    "Ta-182": {
+        "Atom Name": "Tantalum",
+        "Atom Symbol": "Ta",
+        "Half-Life (s)": "9.902E6",
+        "Mass Number": "182"
+    },
+    "Tc-94m": {
+        "Atom Name": "Technetium",
+        "Atom Symbol": "Tc",
+        "Half-Life (s)": "3.11E3",
+        "Mass Number": "94m"
+    },
+    "Tc-99": {
+        "Atom Name": "Technetium",
+        "Atom Symbol": "Tc",
+        "Half-Life (s)": "6.674E12",
+        "Mass Number": "99"
+    },
+    "Tc-99m": {
+        "Atom Name": "Technetium",
+        "Atom Symbol": "Tc",
+        "Half-Life (s)": "21.6241E3",
+        "Mass Number": "99m"
+    },
+    "Te-123m": {
+        "Atom Name": "Tellurium",
+        "Atom Symbol": "Te",
+        "Half-Life (s)": "10.308E6",
+        "Mass Number": "123m"
+    },
+    "Te-127": {
+        "Atom Name": "Tellurium",
+        "Atom Symbol": "Te",
+        "Half-Life (s)": "33.66E3",
+        "Mass Number": "127"
+    },
+    "Te-127m": {
+        "Atom Name": "Tellurium",
+        "Atom Symbol": "Te",
+        "Half-Life (s)": "9.17E6",
+        "Mass Number": "127m"
+    },
+    "Te-132": {
+        "Atom Name": "Tellurium",
+        "Atom Symbol": "Te",
+        "Half-Life (s)": "279.1E3",
+        "Mass Number": "132"
+    },
+    "Th-228": {
+        "Atom Name": "Thorium",
+        "Atom Symbol": "Th",
+        "Half-Life (s)": "60.356E6",
+        "Mass Number": "228"
+    },
+    "Th-231": {
+        "Atom Name": "Thorium",
+        "Atom Symbol": "Th",
+        "Half-Life (s)": "91.879E3",
+        "Mass Number": "231"
+    },
+    "Th-232": {
+        "Atom Name": "Thorium",
+        "Atom Symbol": "Th",
+        "Half-Life (s)": "442.4E15",
+        "Mass Number": "232"
+    },
+    "Th-233": {
+        "Atom Name": "Thorium",
+        "Atom Symbol": "Th",
+        "Half-Life (s)": "1.3290E3",
+        "Mass Number": "233"
+    },
+    "Th-234": {
+        "Atom Name": "Thorium",
+        "Atom Symbol": "Th",
+        "Half-Life (s)": "2.0822E6",
+        "Mass Number": "234"
+    },
+    "Ti-44": {
+        "Atom Name": "Titanium",
+        "Atom Symbol": "Ti",
+        "Half-Life (s)": "1.893E9",
+        "Mass Number": "44"
+    },
+    "Tl-201": {
+        "Atom Name": "Thallium",
+        "Atom Symbol": "Tl",
+        "Half-Life (s)": "262.84E3",
+        "Mass Number": "201"
+    },
+    "Tl-204": {
+        "Atom Name": "Thallium",
+        "Atom Symbol": "Tl",
+        "Half-Life (s)": "119.54E6",
+        "Mass Number": "204"
+    },
+    "Tl-206": {
+        "Atom Name": "Thallium",
+        "Atom Symbol": "Tl",
+        "Half-Life (s)": "252.1",
+        "Mass Number": "206"
+    },
+    "Tl-207": {
+        "Atom Name": "Thallium",
+        "Atom Symbol": "Tl",
+        "Half-Life (s)": "286.4",
+        "Mass Number": "207"
+    },
+    "Tl-208": {
+        "Atom Name": "Thallium",
+        "Atom Symbol": "Tl",
+        "Half-Life (s)": "183.48",
+        "Mass Number": "208"
+    },
+    "Tl-209": {
+        "Atom Name": "Thallium",
+        "Atom Symbol": "Tl",
+        "Half-Life (s)": "129.66",
+        "Mass Number": "209"
+    },
+    "Tl-210": {
+        "Atom Name": "Thallium",
+        "Atom Symbol": "Tl",
+        "Half-Life (s)": "78.0",
+        "Mass Number": "210"
+    },
+    "Tm-170": {
+        "Atom Name": "Thullium",
+        "Atom Symbol": "Tm",
+        "Half-Life (s)": "11.04E6",
+        "Mass Number": "170"
+    },
+    "U-232": {
+        "Atom Name": "Uranium",
+        "Atom Symbol": "U",
+        "Half-Life (s)": "2.228E9",
+        "Mass Number": "232"
+    },
+    "U-234": {
+        "Atom Name": "Uranium",
+        "Atom Symbol": "U",
+        "Half-Life (s)": "7.747E12",
+        "Mass Number": "234"
+    },
+    "U-235": {
+        "Atom Name": "Uranium",
+        "Atom Symbol": "U",
+        "Half-Life (s)": "22.216E15",
+        "Mass Number": "235"
+    },
+    "U-236": {
+        "Atom Name": "Uranium",
+        "Atom Symbol": "U",
+        "Half-Life (s)": "739.4E12",
+        "Mass Number": "236"
+    },
+    "U-237": {
+        "Atom Name": "Uranium",
+        "Atom Symbol": "U",
+        "Half-Life (s)": "583.1E3",
+        "Mass Number": "237"
+    },
+    "U-238": {
+        "Atom Name": "Uranium",
+        "Atom Symbol": "U",
+        "Half-Life (s)": "141.00E15",
+        "Mass Number": "238"
+    },
+    "U-239": {
+        "Atom Name": "Uranium",
+        "Atom Symbol": "U",
+        "Half-Life (s)": "1.4076E3",
+        "Mass Number": "239"
+    },
+    "Xe-127": {
+        "Atom Name": "Xenon",
+        "Atom Symbol": "Xe",
+        "Half-Life (s)": "3.1413E6",
+        "Mass Number": "127"
+    },
+    "Xe-131m": {
+        "Atom Name": "Xenon",
+        "Atom Symbol": "Xe",
+        "Half-Life (s)": "1.0335E6",
+        "Mass Number": "131m"
+    },
+    "Xe-133": {
+        "Atom Name": "Xenon",
+        "Atom Symbol": "Xe",
+        "Half-Life (s)": "453.375E3",
+        "Mass Number": "133"
+    },
+    "Xe-133m": {
+        "Atom Name": "Xenon",
+        "Atom Symbol": "Xe",
+        "Half-Life (s)": "189.9E3",
+        "Mass Number": "133m"
+    },
+    "Xe-135m": {
+        "Atom Name": "Xenon",
+        "Atom Symbol": "Xe",
+        "Half-Life (s)": "918.0",
+        "Mass Number": "135m"
+    },
+    "Y-88": {
+        "Atom Name": "Yttrium",
+        "Atom Symbol": "Y",
+        "Half-Life (s)": "9.2128E6",
+        "Mass Number": "88"
+    },
+    "Y-90": {
+        "Atom Name": "Yttrium",
+        "Atom Symbol": "Y",
+        "Half-Life (s)": "230.55E3",
+        "Mass Number": "90"
+    },
+    "Y-90m": {
+        "Atom Name": "Yttrium",
+        "Atom Symbol": "Y",
+        "Half-Life (s)": "11.48E3",
+        "Mass Number": "90m"
+    },
+    "Yb-169": {
+        "Atom Name": "Ytterbium",
+        "Atom Symbol": "Yb",
+        "Half-Life (s)": "2.76636E6",
+        "Mass Number": "169"
+    },
+    "Zn-63": {
+        "Atom Name": "Zinc",
+        "Atom Symbol": "Zn",
+        "Half-Life (s)": "2.300E3",
+        "Mass Number": "63"
+    },
+    "Zn-65": {
+        "Atom Name": "Zinc",
+        "Atom Symbol": "Zn",
+        "Half-Life (s)": "21.082E6",
+        "Mass Number": "65"
+    },
+    "Zr-89": {
+        "Atom Name": "Zirconium",
+        "Atom Symbol": "Zr",
+        "Half-Life (s)": "282.31E3",
+        "Mass Number": "89"
+    },
+    "Zr-93": {
+        "Atom Name": "Zirconium",
+        "Atom Symbol": "Zr",
+        "Half-Life (s)": "50.8E12",
+        "Mass Number": "93"
+    },
+    "Zr-95": {
+        "Atom Name": "Zirconium",
+        "Atom Symbol": "Zr",
+        "Half-Life (s)": "5.5324E6",
+        "Mass Number": "95"
+    }
+}
