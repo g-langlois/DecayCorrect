@@ -122,6 +122,88 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         }
     }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let defaultCell = UITableViewCell()
+        
+        if let pickerIndexPath = pickerIndexPath, let pickerType = pickerType, indexPath == pickerIndexPath{
+            return getPickerCell(pickerIndexPath: pickerIndexPath, pickerType: pickerType, indexPath: indexPath) ?? defaultCell
+        } else {
+            return getInputCell(indexPath: indexPath) ?? defaultCell
+        }
+    }
+    
+    func getPickerCell(pickerIndexPath: IndexPath, pickerType: CellType, indexPath: IndexPath) -> UITableViewCell? {
+        var cell: UITableViewCell?
+        
+        switch pickerType {
+        case .datePicker:
+            let pickerCell = tableView.dequeueReusableCell(withIdentifier: "datePicker", for: indexPath) as! DatePickerTableViewCell
+            
+            if let activePicker = activePicker {
+                pickerCell.delegate = self
+                pickerCell.datePicker.tag = calculatorViewModel.tagForSource(activePicker)
+                
+                if let date = calculatorViewModel.dateForSource(activePicker) {
+                    pickerCell.datePicker.date = date
+                } else {
+                    pickerCell.datePicker.date = Date()
+                    calculatorViewModel.setDate(Date(), forSource: activePicker)
+                    
+                    self.calculatorViewModel.calculator.updateResult()
+                }
+            }
+            cell = pickerCell
+            
+        case .unitPicker:
+            let pickerCell = tableView.dequeueReusableCell(withIdentifier: "unitsPicker", for: indexPath) as! UnitsPickerTableViewCell
+            
+            if let activePicker = activePicker {
+                
+                pickerCell.unitsPicker.tag = calculatorViewModel.tagForSource(activePicker)
+                pickerCell.unitsPicker.delegate = self
+                pickerCell.unitsPicker.dataSource = self
+            }
+            cell = pickerCell
+            
+        default:
+            break
+        }
+        
+        return cell
+    }
+    
+    func getInputCell(indexPath: IndexPath) -> UITableViewCell? {
+        var cell: UITableViewCell?
+        
+        switch indexPath {
+        case correctedIndexPath(from: IndexPath(row: 0, section: 0)):
+            let paramCell = tableView.dequeueReusableCell(withIdentifier: "isotope", for: indexPath)
+            
+            paramCell.textLabel?.text = calculatorViewModel.isotopeShortName
+            paramCell.detailTextLabel?.text = "t1/2 = \(calculatorViewModel.halfLifeSec) s"
+            paramCell.detailTextLabel?.textColor = UIColor.gray
+            
+            cell = paramCell
+            
+        case correctedIndexPath(from: dateTime0IndexPath):
+            cell = dequeueDateCell(tableView, indexPath, source: .date0)
+            
+        case correctedIndexPath(from: activity0IndexPath):
+            cell = dequeueActivityCell(tableView, indexPath,source: .activity0)
+            
+        case correctedIndexPath(from: dateTime1IndexPath):
+            cell = dequeueDateCell(tableView, indexPath, source: .date1)
+            
+        case correctedIndexPath(from: activity1IndexPath):
+            cell = dequeueActivityCell(tableView, indexPath,source: .activity1)
+            
+        default:
+            break
+        }
+        
+        return cell
+    }
+    
     fileprivate func dequeueActivityCell(_ tableView: UITableView, _ indexPath: IndexPath, source: DecayCalculatorInputType) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "parameter", for: indexPath) as! ParameterTableViewCell
         
@@ -161,74 +243,6 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         }
         
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let pickerIndexPath = pickerIndexPath, let pickerType = pickerType, indexPath == pickerIndexPath{
-            switch pickerType {
-            case .datePicker:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "datePicker", for: indexPath) as! DatePickerTableViewCell
-                
-                if let activePicker = activePicker {
-                    cell.delegate = self
-                    cell.datePicker.tag = calculatorViewModel.tagForSource(activePicker)
-                    
-                    if let date = calculatorViewModel.dateForSource(activePicker) {
-                        cell.datePicker.date = date
-                    } else {
-                        cell.datePicker.date = Date()
-                        calculatorViewModel.setDate(Date(), forSource: activePicker)
-                        
-                        self.calculatorViewModel.calculator.updateResult()
-                    }
-                }
-                
-                return cell
-                
-            case .unitPicker:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "unitsPicker", for: indexPath) as! UnitsPickerTableViewCell
-                
-                if let activePicker = activePicker {
-                    
-                    cell.unitsPicker.tag = calculatorViewModel.tagForSource(activePicker)
-                    cell.unitsPicker.delegate = self
-                    cell.unitsPicker.dataSource = self
-                }
-                
-                return cell
-                
-            default:
-                break
-            }
-        }
-        
-        switch indexPath {
-        case correctedIndexPath(from: IndexPath(row: 0, section: 0)):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "isotope", for: indexPath)
-            
-            cell.textLabel?.text = calculatorViewModel.isotopeShortName
-            cell.detailTextLabel?.text = "t1/2 = \(calculatorViewModel.halfLifeSec) s"
-            cell.detailTextLabel?.textColor = UIColor.gray
-            
-            return cell
-            
-        case correctedIndexPath(from: dateTime0IndexPath):
-            return dequeueDateCell(tableView, indexPath, source: .date0)
-            
-        case correctedIndexPath(from: activity0IndexPath):
-            return dequeueActivityCell(tableView, indexPath,source: .activity0)
-            
-        case correctedIndexPath(from: dateTime1IndexPath):
-            return dequeueDateCell(tableView, indexPath, source: .date1)
-            
-        case correctedIndexPath(from: activity1IndexPath):
-            return dequeueActivityCell(tableView, indexPath,source: .activity1)
-            
-        default:
-            break
-        }
-        
-        return tableView.dequeueReusableCell(withIdentifier: "parameter", for: indexPath) as! ParameterTableViewCell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
