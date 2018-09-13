@@ -15,7 +15,6 @@ class IsotopeDAO {
     let defaults = UserDefaults.standard
     let persistentContainer: NSPersistentContainer!
 
-
     init(container: NSPersistentContainer) {
         self.persistentContainer = container
         self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
@@ -29,8 +28,6 @@ class IsotopeDAO {
         
         self.init(container: appDelegate.persistentContainer)
     }
-    
-    
     
     lazy var context: NSManagedObjectContext = {
         return self.persistentContainer.viewContext
@@ -57,14 +54,15 @@ class IsotopeDAO {
         context.delete(obj)
     }
     
-
     func insertIsotope() -> Isotope? {
         guard let isotope = NSEntityDescription.insertNewObject(forEntityName: "Isotope", into: context) as? Isotope else {return nil}
+        
         return isotope
     }
     
     func insertIsotope(atomName: String, atomSymbol: String, halfLife: TimeInterval, massNumber: Int, isCustom: Bool = false, state: String?=nil) -> Isotope? {
         guard let isotope = NSEntityDescription.insertNewObject(forEntityName: "Isotope", into: context) as? Isotope else {return nil}
+        
         isotope.atomName = atomName
         isotope.atomSymbol = atomSymbol
         isotope.massNumber = Int32(massNumber)
@@ -72,6 +70,7 @@ class IsotopeDAO {
         isotope.halfLifeSec = halfLife
         isotope.custom = isCustom
         isotope.uniqueId = UUID()
+        
         return isotope
     }
     
@@ -93,6 +92,7 @@ class IsotopeDAO {
     func populateIsotopes(jsonUrl: URL) -> [Isotope] {
         var isotopes = [Isotope]()
         var json: [String: Any]?
+        
         do {
             let jsonData = try Data(contentsOf: jsonUrl, options: .mappedIfSafe)
             json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any]
@@ -100,6 +100,7 @@ class IsotopeDAO {
         catch {
             print(error)
         }
+        
         if let json = json {
             for key in json.keys {
                 if let atom = json[key] as? [String: Any] {
@@ -112,6 +113,7 @@ class IsotopeDAO {
                     let massNumber = massStateSplit.massNumber
                     let state = massStateSplit.state
                     let isotope = insertIsotope(atomName: atomName, atomSymbol: atomSymbol, halfLife: halfLifeSec, massNumber: massNumber, state: state)
+                    
                     if isotope != nil {
                         isotopes.append(isotope!)
                     }   
@@ -119,6 +121,7 @@ class IsotopeDAO {
             }
             defaults.set(true, forKey: "jsonInitiated")
         }
+        
         return isotopes
     }
     
@@ -136,6 +139,7 @@ class IsotopeDAO {
             let fetchError = error as NSError
             print(fetchError)
         }
+        
         return nil
     }
     
@@ -163,7 +167,5 @@ class IsotopeDAO {
         let massNumber = Int(massNumberString) ?? 0
 
         return (massNumber, state)
-        
     }
-    
 }

@@ -9,6 +9,7 @@
 import Foundation
 
 enum RadioactivityUnit: String {
+    
     case mbq = "MBq"
     case gbq = "GBq"
     case bq = "Bq"
@@ -36,8 +37,8 @@ enum RadioactivityUnit: String {
     func conversionFactor(to finalUnit: RadioactivityUnit) -> Double {
         let startingUnitToBequerel = conversionFactorToBequerel(self)
         let finalUnitToBequerel = conversionFactorToBequerel(finalUnit)
+        
         return startingUnitToBequerel / finalUnitToBequerel
     }
-    
 }
 

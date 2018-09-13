@@ -10,25 +10,22 @@ import UIKit
 
 
 class ParameterTableViewCell: UITableViewCell {
-
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         let toolbarDone = UIToolbar.init()
         toolbarDone.sizeToFit()
         let barBtnDone = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.done,
                                               target: self, action: #selector(ParameterTableViewCell.endEditing(_:)))
-        
         toolbarDone.items = [barBtnDone]
         parameterValueTextField.inputAccessoryView = toolbarDone
     }
-
-
+    
     @IBOutlet weak var parameterLabel: UILabel!
     
     @IBOutlet weak var parameterValueTextField: UITextField!
-
+    
     @IBOutlet weak var unitsLabel: UILabel!
     
     override func setSelected(_ selected: Bool, animated: Bool) {

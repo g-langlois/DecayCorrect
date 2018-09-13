@@ -10,30 +10,21 @@ import UIKit
 
 class DatePickerTableViewCell: UITableViewCell {
 
-
     var delegate: DecayTableViewController?
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
-    
-
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
   
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         delegate?.dateValueChanged(newValue: sender.date, forPickerWithTag: sender.tag)
-     
     }
+    
     @IBOutlet weak var datePicker: UIDatePicker!
-    
-    
 }
 
 protocol DatePickerDelegate {

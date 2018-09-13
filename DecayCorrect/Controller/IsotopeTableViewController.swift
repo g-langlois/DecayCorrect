@@ -10,7 +10,6 @@ import UIKit
 
 class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
     
-    
     var saveButton: UIBarButtonItem?
     var cancelButton: UIBarButtonItem?
     
@@ -23,6 +22,7 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveIsotope))
         cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(cancelEdits))
         
@@ -33,16 +33,17 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         loadParameterList()
+        
         cells.append([])
         cells.append([])
+        
         for _ in 0...parameterList[0].count {
             cells[0].append(tableView.dequeueReusableCell(withIdentifier: "parameter") as! IsotopeTableViewCell)
         }
+        
         for _ in 0...parameterList[1].count {
-            
             cells[1].append(UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "time"))
         }
-        
     }
     
     // MARK: - Table view data source
@@ -60,25 +61,29 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
         switch indexPath.section {
         case 0:
             let cell = cells[indexPath.section][indexPath.row] as! IsotopeTableViewCell
+            
             guard let isotopeViewModel = isotopeViewModel else {return cell}
+            
             cell.parameterTitleLabel.text = isotopeViewModel.titleForParameter(parameterList[indexPath.section][indexPath.row])
             cell.parameterValueTextField.text = isotopeViewModel.valueForParameter(parameterList[indexPath.section][indexPath.row])
             cell.parameterValueTextField.isEnabled = isotopeViewModel.isEditable(parameterList[indexPath.section][indexPath.row])
-            if !isotopeViewModel.isEditable(parameterList[indexPath.section][indexPath.row]) {
-            }
+            
             return cell
+        
         case 1:
             let cell = cells[indexPath.section][indexPath.row]
+            
             if isotopeViewModel?.isCheckmarkSelected(parameterList[indexPath.section][indexPath.row]) ?? false {
                 cell.accessoryType = .checkmark
             }
+            
             cell.textLabel?.text = isotopeViewModel?.titleForParameter(parameterList[indexPath.section][indexPath.row])
+            
             return cell
+        
         default:
             return UITableViewCell()
-            
         }
-        
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -88,11 +93,11 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
     
     @objc func saveIsotope() {
         for row in 0 ... (parameterList[0].count - 1) {
-        let cell = cells[0][row] as! IsotopeTableViewCell
+            let cell = cells[0][row] as! IsotopeTableViewCell
             isotopeViewModel?.saveValueForParameter(parameterList[0][row], value:  cell.parameterValueTextField.text!)
         }
+        
         performSegue(withIdentifier: "unwind", sender: self)
-    
     }
     
     @objc func cancelEdits() {
@@ -102,6 +107,7 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
     func loadParameterList() {
         parameterList.append([])
         parameterList.append([])
+        
         parameterList[0].append(.atomName)
         parameterList[0].append(.atomSymbol)
         parameterList[0].append(.massNumber)
@@ -120,6 +126,4 @@ class IsotopeTableViewController: UITableViewController, UITextFieldDelegate {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // TODO
      }
- 
-    
 }

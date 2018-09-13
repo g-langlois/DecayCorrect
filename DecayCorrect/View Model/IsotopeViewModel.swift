@@ -11,22 +11,21 @@ import Foundation
 class IsotopeViewModel {
     
     var isotope: Isotope?
-    var sut: IsotopeDAO!
-    
+    var dao: IsotopeDAO!
     
     init(_ isotope: Isotope? = nil) {
-        sut = IsotopeDAO()
-        if isotope != nil {
-        self.isotope = isotope
-        } else {
-            self.isotope = sut.insertIsotope()
-        }
+        dao = IsotopeDAO()
         
+        if isotope != nil {
+            self.isotope = isotope
+        } else {
+            self.isotope = dao.insertIsotope()
+        }
     }
     
     func saveIsotope() {
         if isotope != nil {
-            sut.save()
+            dao.save()
         }
     }
     
@@ -44,6 +43,7 @@ class IsotopeViewModel {
             return ""
         }
     }
+    
     func titleForParameter(_ parameter: IsotopeParameter) -> String {
         switch parameter {
         case .halfLife:
@@ -74,7 +74,6 @@ class IsotopeViewModel {
     
     func saveValueForParameter(_ parameter: IsotopeParameter, value: String) {
         switch parameter {
-            
         // TODO exception handling
         case .atomName:
             isotope?.atomName = value
@@ -94,7 +93,8 @@ class IsotopeViewModel {
         default:
             break
         }
-        sut.save()
+        
+        dao.save()
     }
     
     func setValueForParameter(_ parameter: IsotopeParameter, value: String) {

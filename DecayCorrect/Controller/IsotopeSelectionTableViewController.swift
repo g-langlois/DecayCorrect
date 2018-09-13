@@ -18,6 +18,8 @@ class IsotopeSelectionTableViewController: UITableViewController {
     var doneButton: UIBarButtonItem?
     
     var editingIsotope: Isotope?
+    var selectedIsotopeId: UUID?
+    var isotopes = [Isotope]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +38,8 @@ class IsotopeSelectionTableViewController: UITableViewController {
         doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(commitEdits))
         
         self.navigationItem.rightBarButtonItems = [editButton!, addButton!]
-        
-        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -51,9 +52,6 @@ class IsotopeSelectionTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    var selectedIsotopeId: UUID?
-    var isotopes = [Isotope]()
 
     // MARK: - Table view data source
 
@@ -62,19 +60,20 @@ class IsotopeSelectionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-                return isotopes.count
+        return isotopes.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "isotopeCell", for: indexPath) as! IsotopeSelectionTableViewCell
         let row = indexPath.row
+        
         cell.isotopeId.text = ("\(isotopes[row].atomSymbol ?? "")-\(isotopes[row].massNumber)\(isotopes[row].state ?? "") ")
         cell.isotopeName.text = ("t1/2= \(isotopes[row].halfLifeSec) s")
         cell.isotopeName.textColor = UIColor.gray
+        
         if selectedIsotopeId != nil && selectedIsotopeId == isotopes[row].uniqueId {
             cell.accessoryType = .checkmark
-        }
-        else {
+        } else {
             cell.accessoryType = .none
         }
 
@@ -89,11 +88,14 @@ class IsotopeSelectionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isEditing {
             editingIsotope = isotopes[indexPath.row]
+            
             performSegue(withIdentifier: "editIsotopeSegue", sender: self)
+            
         } else {
             selectedIsotopeId = isotopes[indexPath.row].uniqueId
             updateState()
             tableView.reloadData()
+            
             performSegue(withIdentifier: "unwindSegue", sender: self)
         }
     }
@@ -111,13 +113,11 @@ class IsotopeSelectionTableViewController: UITableViewController {
     @objc func editIsotopes() {
         self.navigationItem.rightBarButtonItems = [doneButton!]
         setEditing(true, animated: true)
-        
     }
     
     @objc func commitEdits() {
         self.navigationItem.rightBarButtonItems = [editButton!, addButton!]
         setEditing(false, animated:true)
-        
     }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -132,14 +132,9 @@ class IsotopeSelectionTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
             dao.remove(objectID: isotopes[indexPath.row].objectID)
             isotopes.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
-        } else if editingStyle == .insert {
-            
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
     
@@ -161,7 +156,6 @@ class IsotopeSelectionTableViewController: UITableViewController {
     }
     
     @IBAction func unwindFromIsotopeEdit(segue: UIStoryboardSegue) {
-        
         tableView.reloadData()
     }
 }

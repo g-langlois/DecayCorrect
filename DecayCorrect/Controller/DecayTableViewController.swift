@@ -38,7 +38,7 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
     
     let calculatorViewModel = DecayCalculatorViewModel()
     
-    let sut = IsotopeDAO()
+    let dao = IsotopeDAO()
     
     // MARK: - View life cycle
     
@@ -101,7 +101,6 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
             }
         default:
             break
-            
         }
         
         return numberOfRows
@@ -230,7 +229,6 @@ class DecayTableViewController: UITableViewController, DecayCalculatorViewModelD
         }
         
         return tableView.dequeueReusableCell(withIdentifier: "parameter", for: indexPath) as! ParameterTableViewCell
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
